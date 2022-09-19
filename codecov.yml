@@ -1,0 +1,4 @@
+# .codecov.yml:
+coverage:
+  fixes:
+    - "__init__.py::outleap/__init__.py"
