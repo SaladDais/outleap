@@ -2,6 +2,7 @@
 omit =
     setup.py
     src/outleap/scripts/*
+    tests/*
 
 [paths]
 source =

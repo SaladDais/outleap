@@ -81,11 +81,24 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertFalse(self.client.connected)
 
+    async def test_connect_bad_welcome(self):
+        # Empty welcome message
+        self.protocol.inbound_messages.put_nowait({})
+        with self.assertRaises(KeyError):
+            await self.client.connect()
+
     async def test_post(self):
         self._write_welcome()
         await self.client.connect()
         self.client.post("foopump", {"bar": 1}, expect_reply=False)  # noqa
         self.assertDictEqual({"pump": "foopump", "data": {"bar": 1}}, self.protocol.sent_messages[-1])
+
+    async def test_post_bad_data(self):
+        self._write_welcome()
+        await self.client.connect()
+        # Must post a dict if you expect a reply
+        with self.assertRaises(ValueError):
+            self.client.post("foopump", "foo", expect_reply=True)  # noqa
 
     async def test_void_command(self):
         self._write_welcome()
@@ -114,6 +127,37 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
         # Pretend a reply came in
         self._write_reply(1, {"foo": 1})
         self.assertEqual({"foo": 1}, await asyncio.wait_for(fut, timeout=0.01))
+
+    async def test_disconnect_pending_command(self):
+        self._write_welcome()
+        async with self.client:
+            fut = self.client.command("foo", "bar", {})
+
+        with self.assertRaises(asyncio.CancelledError):
+            await fut
+
+    async def test_handle_bad_message(self):
+        self.assertFalse(self.client.handle_message("foo"))
+
+    async def test_handle_reply_not_dict(self):
+        self.assertFalse(
+            self.client.handle_message(
+                {
+                    "pump": "reply_pump",
+                    "data": "foo",
+                }
+            )
+        )
+
+    async def test_handle_reply_no_reqid(self):
+        self.assertFalse(
+            self.client.handle_message(
+                {
+                    "pump": "reply_pump",
+                    "data": {},
+                }
+            )
+        )
 
     async def test_listen(self):
         self._write_welcome()

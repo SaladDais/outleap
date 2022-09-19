@@ -104,11 +104,11 @@ class LEAPClient:
         #  keep around Task handles and cancel those instead?
         self._pump_listeners.clear()
 
-    def sys_command(self, op: str, data: Optional[Dict] = None) -> Optional[Awaitable]:
+    def sys_command(self, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
         """Make a request to an internal LEAP method over the command pump"""
         return self.command(self.cmd_pump, op, data)
 
-    def command(self, pump: str, op: str, data: Optional[Dict] = None) -> Optional[Awaitable]:
+    def command(self, pump: str, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
         """Make a request to an internal LEAP method using the standard command form (op in data)"""
         data = data.copy() if data else {}
         data["op"] = op
@@ -120,7 +120,7 @@ class LEAPClient:
         data["op"] = op
         self.post(pump, data, expect_reply=False)
 
-    def post(self, pump: str, data: Any, expect_reply: bool) -> Optional[Awaitable]:
+    def post(self, pump: str, data: Any, expect_reply: bool) -> Optional[asyncio.Future]:
         """
         Post an event to the other side's `pump`.
 
@@ -239,6 +239,7 @@ class LEAPClient:
             data.pop("reqid")
             # Notify anyone awaiting the response
             fut.set_result(data)
+            return True
 
         # Might be related to a listener we registered
         # Don't warn if we get a message with an empty listener_details.queues because
@@ -248,9 +249,10 @@ class LEAPClient:
         elif (listener_details := self._pump_listeners.get(pump)) is not None:
             for queue in listener_details.queues:
                 queue.put_nowait(data)
+            return True
         else:
             logging.warning(f"Received a message for unknown pump: {message!r}")
-        return True
+        return False
 
     def _cleanup_request_future(self, req_fut: asyncio.Future) -> None:
         """Remove a completed future from the reply map"""
