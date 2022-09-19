@@ -10,7 +10,9 @@ See <https://bitbucket.org/lindenlab/leap/src/main/> for more details on LEAP.
 
 ## Usage
 
-Look in the [examples](examples) directory.
+Look in the "[examples](examples)" directory.
+
+You can run a LEAP script with `your_viewer --leap some_script.py` if you have the executable bit set.
 
 ```python
 import asyncio
@@ -40,6 +42,34 @@ def main():
 
 main()
 ```
+
+## What viewers does LEAP even work in?
+
+Due to the fact that LEAP has only historically been used internally for testing, or for
+integration with the official viewer's updater, many viewers have disabled LEAP
+both intentionally or accidentally.
+
+The code in the upstream viewer also appears to refuse to launch LEAP scripts if the updater
+isn't present, which I don't entirely understand. I can't compile it to check.
+
+### Does it work in Firestorm?
+
+No, the code to launch LEAP scripts is [commented out](https://vcs.firestormviewer.org/phoenix-firestorm/files/cf85e854/indra/newview/llappviewer.cpp#L1398-1420).
+If you do your own build with those lines uncommented it'll work fine.
+
+### Does it work in Alchemy?
+
+[Probably not, and definitely not on Linux](https://git.alchemyviewer.org/alchemy/alchemy-next/-/blob/4f3b0d10e2f9db30e9e16bedbc4602b6d7bb5dda/indra/newview/llappviewer.cpp#L1183-1281).
+Alchemy does the same SL updater presence checks as upstream before attempting to launch LEAP scripts, which
+I imagine wouldn't succeed. Haven't tried.
+
+### Does it work in LL's official viewer?
+
+Yeah, probably.
+
+### Does it work in `<other viewer>`?
+
+No, probably not.
 
 ## Credits
 
