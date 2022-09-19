@@ -1,5 +1,7 @@
 # outleap
 
+[![codecov](https://codecov.io/gh/SaladDais/outleap/branch/master/graph/badge.svg?token=FWRKJNNJSZ)](https://codecov.io/gh/SaladDais/outleap)
+
 A Python library using asyncio to control a Second Life viewer over the LEAP protocol.
 
 See <https://bitbucket.org/lindenlab/leap/src/main/> for more details on LEAP.

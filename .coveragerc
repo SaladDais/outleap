@@ -1,6 +1,7 @@
 [run]
 omit =
     setup.py
+    src/outleap/scripts/*
 
 [paths]
 source =
