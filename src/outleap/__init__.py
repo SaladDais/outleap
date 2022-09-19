@@ -141,7 +141,7 @@ class LEAPClient:
             # Tell the viewer the pump to send replies to
             data["reply"] = self._reply_pump
 
-            req_id = uuid.uuid4()
+            req_id = self._gen_reqid()
             data["reqid"] = req_id
 
             fut = asyncio.Future()
@@ -151,6 +151,9 @@ class LEAPClient:
 
         self._protocol.write_message(pump, data)
         return fut
+
+    def _gen_reqid(self) -> Any:
+        return uuid.uuid4()
 
     @contextlib.asynccontextmanager
     async def listen_scoped(self, source_pump: str) -> AsyncContextManager[Callable[[], Awaitable[Any]]]:

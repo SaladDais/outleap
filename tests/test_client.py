@@ -23,11 +23,23 @@ class MockLEAPProtocol(outleap.AbstractLEAPProtocol):
         return msg
 
 
+class MockReqIDGenerator:
+    """Predictable reqid generator for request reply tracking"""
+
+    def __init__(self):
+        self.ctr = 0
+
+    def __call__(self, *args, **kwargs):
+        self.ctr += 1
+        return self.ctr
+
+
 class ProtocolTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self) -> None:
         self.loop = asyncio.get_running_loop()
         self.protocol = MockLEAPProtocol()
         self.client = outleap.LEAPClient(self.protocol)
+        self.client._gen_reqid = MockReqIDGenerator()
 
     def _write_welcome(self):
         self.protocol.inbound_messages.put_nowait(
@@ -35,6 +47,17 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
                 "pump": "reply_pump",
                 "data": {
                     "command": "cmd_pump",
+                },
+            }
+        )
+
+    def _write_reply(self, reqid: int, extra: Optional[Dict] = None):
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {
+                    **(extra or {}),
+                    "reqid": reqid,
                 },
             }
         )
@@ -78,10 +101,9 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
         fut = self.client.command("foopump", "baz", {"bar": 1})
         # Verify that the side effect of sending the message happens _before_ we await.
         last_message = self.protocol.sent_messages[-1]
-        expected_reqid = last_message["data"]["reqid"]
         expected_msg = {
             "pump": "foopump",
-            "data": {"op": "baz", "bar": 1, "reply": "reply_pump", "reqid": expected_reqid},
+            "data": {"op": "baz", "bar": 1, "reply": "reply_pump", "reqid": 1},
         }
         self.assertDictEqual(expected_msg, last_message)
 
@@ -90,13 +112,56 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(set(), done)
 
         # Pretend a reply came in
+        self._write_reply(1, {"foo": 1})
+        self.assertEqual({"foo": 1}, await asyncio.wait_for(fut, timeout=0.01))
+
+    async def test_listen(self):
+        self._write_welcome()
+        await self.client.connect()
+        listen_fut = self.client.listen("SomeState")
+        # Pretend a reply came in allowing the listen
+        self._write_reply(1)
+        msg_queue = await listen_fut
+
         self.protocol.inbound_messages.put_nowait(
             {
-                "pump": "reply_pump",
-                "data": {
-                    "reqid": expected_reqid,
-                    "foo": 1,
-                },
+                "pump": "SomeState",
+                "data": "hi",
             }
         )
-        self.assertEqual({"foo": 1}, await asyncio.wait_for(fut, timeout=0.01))
+
+        msg = await msg_queue.get()
+        msg_queue.task_done()
+        self.assertEqual("hi", msg)
+
+        # Done, unregister the listen
+        stop_listen_fut = self.client.stop_listening(msg_queue)
+        # Pretend a reply came in stopping the listen
+        self._write_reply(2)
+        await stop_listen_fut
+
+    async def test_listen_ctx_mgr(self):
+        self._write_welcome()
+        await self.client.connect()
+        # Listener registration happening from within the contextmanager is annoying to mock,
+        # so we just register a manual listener first.
+        listen_fut = self.client.listen("SomeState")
+        # Pretend a reply came in allowing the listen
+        self._write_reply(1)
+        msg_queue = await listen_fut
+
+        async with self.client.listen_scoped("SomeState") as get_events:
+            self.protocol.inbound_messages.put_nowait(
+                {
+                    "pump": "SomeState",
+                    "data": "hi",
+                }
+            )
+            msg = await get_events()
+            self.assertEqual("hi", msg)
+
+        # Done, unregister the listen
+        stop_listen_fut = self.client.stop_listening(msg_queue)
+        # Pretend a reply came in stopping the listen
+        self._write_reply(2)
+        await stop_listen_fut
