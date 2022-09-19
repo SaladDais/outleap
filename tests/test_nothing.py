@@ -1,5 +1,6 @@
-import outleap
 import unittest
+
+import outleap
 
 
 class DummyTest(unittest.TestCase):
