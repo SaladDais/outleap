@@ -1,18 +1,4 @@
-# outleap
-
-A Python library using asyncio to control a Second Life viewer over the LEAP protocol.
-
-See <https://bitbucket.org/lindenlab/leap/src/main/> for more details on LEAP.
-
-## Installing
-
-`pip install outleap`, or `pip install -e .` to install from source.
-
-## Usage
-
-Look in the [examples](examples) directory.
-
-```python
+#!/usr/bin/env python3
 import asyncio
 import sys
 
@@ -38,9 +24,5 @@ def main():
     loop = asyncio.get_event_loop_policy().get_event_loop()
     loop.run_until_complete(amain())
 
+
 main()
-```
-
-## Credits
-
-The project scaffolding is based on code from https://github.com/MatthieuDartiailh/bytecode

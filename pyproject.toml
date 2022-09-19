@@ -18,13 +18,20 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-dependencies = []
+dependencies = [
+    # Ehm, I doubt they believe in semver so just use whatever version.
+    # Needed for the LLSD stuff.
+    "llbase"
+]
 dynamic=["version"]
 
 
 [project.urls]
 homepage = "https://github.com/SaladDais/outleap"
 repository = "https://github.com/SaladDais/outleap"
+
+[project.scripts]
+outleap-agent = "outleap.scripts.agent:agent_main"
 
 
 [build-system]
