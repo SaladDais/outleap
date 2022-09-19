@@ -3,7 +3,7 @@ name = "outleap"
 description = "Tools for using asyncio to control a Second Life viewer over the LEAP protocol"
 readme = "README.md"
 requires-python = ">=3.8"
-license = {file = "COPYING"}
+license = {text = "MIT License"}
 authors = [
   {name = "Salad Dais", email = "83434023+SaladDais@users.noreply.github.com"}
 ]
