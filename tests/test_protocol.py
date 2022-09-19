@@ -1,7 +1,6 @@
-from typing import *
-
 import asyncio
 import unittest
+from typing import *
 
 import outleap
 
@@ -60,4 +59,4 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_write(self):
         self.leap_protocol.write_message("foo", {})
-        self.assertEqual(b"24:{\'pump\':\'foo\',\'data\':{}}", self.transport.written_data)
+        self.assertEqual(b"24:{'pump':'foo','data':{}}", self.transport.written_data)
