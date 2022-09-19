@@ -9,7 +9,6 @@ from __future__ import annotations
 import abc
 import asyncio
 import collections
-import contextlib
 import dataclasses
 import enum
 import logging
@@ -17,6 +16,7 @@ import pathlib
 import posixpath
 import uuid
 import weakref
+from types import TracebackType
 from typing import *
 
 from llbase import llsd
@@ -155,26 +155,8 @@ class LEAPClient:
     def _gen_reqid(self) -> Any:
         return uuid.uuid4()
 
-    @contextlib.asynccontextmanager
-    async def listen_scoped(self, source_pump: str) -> AsyncContextManager[Callable[[], Awaitable[Any]]]:
-        """Subscribe to events published on source_pump, allow awaiting them"""
-        msg_queue = await self.listen(source_pump)
-
-        async def _get_wrapper():
-            # TODO: handle disconnection while awaiting new Queue message
-            msg = await msg_queue.get()
-
-            # Consumption is completion
-            msg_queue.task_done()
-            return msg
-
-        try:
-            yield _get_wrapper
-        finally:
-            try:
-                await self.stop_listening(msg_queue)
-            except KeyError:
-                pass
+    def listen_scoped(self, source_pump: str):
+        return LEAPListenContextManager(self, source_pump)
 
     async def listen(self, source_pump: str) -> asyncio.Queue:
         """Start listening to `source_pump`, placing its messages in the returned asyncio Queue"""
@@ -260,6 +242,39 @@ class LEAPClient:
             if value == req_fut:
                 del self._reply_futs[key]
                 return
+
+
+class LEAPListenContextManager(AsyncContextManager[Callable[[], Awaitable[Any]]]):
+    """Helper for registering and unregistering a listener within a specific scope"""
+
+    def __init__(self, client: LEAPClient, source_pump: str):
+        self._client = client
+        self._source_pump = source_pump
+        self._msg_queue: Optional[asyncio.Queue] = None
+
+    async def __aenter__(self) -> Callable[[], Awaitable[Any]]:
+        self._msg_queue = await self._client.listen(self._source_pump)
+
+        async def _get_wrapper():
+            # TODO: handle disconnection while awaiting new Queue message
+            msg = await self._msg_queue.get()
+
+            # Consumption is completion
+            self._msg_queue.task_done()
+            return msg
+
+        return _get_wrapper
+
+    async def __aexit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_value: Optional[BaseException],
+        traceback: Optional[TracebackType],
+    ) -> None:
+        try:
+            await self._client.stop_listening(self._msg_queue)
+        except KeyError:
+            pass
 
 
 class ConnectionStatus(enum.Enum):
