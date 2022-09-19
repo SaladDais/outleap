@@ -137,27 +137,33 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
             await fut
 
     async def test_handle_bad_message(self):
-        self.assertFalse(self.client.handle_message("foo"))
+        self._write_welcome()
+        async with self.client:
+            self.assertFalse(self.client.handle_message("foo"))
 
     async def test_handle_reply_not_dict(self):
-        self.assertFalse(
-            self.client.handle_message(
-                {
-                    "pump": "reply_pump",
-                    "data": "foo",
-                }
+        self._write_welcome()
+        async with self.client:
+            self.assertFalse(
+                self.client.handle_message(
+                    {
+                        "pump": "reply_pump",
+                        "data": "foo",
+                    }
+                )
             )
-        )
 
     async def test_handle_reply_no_reqid(self):
-        self.assertFalse(
-            self.client.handle_message(
-                {
-                    "pump": "reply_pump",
-                    "data": {},
-                }
+        self._write_welcome()
+        async with self.client:
+            self.assertFalse(
+                self.client.handle_message(
+                    {
+                        "pump": "reply_pump",
+                        "data": {},
+                    }
+                )
             )
-        )
 
     async def test_listen(self):
         self._write_welcome()
