@@ -357,6 +357,77 @@ class LLAgentAPI(LEAPAPIWrapper):
         return self._client.command(self._pump_name, "getAutoPilot", {})
 
 
+class LLFloaterRegAPI(LEAPAPIWrapper):
+    PUMP_NAME = "LLFloaterReg"
+
+    def get_build_map(self) -> Awaitable[Dict]:
+        """Get a map of floater names and their XUI xml files"""
+        return self._client.command(self._pump_name, "getBuildMap", {})
+
+    def show_instance(self, name: str, key: Any = None, focus: bool = False) -> None:
+        """
+        Show an instance of a floater
+
+        `key` may contain specific data to bootstrap creating the floater, for
+        example an item ID.
+        """
+        self._client.void_command(
+            self._pump_name,
+            "showInstance",
+            {
+                "name": name,
+                "key": key,
+                "focus": focus,
+            },
+        )
+
+    def hide_instance(self, name: str, key: Any = None, focus: bool = False) -> None:
+        """Hide an instance of a floater"""
+        self._client.void_command(
+            self._pump_name,
+            "hideInstance",
+            {
+                "name": name,
+                "key": key,
+            },
+        )
+
+    def toggle_instance(self, name: str, key: Any = None) -> None:
+        """Toggle visibility of an instance of a floater"""
+        self._client.void_command(
+            self._pump_name,
+            "toggleInstance",
+            {
+                "name": name,
+                "key": key,
+            },
+        )
+
+    def is_instance_visible(self, name: str, key: Any = None) -> Awaitable[bool]:
+        """Return whether an instance was visible"""
+        fut = self._client.command(
+            self._pump_name,
+            "instanceVisible",
+            {
+                "name": name,
+                "key": key,
+            },
+        )
+        return _data_unwrapper(fut, "visible")
+
+    def click_button(self, name: str, button: str, key: Any = None) -> Awaitable[Dict]:
+        """Click a button on an instance of a floater, potentially returning failure details"""
+        return self._client.command(
+            self._pump_name,
+            "clickButton",
+            {
+                "name": name,
+                "key": key,
+                "button": button,
+            },
+        )
+
+
 __all__ = [
     "LLUIAPI",
     "LLAgentAPI",
@@ -364,6 +435,7 @@ __all__ = [
     "LLViewerControlAPI",
     "LLViewerWindowAPI",
     "LLCommandDispatcherAPI",
+    "LLFloaterRegAPI",
     "UIPath",
     "LEAPAPIWrapper",
 ]

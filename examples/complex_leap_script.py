@@ -17,6 +17,7 @@ from outleap import (
     LEAPClient,
     LEAPProtocol,
     LLCommandDispatcherAPI,
+    LLFloaterRegAPI,
     LLViewerControlAPI,
     LLWindowAPI,
     UIPath,
@@ -48,14 +49,15 @@ async def client_connected(client: LEAPClient):
     # More manual version of above that gives you a Queue you can pass around
     # A None gets posted to the mainloop every time the viewer restarts the main loop,
     # so we can rely on _something_ being published to this.
-    llapp_queue = await client.listen("mainloop")
+    mainloop_queue = await client.listen("mainloop")
     try:
-        printer.pprint(await llapp_queue.get())
-        llapp_queue.task_done()
+        printer.pprint(await mainloop_queue.get())
+        mainloop_queue.task_done()
     finally:
-        await client.stop_listening(llapp_queue)
+        await client.stop_listening(mainloop_queue)
 
     # A simple command with a reply
+    # Let's not use the fancy API wrappers for now.
     printer.pprint(await client.command("LLFloaterReg", "getBuildMap"))
 
     # A simple command that has no reply, or has a reply we don't care about.
@@ -70,8 +72,9 @@ async def client_connected(client: LEAPClient):
     cmd_dispatcher_api = LLCommandDispatcherAPI(client)
     printer.pprint(await cmd_dispatcher_api.enumerate())
 
-    # Spawn the test textbox floater
-    client.void_command("LLFloaterReg", "showInstance", {"name": "test_textbox"})
+    # Spawn the test textbox floater, we can use the nice API wrapper for that.
+    floater_reg_api = LLFloaterRegAPI(client)
+    floater_reg_api.show_instance("test_textbox")
 
     # LEAP allows addressing UI elements by "path". We expose that through a pathlib-like interface
     # to allow composing UI element paths.
