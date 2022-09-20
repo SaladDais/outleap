@@ -6,8 +6,7 @@ import posixpath
 import uuid
 from typing import *
 
-if TYPE_CHECKING:
-    from .client import LEAPClient
+from .client import LEAPClient
 
 
 class LEAPAPIWrapper(abc.ABC):
