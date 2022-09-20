@@ -12,13 +12,13 @@ import sys
 from typing import *
 
 from outleap import (
+    LLUIAPI,
     LEAPBridgeServer,
     LEAPClient,
     LEAPProtocol,
-    LLCommandDispatcherWrapper,
-    LLUIWrapper,
-    LLViewerControlWrapper,
-    LLWindowWrapper,
+    LLCommandDispatcherAPI,
+    LLViewerControlAPI,
+    LLWindowAPI,
     UIPath,
     connect_stdin_stdout,
 )
@@ -67,7 +67,7 @@ async def client_connected(client: LEAPClient):
     await client.sys_command("ping")
 
     # Print out all the commands supported by LLCommandDispatcher
-    cmd_dispatcher_api = LLCommandDispatcherWrapper(client)
+    cmd_dispatcher_api = LLCommandDispatcherAPI(client)
     printer.pprint(await cmd_dispatcher_api.enumerate())
 
     # Spawn the test textbox floater
@@ -77,7 +77,7 @@ async def client_connected(client: LEAPClient):
     # to allow composing UI element paths.
     textbox_path = UIPath.for_floater("floater_test_textbox") / "long_text_editor"
     # Click the "long_text_editor" in the test textbox floater.
-    window_api = LLWindowWrapper(client)
+    window_api = LLWindowAPI(client)
     await window_api.mouse_click(button="LEFT", path=textbox_path)
 
     # Clear out the textbox, note that this does _not_ work when path is specified!
@@ -90,7 +90,7 @@ async def client_connected(client: LEAPClient):
     window_api.text_input("Also I can type in here pretty good.")
 
     # Print out the value of the textbox we just typed in
-    ui_api = LLUIWrapper(client)
+    ui_api = LLUIAPI(client)
     printer.pprint(await ui_api.get_value(textbox_path))
 
     # But you don't need to explicitly give input focus like above, you can send keypresses
@@ -99,7 +99,7 @@ async def client_connected(client: LEAPClient):
     window_api.text_input("I typed in here by path.", path=monospace_path)
 
     # We can also access the viewer config to reason about viewer state.
-    viewer_control_api = LLViewerControlWrapper(client)
+    viewer_control_api = LLViewerControlAPI(client)
     printer.pprint(await viewer_control_api.get("Global", "StatsPilotFile"))
     # Print the first ten vars in the "Global" group
     printer.pprint((await viewer_control_api.vars("Global"))[:10])

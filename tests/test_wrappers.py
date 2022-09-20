@@ -7,7 +7,7 @@ class TestWrappers(BaseClientTest):
     async def test_mouse_click(self):
         self._write_welcome()
         await self.client.connect()
-        llwindow_api = outleap.LLWindowWrapper(self.client)
+        llwindow_api = outleap.LLWindowAPI(self.client)
 
         # Make sure the request looks like what we'd expect
         fut = llwindow_api.mouse_click(x=0, y=1, mask=["CTL"], button="LEFT")
@@ -43,7 +43,7 @@ class TestWrappers(BaseClientTest):
     async def test_key_press(self):
         self._write_welcome()
         await self.client.connect()
-        llwindow_api = outleap.LLWindowWrapper(self.client)
+        llwindow_api = outleap.LLWindowAPI(self.client)
 
         # Make sure the request looks like what we'd expect
         llwindow_api.key_press(char="f", mask=["CTL"])
@@ -57,7 +57,7 @@ class TestWrappers(BaseClientTest):
         self._write_welcome()
         await self.client.connect()
 
-        llwindow_api = outleap.LLWindowWrapper(self.client)
+        llwindow_api = outleap.LLWindowAPI(self.client)
         llwindow_api.key_down(char="f", path=outleap.UIPath.for_floater("foo") / "bar_elem")
         self.assertDictEqual(
             {
