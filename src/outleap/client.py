@@ -26,6 +26,7 @@ class LEAPClient:
         self._pump_listeners: Dict[str, ListenerDetails] = collections.defaultdict(ListenerDetails)
         self._connection_status = ConnectionStatus.READY
         self._msg_pump_task: Optional[asyncio.Task] = None
+        self.shutdown_event = asyncio.Event()
 
     async def __aenter__(self) -> LEAPClient:
         if not self.connected:
@@ -76,6 +77,8 @@ class LEAPClient:
         """Close the connection and clean up any pending request futures"""
         if self.connected:
             logging.info("closing LEAP connection")
+        if not self.shutdown_event.is_set():
+            self.shutdown_event.set()
         self._connection_status = ConnectionStatus.DISCONNECTED
         self._protocol.close()
         if self._msg_pump_task:
@@ -87,8 +90,6 @@ class LEAPClient:
             if not fut.done():
                 fut.cancel()
         self._reply_futs.clear()
-        # TODO: Give anything that cares about disconnects a signal that it's happened
-        #  keep around Task handles and cancel those instead?
         self._pump_listeners.clear()
 
     def sys_command(self, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
@@ -145,15 +146,16 @@ class LEAPClient:
     def listen_scoped(self, source_pump: str):
         return LEAPListenContextManager(self, source_pump)
 
-    async def listen(self, source_pump: str) -> asyncio.Queue:
+    async def listen(self, source_pump: str) -> LEAPListener:
         """Start listening to `source_pump`, placing its messages in the returned asyncio Queue"""
         assert self.connected
 
         msg_queue = asyncio.Queue()
 
         listener_details = self._pump_listeners[source_pump]
-        had_listeners = bool(listener_details.queues)
-        listener_details.queues.add(msg_queue)
+        had_listeners = bool(listener_details.listeners)
+        listener = LEAPListener(self, msg_queue)
+        listener_details.listeners.add(listener)
 
         if not had_listeners:
             # Nothing was listening to this before, need to ask for its events to be
@@ -161,29 +163,29 @@ class LEAPClient:
             await self.sys_command(
                 "listen",
                 {
-                    "listener": listener_details.listener,
+                    "listener": listener_details.name,
                     "source": source_pump,
                 },
             )
-        return msg_queue
+        return listener
 
-    async def stop_listening(self, msg_queue: asyncio.Queue) -> None:
+    async def stop_listening(self, listener: LEAPListener) -> None:
         """Stop sending a pump's messages to msg_queue, potentially removing the listen on the pump"""
         for source_pump, listener_details in self._pump_listeners.items():
-            queues = listener_details.queues
-            if msg_queue in queues:
-                listener_details.queues.remove(msg_queue)
-                if self.connected and not queues:
+            listeners = listener_details.listeners
+            if listener in listeners:
+                listeners.remove(listener)
+                if self.connected and not listeners:
                     # Nobody cares about these events anymore, ask LEAP to stop sending them
                     await self.sys_command(
                         "stoplistening",
                         {
-                            "listener": listener_details.listener,
+                            "listener": listener_details.name,
                             "source": source_pump,
                         },
                     )
                 return
-        raise KeyError(f"Couldn't find {msg_queue!r} in pump listeners")
+        raise KeyError(f"Couldn't find {listener!r} in pump listeners")
 
     def handle_message(self, message: Any) -> bool:
         """Handle an inbound message and try to route it to the right recipient"""
@@ -216,8 +218,8 @@ class LEAPClient:
         # The main concerning case if is we receive a message for something we _never_
         # registered a listener for.
         elif (listener_details := self._pump_listeners.get(pump)) is not None:
-            for queue in listener_details.queues:
-                queue.put_nowait(data)
+            for listener in listener_details.listeners:
+                listener.put_nowait(data)
             return True
         else:
             logging.warning(f"Received a message for unknown pump: {message!r}")
@@ -237,20 +239,11 @@ class LEAPListenContextManager(AsyncContextManager[Callable[[], Awaitable[Any]]]
     def __init__(self, client: LEAPClient, source_pump: str):
         self._client = client
         self._source_pump = source_pump
-        self._msg_queue: Optional[asyncio.Queue] = None
+        self._listener: Optional[LEAPListener] = None
 
-    async def __aenter__(self) -> Callable[[], Awaitable[Any]]:
-        self._msg_queue = await self._client.listen(self._source_pump)
-
-        async def _get_wrapper():
-            # TODO: handle disconnection while awaiting new Queue message
-            msg = await self._msg_queue.get()
-
-            # Consumption is completion
-            self._msg_queue.task_done()
-            return msg
-
-        return _get_wrapper
+    async def __aenter__(self) -> LEAPListener:
+        self._listener = await self._client.listen(self._source_pump)
+        return self._listener
 
     async def __aexit__(
         self,
@@ -259,7 +252,7 @@ class LEAPListenContextManager(AsyncContextManager[Callable[[], Awaitable[Any]]]
         traceback: Optional[TracebackType],
     ) -> None:
         try:
-            await self._client.stop_listening(self._msg_queue)
+            await self._client.stop_listening(self._listener)
         except KeyError:
             pass
 
@@ -271,14 +264,39 @@ class ConnectionStatus(enum.Enum):
     DISCONNECTED = enum.auto()
 
 
+class LEAPListener:
+    """Wrapper for queue.get() that cancels if the client disconnects while `await`ing"""
+
+    def __init__(self, client: LEAPClient, queue: asyncio.Queue):
+        self._client = client
+        self._queue = queue
+
+    async def get(self) -> Any:
+        if not self._queue.empty():
+            return self._queue.get_nowait()
+
+        queue_fut = asyncio.create_task(self._queue.get())
+        shutdown_fut = asyncio.create_task(self._client.shutdown_event.wait())
+        done, pending = await asyncio.wait([shutdown_fut, queue_fut], return_when=asyncio.FIRST_COMPLETED)
+        if done != {queue_fut}:
+            queue_fut.cancel()
+            raise asyncio.CancelledError("Client disconnected while waiting for event")
+        shutdown_fut.cancel()
+        return await queue_fut
+
+    def put_nowait(self, val: Any) -> None:
+        self._queue.put_nowait(val)
+
+
 @dataclasses.dataclass
 class ListenerDetails:
     # We can only have one listener with a given name active at a time. Give each listener a unique name.
-    listener: Optional[str] = dataclasses.field(default_factory=lambda: "PythonListener-%s" % uuid.uuid4())
-    queues: Set[asyncio.Queue] = dataclasses.field(default_factory=set)
+    name: Optional[str] = dataclasses.field(default_factory=lambda: "PythonListener-%s" % uuid.uuid4())
+    listeners: Set[LEAPListener] = dataclasses.field(default_factory=set)
 
 
 __all__ = [
     "LEAPListenContextManager",
+    "LEAPListener",
     "LEAPClient",
 ]

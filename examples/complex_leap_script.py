@@ -42,19 +42,18 @@ async def client_connected(client: LEAPClient):
         printer.pprint(await fut)
 
     # Subscribe to StartupState events within this scope
-    async with client.listen_scoped("StartupState") as get_event:
+    async with client.listen_scoped("StartupState") as listener:
         # Get a single StartupState event then continue
-        printer.pprint(await get_event())
+        printer.pprint(await listener.get())
 
     # More manual version of above that gives you a Queue you can pass around
     # A None gets posted to the mainloop every time the viewer restarts the main loop,
     # so we can rely on _something_ being published to this.
-    mainloop_queue = await client.listen("mainloop")
+    mainloop_listener = await client.listen("mainloop")
     try:
-        printer.pprint(await mainloop_queue.get())
-        mainloop_queue.task_done()
+        printer.pprint(await mainloop_listener.get())
     finally:
-        await client.stop_listening(mainloop_queue)
+        await client.stop_listening(mainloop_listener)
 
     # A simple command with a reply
     # Let's not use the fancy API wrappers for now.

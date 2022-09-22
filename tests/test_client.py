@@ -113,7 +113,7 @@ class ProtocolTests(BaseClientTest):
         listen_fut = self.client.listen("SomeState")
         # Pretend a reply came in allowing the listen
         self._write_reply(1)
-        msg_queue = await listen_fut
+        listener = await listen_fut
 
         self.protocol.inbound_messages.put_nowait(
             {
@@ -122,15 +122,46 @@ class ProtocolTests(BaseClientTest):
             }
         )
 
-        msg = await msg_queue.get()
-        msg_queue.task_done()
+        msg = await listener.get()
         self.assertEqual("hi", msg)
 
         # Done, unregister the listen
-        stop_listen_fut = self.client.stop_listening(msg_queue)
+        stop_listen_fut = self.client.stop_listening(listener)
         # Pretend a reply came in stopping the listen
         self._write_reply(2)
         await stop_listen_fut
+
+    async def test_listen_shutdown(self):
+        self._write_welcome()
+        await self.client.connect()
+        listen_fut = self.client.listen("SomeState")
+        # Pretend a reply came in allowing the listen
+        self._write_reply(1)
+        listener = await listen_fut
+
+        self.client.disconnect()
+        with self.assertRaises(asyncio.CancelledError):
+            await listener.get()
+
+    async def test_listen_message_from_before_disconnect(self):
+        self._write_welcome()
+        await self.client.connect()
+        listen_fut = self.client.listen("SomeState")
+        # Pretend a reply came in allowing the listen
+        self._write_reply(1)
+        listener = await listen_fut
+
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "SomeState",
+                "data": "hi",
+            }
+        )
+        await asyncio.sleep(0)
+        self.client.disconnect()
+
+        msg = await listener.get()
+        self.assertEqual("hi", msg)
 
     async def test_listen_ctx_mgr(self):
         self._write_welcome()
@@ -140,20 +171,20 @@ class ProtocolTests(BaseClientTest):
         listen_fut = self.client.listen("SomeState")
         # Pretend a reply came in allowing the listen
         self._write_reply(1)
-        msg_queue = await listen_fut
+        first_listener = await listen_fut
 
-        async with self.client.listen_scoped("SomeState") as get_events:
+        async with self.client.listen_scoped("SomeState") as listener:
             self.protocol.inbound_messages.put_nowait(
                 {
                     "pump": "SomeState",
                     "data": "hi",
                 }
             )
-            msg = await get_events()
+            msg = await listener.get()
             self.assertEqual("hi", msg)
 
         # Done, unregister the listen
-        stop_listen_fut = self.client.stop_listening(msg_queue)
+        stop_listen_fut = self.client.stop_listening(first_listener)
         # Pretend a reply came in stopping the listen
         self._write_reply(2)
         await stop_listen_fut
