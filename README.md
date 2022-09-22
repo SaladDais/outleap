@@ -25,7 +25,7 @@ from outleap import LEAPClient, LLViewerControlAPI
 
 async def amain():
     # Create a client speaking LEAP over stdin/stdout and connect it
-    async with LEAPClient.create_stdio_client() as client:
+    async with await LEAPClient.create_stdio_client() as client:
         # Use our typed wrapper around the LLViewerControl LEAP API
         viewer_control_api = LLViewerControlAPI(client)
         # Ask for a config value and print it in the viewer logs
