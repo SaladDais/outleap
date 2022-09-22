@@ -282,7 +282,9 @@ class LEAPListener:
 
     async def get(self) -> Any:
         if not self._queue.empty():
-            return self._queue.get_nowait()
+            msg = self._queue.get_nowait()
+            self._queue.task_done()
+            return msg
 
         queue_fut = asyncio.create_task(self._queue.get())
         shutdown_fut = asyncio.create_task(self._client.shutdown_event.wait())
