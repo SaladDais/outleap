@@ -384,7 +384,7 @@ class LLFloaterRegAPI(LEAPAPIWrapper):
             },
         )
 
-    def hide_instance(self, name: str, key: Any = None, focus: bool = False) -> None:
+    def hide_instance(self, name: str, key: Any = None) -> None:
         """Hide an instance of a floater"""
         self._client.void_command(
             self._pump_name,
