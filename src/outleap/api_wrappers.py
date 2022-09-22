@@ -128,9 +128,12 @@ class LLWindowAPI(LEAPAPIWrapper):
         for char in text_input:
             self.key_press(char=char, path=path)
 
-    async def get_paths(self, under: UI_PATH_TYPE = "") -> Dict:
+    async def get_paths(self, under: UI_PATH_TYPE = "") -> List[UIPath]:
         """Get all UI paths under the root, or under a path if specified"""
-        return await self._client.command(self._pump_name, "getPaths", {"under": str(under)})
+        resp = await self._client.command(self._pump_name, "getPaths", {"under": str(under)})
+        if error := resp.get("error"):
+            raise ValueError(error)
+        return [UIPath(path) for path in resp.get("paths", [])]
 
     async def get_info(self, path: UI_PATH_TYPE) -> Dict:
         """Get info about an element specified by path"""
