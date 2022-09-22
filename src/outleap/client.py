@@ -9,7 +9,8 @@ import uuid
 from types import TracebackType
 from typing import *
 
-from .protocol import AbstractLEAPProtocol
+from .protocol import AbstractLEAPProtocol, LEAPProtocol
+from .utils import connect_stdin_stdout
 
 
 class LEAPClient:
@@ -27,6 +28,14 @@ class LEAPClient:
         self._connection_status = ConnectionStatus.READY
         self._msg_pump_task: Optional[asyncio.Task] = None
         self.shutdown_event = asyncio.Event()
+
+    @classmethod
+    async def create_stdio_client(cls) -> LEAPClient:
+        """Return an already-connected LEAPClient that talks over stdin/out"""
+        reader, writer = await connect_stdin_stdout()
+        client = cls(LEAPProtocol(reader, writer))
+        await client.connect()
+        return client
 
     async def __aenter__(self) -> LEAPClient:
         if not self.connected:
