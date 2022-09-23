@@ -135,7 +135,7 @@ def receiver_main():
         )
 
         async def _wrapper():
-            async with LEAPClient(LEAPProtocol(*await connect_stdin_stdout())) as client:
+            async with await LEAPClient.create_stdio_client() as client:
                 await client_connected(client)
 
         loop.run_until_complete(_wrapper())
