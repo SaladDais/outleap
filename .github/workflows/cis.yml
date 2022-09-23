@@ -14,6 +14,10 @@ on:
       - setup.py
       - tox.ini
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   lint:
     name: Lint code
@@ -35,15 +39,17 @@ jobs:
           tox
 
   tests:
-    name: Unit tests
-    runs-on: ubuntu-latest
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.8", "3.10"]
         include:
           - python-version: "3.8"
             toxenv: py38
           - python-version: "3.10"
             toxenv: py310
+    name: Unit tests (${{ matrix.os }}, Python ${{matrix.python-version}})
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - name: Get history and tags for SCM versioning to work
