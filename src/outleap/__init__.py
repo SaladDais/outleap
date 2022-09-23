@@ -4,11 +4,19 @@ Tooling for working with the SL viewer's LEAP integration: now with 100% less ev
 TODO: Support playback of VITA event recording format snippets? Does anyone actually use those?
 """
 
-from __future__ import annotations
+from .api_wrappers import *  # noqa
+from .bridge import *  # noqa
+from .client import *  # noqa
+from .protocol import *  # noqa
+from .utils import *  # noqa
+from .version import __version__  # noqa
 
-from .api_wrappers import *
-from .bridge import *
-from .client import *
-from .protocol import *
-from .utils import *
-from .version import __version__
+# Don't pull in module objects like "client" when we do `from outleap import *`,
+# only all of their exported vars.
+__all__ = [
+    *api_wrappers.__all__,
+    *bridge.__all__,
+    *client.__all__,
+    *protocol.__all__,
+    *utils.__all__,
+]

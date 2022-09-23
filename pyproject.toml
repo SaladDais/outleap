@@ -30,8 +30,14 @@ dynamic=["version"]
 homepage = "https://github.com/SaladDais/outleap"
 repository = "https://github.com/SaladDais/outleap"
 
+[project.optional-dependencies]
+repl = [
+    "ptpython>=3,<4",
+]
+
 [project.scripts]
 outleap-agent = "outleap.scripts.agent:agent_main"
+outleap-repl = "outleap.scripts.repl:repl_main"
 
 
 [build-system]

@@ -10,6 +10,8 @@ See <https://bitbucket.org/lindenlab/leap/src/main/> for more details on LEAP.
 
 `pip install outleap`, or `pip install -e .` to install from source.
 
+If you want to use the LEAP REPL, do `pip install outleap[repl]`, or `pip install -e .[repl]`.
+
 ## Usage
 
 Look in the "[examples](examples)" directory.
@@ -34,6 +36,35 @@ async def amain():
 
 loop = asyncio.get_event_loop_policy().get_event_loop()
 loop.run_until_complete(amain())
+```
+
+If you just want to play around with the LEAP APIs:
+
+```bash
+$ outleap-repl
+# ... in another terminal ...
+$ viewer --leap outleap-agent
+```
+
+will give you an interactive REPL with a LEAP `client` object, with all the
+API wrappers already imported:
+
+```ipython
+>>> floater_api = LLFloaterRegAPI(client)
+>>> floater_api.show_instance(name="preferences")
+>>> import pprint
+>>> window_api = LLWindowAPI(client)
+>>> prefs_path = UIPath.for_floater("Preferences")
+>>> pprint.pp((await window_api.get_info(prefs_path)))
+{'available': True,
+ 'class': '19LLFloaterPreference',
+ 'enabled': 1,
+ 'enabled_chain': 1,
+ 'path': '/main_view/menu_stack/world_panel/Floater View/Preferences',
+ 'rect': {'bottom': 234, 'left': 593, 'right': 1255, 'top': 762},
+ 'value': None,
+ 'visible': 1,
+ 'visible_chain': 1}
 ```
 
 ## What viewers does LEAP even work in?
