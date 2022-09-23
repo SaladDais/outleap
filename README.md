@@ -52,10 +52,9 @@ API wrappers already imported:
 ```ipython
 >>> floater_api = LLFloaterRegAPI(client)
 >>> floater_api.show_instance(name="preferences")
->>> import pprint
 >>> window_api = LLWindowAPI(client)
 >>> prefs_path = UIPath.for_floater("Preferences")
->>> pprint.pp((await window_api.get_info(prefs_path)))
+>>> pprint.pp(await window_api.get_info(prefs_path))
 {'available': True,
  'class': '19LLFloaterPreference',
  'enabled': 1,

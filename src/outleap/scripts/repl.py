@@ -4,6 +4,7 @@ Interactive REPL that handles connect-back connections from outleap-agent
 import asyncio
 import logging
 import multiprocessing
+import pprint
 import sys
 
 try:
@@ -25,8 +26,11 @@ class REPLServer:
 
         self._repl_running = True
 
+        new_globals = {
+            **globals(),
+            "pprint": pprint,
+        }
         # Simulate `from outleap import *` in the REPL's global environment
-        new_globals = dict(globals())
         for name in outleap.__all__:
             new_globals[name] = getattr(outleap, name)
 
