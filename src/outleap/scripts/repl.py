@@ -6,6 +6,7 @@ import logging
 import multiprocessing
 import pprint
 import sys
+import uuid
 
 try:
     import ptpython
@@ -29,6 +30,7 @@ class REPLServer:
         new_globals = {
             **globals(),
             "pprint": pprint,
+            "UUID": uuid.UUID,
         }
         # Simulate `from outleap import *` in the REPL's global environment
         for name in outleap.__all__:
