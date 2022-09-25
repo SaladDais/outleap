@@ -39,7 +39,7 @@ class REPLServer:
                 globals=new_globals,
                 locals={"client": client},
                 return_asyncio_coroutine=True,
-                patch_stdout=True,
+                patch_stdout=False,
             )
         finally:
             self._repl_running = False
