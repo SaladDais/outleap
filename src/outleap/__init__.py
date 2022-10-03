@@ -8,6 +8,7 @@ from .api_wrappers import *  # noqa
 from .bridge import *  # noqa
 from .client import *  # noqa
 from .protocol import *  # noqa
+from .ui_elems import *  # noqa
 from .utils import *  # noqa
 from .version import __version__  # noqa
 
@@ -19,4 +20,5 @@ __all__ = [
     *client.__all__,
     *protocol.__all__,
     *utils.__all__,
+    *ui_elems.__all__,
 ]

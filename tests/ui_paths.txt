@@ -1,0 +1,2011 @@
+.
+/main_view
+/main_view/tooltip view
+/main_view/Menu Holder
+/main_view/Menu Holder/Text editor context menu
+/main_view/Menu Holder/Text editor context menu/Select All
+/main_view/Menu Holder/Text editor context menu/Delete
+/main_view/Menu Holder/Text editor context menu/Paste
+/main_view/Menu Holder/Text editor context menu/Copy
+/main_view/Menu Holder/Text editor context menu/Cut
+/main_view/Menu Holder/Text editor context menu/Spellcheck Separator
+/main_view/Menu Holder/Text editor context menu/Add to Ignore
+/main_view/Menu Holder/Text editor context menu/Add to Dictionary
+/main_view/Menu Holder/Text editor context menu/Suggestion Separator
+/main_view/Menu Holder/Text editor context menu/Suggestion 5
+/main_view/Menu Holder/Text editor context menu/Suggestion 4
+/main_view/Menu Holder/Text editor context menu/Suggestion 3
+/main_view/Menu Holder/Text editor context menu/Suggestion 2
+/main_view/Menu Holder/Text editor context menu/Suggestion 1
+/main_view/Menu Holder/Text editor context menu
+/main_view/Menu Holder/Text editor context menu/Select All
+/main_view/Menu Holder/Text editor context menu/Delete
+/main_view/Menu Holder/Text editor context menu/Paste
+/main_view/Menu Holder/Text editor context menu/Copy
+/main_view/Menu Holder/Text editor context menu/Cut
+/main_view/Menu Holder/Text editor context menu/Spellcheck Separator
+/main_view/Menu Holder/Text editor context menu/Add to Ignore
+/main_view/Menu Holder/Text editor context menu/Add to Dictionary
+/main_view/Menu Holder/Text editor context menu/Suggestion Separator
+/main_view/Menu Holder/Text editor context menu/Suggestion 5
+/main_view/Menu Holder/Text editor context menu/Suggestion 4
+/main_view/Menu Holder/Text editor context menu/Suggestion 3
+/main_view/Menu Holder/Text editor context menu/Suggestion 2
+/main_view/Menu Holder/Text editor context menu/Suggestion 1
+/main_view/Menu Holder/Text editor context menu
+/main_view/Menu Holder/Text editor context menu/Select All
+/main_view/Menu Holder/Text editor context menu/Delete
+/main_view/Menu Holder/Text editor context menu/Paste
+/main_view/Menu Holder/Text editor context menu/Copy
+/main_view/Menu Holder/Text editor context menu/Cut
+/main_view/Menu Holder/Text editor context menu/Spellcheck Separator
+/main_view/Menu Holder/Text editor context menu/Add to Ignore
+/main_view/Menu Holder/Text editor context menu/Add to Dictionary
+/main_view/Menu Holder/Text editor context menu/Suggestion Separator
+/main_view/Menu Holder/Text editor context menu/Suggestion 5
+/main_view/Menu Holder/Text editor context menu/Suggestion 4
+/main_view/Menu Holder/Text editor context menu/Suggestion 3
+/main_view/Menu Holder/Text editor context menu/Suggestion 2
+/main_view/Menu Holder/Text editor context menu/Suggestion 1
+/main_view/Menu Holder/Text editor context menu
+/main_view/Menu Holder/Text editor context menu/Select All
+/main_view/Menu Holder/Text editor context menu/Delete
+/main_view/Menu Holder/Text editor context menu/Paste
+/main_view/Menu Holder/Text editor context menu/Copy
+/main_view/Menu Holder/Text editor context menu/Cut
+/main_view/Menu Holder/Text editor context menu/Spellcheck Separator
+/main_view/Menu Holder/Text editor context menu/Add to Ignore
+/main_view/Menu Holder/Text editor context menu/Add to Dictionary
+/main_view/Menu Holder/Text editor context menu/Suggestion Separator
+/main_view/Menu Holder/Text editor context menu/Suggestion 5
+/main_view/Menu Holder/Text editor context menu/Suggestion 4
+/main_view/Menu Holder/Text editor context menu/Suggestion 3
+/main_view/Menu Holder/Text editor context menu/Suggestion 2
+/main_view/Menu Holder/Text editor context menu/Suggestion 1
+/main_view/Menu Holder/media ctrl context menu
+/main_view/Menu Holder/media ctrl context menu/open_webinspector
+/main_view/Menu Holder/media ctrl context menu/debug_separator
+/main_view/Menu Holder/media ctrl context menu/Paste
+/main_view/Menu Holder/media ctrl context menu/Copy
+/main_view/Menu Holder/media ctrl context menu/Cut
+/main_view/Menu Holder/Set Logging Level
+/main_view/Menu Holder/Set Logging Level/None
+/main_view/Menu Holder/Set Logging Level/Error
+/main_view/Menu Holder/Set Logging Level/Warning
+/main_view/Menu Holder/Set Logging Level/Info
+/main_view/Menu Holder/Set Logging Level/Debug
+/main_view/Menu Holder/Set Logging Level/tear_off
+/main_view/Menu Holder/UI Tests
+/main_view/Menu Holder/UI Tests/Inspectors
+/main_view/Menu Holder/UI Tests/Widgets
+/main_view/Menu Holder/UI Tests/Text Editor
+/main_view/Menu Holder/UI Tests/Textbox
+/main_view/Menu Holder/UI Tests/tear_off
+/main_view/Menu Holder/Debug
+/main_view/Menu Holder/Debug/Show Notifications Console
+/main_view/Menu Holder/Debug/Set Logging Level
+/main_view/Menu Holder/Debug/Media Browser
+/main_view/Menu Holder/Debug/Critical
+/main_view/Menu Holder/Debug/TOS
+/main_view/Menu Holder/Debug/Set Window Size...
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/UI Tests
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/UI Preview Tool
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/Debug Settings
+/main_view/Menu Holder/Debug/tear_off
+/main_view/Menu Holder/Help
+/main_view/Menu Holder/Help/current_grid_about_login
+/main_view/Menu Holder/Help/current_grid_help_login
+/main_view/Menu Holder/Help/grid_help_seperator_login
+/main_view/Menu Holder/Help/About Second Life
+/main_view/Menu Holder/Help/separator
+/main_view/Menu Holder/Help/Report Bug
+/main_view/Menu Holder/Help/How To
+/main_view/Menu Holder/Help/Troubleshooting
+/main_view/Menu Holder/Help/Firestorm Wiki
+/main_view/Menu Holder/Help/tear_off
+/main_view/Menu Holder/File
+/main_view/Menu Holder/File/Quit
+/main_view/Menu Holder/File/separator
+/main_view/Menu Holder/File/Show Grid Picker
+/main_view/Menu Holder/File/Close Window
+/main_view/Menu Holder/File/Preferences...
+/main_view/Menu Holder/File/tear_off
+/main_view/Menu Holder/Bug Reporting
+/main_view/Menu Holder/Bug Reporting/QA Wiki
+/main_view/Menu Holder/Bug Reporting/Security Issues
+/main_view/Menu Holder/Bug Reporting/Bug Reporing 101
+/main_view/Menu Holder/Bug Reporting/separator
+/main_view/Menu Holder/Bug Reporting/Publc Issue Tracker Help
+/main_view/Menu Holder/Bug Reporting/Public Issue Tracker
+/main_view/Menu Holder/Bug Reporting/tear_off
+/main_view/Menu Holder/DeprecatedHelp
+/main_view/Menu Holder/DeprecatedHelp/Bug Reporting
+/main_view/Menu Holder/DeprecatedHelp/Scripting Portal
+/main_view/Menu Holder/DeprecatedHelp/Official Linden Blog
+/main_view/Menu Holder/DeprecatedHelp/tear_off
+/main_view/Menu Holder/Take Off Clothing
+/main_view/Menu Holder/Take Off Clothing/All Clothes
+/main_view/Menu Holder/Take Off Clothing/Physics
+/main_view/Menu Holder/Take Off Clothing/Universal
+/main_view/Menu Holder/Take Off Clothing/Tattoo
+/main_view/Menu Holder/Take Off Clothing/Alpha
+/main_view/Menu Holder/Take Off Clothing/Skirt
+/main_view/Menu Holder/Take Off Clothing/Menu Underpants
+/main_view/Menu Holder/Take Off Clothing/Menu Undershirt
+/main_view/Menu Holder/Take Off Clothing/Gloves
+/main_view/Menu Holder/Take Off Clothing/Jacket
+/main_view/Menu Holder/Take Off Clothing/Socks
+/main_view/Menu Holder/Take Off Clothing/Shoes
+/main_view/Menu Holder/Take Off Clothing/Pants
+/main_view/Menu Holder/Take Off Clothing/Shirt
+/main_view/Menu Holder/Take Off Clothing/tear_off
+/main_view/Menu Holder/Detach Object
+/main_view/Menu Holder/Detach Object/tear_off
+/main_view/Menu Holder/Attach Object
+/main_view/Menu Holder/Attach Object/tear_off
+/main_view/Menu Holder/Deprecated
+/main_view/Menu Holder/Deprecated/DeprecatedHelp
+/main_view/Menu Holder/Deprecated/Take Off Clothing
+/main_view/Menu Holder/Deprecated/Detach Object
+/main_view/Menu Holder/Deprecated/Attach Object
+/main_view/Menu Holder/Deprecated/tear_off
+/main_view/Menu Holder/Region
+/main_view/Menu Holder/Region/Save Region State
+/main_view/Menu Holder/Region/Dump Temp Asset Data
+/main_view/Menu Holder/Region/tear_off
+/main_view/Menu Holder/Parcel
+/main_view/Menu Holder/Parcel/Claim Public Land
+/main_view/Menu Holder/Parcel/Set to Linden Content
+/main_view/Menu Holder/Parcel/Owner To Me
+/main_view/Menu Holder/Parcel/tear_off
+/main_view/Menu Holder/AdminObject
+/main_view/Menu Holder/AdminObject/Get Assets IDs
+/main_view/Menu Holder/AdminObject/Lock
+/main_view/Menu Holder/AdminObject/Delete
+/main_view/Menu Holder/AdminObject/Force Owner Permissive
+/main_view/Menu Holder/AdminObject/Force Owner To Me
+/main_view/Menu Holder/AdminObject/Admin Take Copy
+/main_view/Menu Holder/AdminObject/tear_off
+/main_view/Menu Holder/Admin
+/main_view/Menu Holder/Admin/God Tools
+/main_view/Menu Holder/Admin/Region
+/main_view/Menu Holder/Admin/Parcel
+/main_view/Menu Holder/Admin/AdminObject
+/main_view/Menu Holder/Admin/tear_off
+/main_view/Menu Holder/Set Logging Level
+/main_view/Menu Holder/Set Logging Level/None
+/main_view/Menu Holder/Set Logging Level/Error
+/main_view/Menu Holder/Set Logging Level/Warning
+/main_view/Menu Holder/Set Logging Level/Info
+/main_view/Menu Holder/Set Logging Level/Debug
+/main_view/Menu Holder/Set Logging Level/tear_off
+/main_view/Menu Holder/Animation Speed
+/main_view/Menu Holder/Animation Speed/Slow Motion Animations
+/main_view/Menu Holder/Animation Speed/Reset All Animation Speed
+/main_view/Menu Holder/Animation Speed/All Animations 10 Slower
+/main_view/Menu Holder/Animation Speed/All Animations 10 Faster
+/main_view/Menu Holder/Animation Speed/tear_off
+/main_view/Menu Holder/Character Tests
+/main_view/Menu Holder/Character Tests/Allow Select Avatar
+/main_view/Menu Holder/Character Tests/Test Female
+/main_view/Menu Holder/Character Tests/Test Male
+/main_view/Menu Holder/Character Tests/Toggle Character Geometry
+/main_view/Menu Holder/Character Tests/Appearance To XML
+/main_view/Menu Holder/Character Tests/tear_off
+/main_view/Menu Holder/Grab Baked Texture
+/main_view/Menu Holder/Grab Baked Texture/Grab Skirt
+/main_view/Menu Holder/Grab Baked Texture/Grab Lower Body
+/main_view/Menu Holder/Grab Baked Texture/Grab Upper Body
+/main_view/Menu Holder/Grab Baked Texture/Grab Head
+/main_view/Menu Holder/Grab Baked Texture/Grab Iris
+/main_view/Menu Holder/Grab Baked Texture/tear_off
+/main_view/Menu Holder/Character
+/main_view/Menu Holder/Character/Reload Avatar Cloud Particle
+/main_view/Menu Holder/Character/Dump Local Textures
+/main_view/Menu Holder/Character/Debug Avatar Textures
+/main_view/Menu Holder/Character/Dump Attachments
+/main_view/Menu Holder/Character/Show Impostor Extents
+/main_view/Menu Holder/Character/Display Agent Target
+/main_view/Menu Holder/Character/Show Bones
+/main_view/Menu Holder/Character/Show Collision Skeleton
+/main_view/Menu Holder/Character/Debug Character Vis
+/main_view/Menu Holder/Character/Disable LOD
+/main_view/Menu Holder/Character/Debug Joint Updates
+/main_view/Menu Holder/Character/Show Point At
+/main_view/Menu Holder/Character/Show Look At
+/main_view/Menu Holder/Character/Animation Info
+/main_view/Menu Holder/Character/Force Params to Default
+/main_view/Menu Holder/Character/Animation Speed
+/main_view/Menu Holder/Character/Character Tests
+/main_view/Menu Holder/Character/Grab Baked Texture
+/main_view/Menu Holder/Character/tear_off
+/main_view/Menu Holder/XUI
+/main_view/Menu Holder/XUI/Flush Names Caches
+/main_view/Menu Holder/XUI/Send Test IMs
+/main_view/Menu Holder/XUI/UI Preview Tool
+/main_view/Menu Holder/XUI/DebugViews
+/main_view/Menu Holder/XUI/Show XUI Names
+/main_view/Menu Holder/XUI/Save to XML
+/main_view/Menu Holder/XUI/Load from XML
+/main_view/Menu Holder/XUI/Show Font Test
+/main_view/Menu Holder/XUI/Reload Color Settings
+/main_view/Menu Holder/XUI/tear_off
+/main_view/Menu Holder/UI
+/main_view/Menu Holder/UI/Debug WindowProc
+/main_view/Menu Holder/UI/Debug Keys
+/main_view/Menu Holder/UI/Debug Mouse Events
+/main_view/Menu Holder/UI/Debug Name Tooltips
+/main_view/Menu Holder/UI/Debug Views
+/main_view/Menu Holder/UI/Debug Clicks
+/main_view/Menu Holder/UI/Debug SelectMgr
+/main_view/Menu Holder/UI/separator
+/main_view/Menu Holder/UI/DoubleClick Teleport
+/main_view/Menu Holder/UI/Double-ClickAuto-Pilot
+/main_view/Menu Holder/UI/Print Agent Info
+/main_view/Menu Holder/UI/Print Selected Object Info
+/main_view/Menu Holder/UI/Dump Focus Holder
+/main_view/Menu Holder/UI/Dump Timers
+/main_view/Menu Holder/UI/Dump Inventory
+/main_view/Menu Holder/UI/Dump SelectMgr
+/main_view/Menu Holder/UI/FB Connect Test
+/main_view/Menu Holder/UI/Web Content Browser
+/main_view/Menu Holder/UI/Region Restart Test
+/main_view/Menu Holder/UI/Web Browser Test
+/main_view/Menu Holder/UI/tear_off
+/main_view/Menu Holder/DevelopWorld
+/main_view/Menu Holder/DevelopWorld/DumpSimFeaturesToChat
+/main_view/Menu Holder/DevelopWorld/Interest List: Full Update
+/main_view/Menu Holder/DevelopWorld/Dump Region Object Cache
+/main_view/Menu Holder/DevelopWorld/Fixed Weather
+/main_view/Menu Holder/DevelopWorld/Sim Sun Override
+/main_view/Menu Holder/DevelopWorld/tear_off
+/main_view/Menu Holder/Recorder
+/main_view/Menu Holder/Recorder/Stop Record
+/main_view/Menu Holder/Recorder/Start Record
+/main_view/Menu Holder/Recorder/Loop Playback
+/main_view/Menu Holder/Recorder/Stop Playback
+/main_view/Menu Holder/Recorder/Start Playback
+/main_view/Menu Holder/Recorder/Playback event recording
+/main_view/Menu Holder/Recorder/Stop event recording
+/main_view/Menu Holder/Recorder/Start event recording
+/main_view/Menu Holder/Recorder/tear_off
+/main_view/Menu Holder/Network
+/main_view/Menu Holder/Network/Drop a Packet
+/main_view/Menu Holder/Network/separator
+/main_view/Menu Holder/Network/Ping Interpolate Object Positions
+/main_view/Menu Holder/Network/Velocity Interpolate Objects
+/main_view/Menu Holder/Network/separator
+/main_view/Menu Holder/Network/Disable Message Log
+/main_view/Menu Holder/Network/Enable Message Log
+/main_view/Menu Holder/Network/separator
+/main_view/Menu Holder/Network/AgentPause
+/main_view/Menu Holder/Network/tear_off
+/main_view/Menu Holder/Rendering
+/main_view/Menu Holder/Rendering/separator
+/main_view/Menu Holder/Rendering/Hover Glow Objects
+/main_view/Menu Holder/Rendering/Render Attached Particles
+/main_view/Menu Holder/Rendering/Render Attached Lights
+/main_view/Menu Holder/Rendering/Full Res Textures
+/main_view/Menu Holder/Rendering/Disable Local Lights
+/main_view/Menu Holder/Rendering/Disable Sunlight
+/main_view/Menu Holder/Rendering/Disable Ambient
+/main_view/Menu Holder/Rendering/Derender Animesh
+/main_view/Menu Holder/Rendering/Disable Textures
+/main_view/Menu Holder/Rendering/Animation Textures
+/main_view/Menu Holder/Rendering/Automatic Alpha Masks (non-deferred)
+/main_view/Menu Holder/Rendering/Automatic Alpha Masks (deferred)
+/main_view/Menu Holder/Rendering/Debug Pipeline
+/main_view/Menu Holder/Rendering/Debug GL
+/main_view/Menu Holder/Rendering/separator
+/main_view/Menu Holder/Rendering/SSAO and Shadow Smoothing
+/main_view/Menu Holder/Rendering/Shadows from Sun%2FMoon%2FProjectors
+/main_view/Menu Holder/Rendering/Advanced Lighting Model
+/main_view/Menu Holder/Rendering/separator
+/main_view/Menu Holder/Rendering/Object-Object Occlusion
+/main_view/Menu Holder/Rendering/Wireframe
+/main_view/Menu Holder/Rendering/Selected Material Info
+/main_view/Menu Holder/Rendering/Selected Texture Info Basis
+/main_view/Menu Holder/Rendering/Tangent Basis
+/main_view/Menu Holder/Rendering/Axes
+/main_view/Menu Holder/Rendering/tear_off
+/main_view/Menu Holder/Texture Density
+/main_view/Menu Holder/Texture Density/Full
+/main_view/Menu Holder/Texture Density/Desired
+/main_view/Menu Holder/Texture Density/Current
+/main_view/Menu Holder/Texture Density/None
+/main_view/Menu Holder/Texture Density/tear_off
+/main_view/Menu Holder/Render Metadata
+/main_view/Menu Holder/Render Metadata/Texture Density
+/main_view/Menu Holder/Render Metadata/Texture Size
+/main_view/Menu Holder/Render Metadata/Sculpt
+/main_view/Menu Holder/Render Metadata/Wind Vectors
+/main_view/Menu Holder/Render Metadata/Raycast
+/main_view/Menu Holder/Render Metadata/Joints
+/main_view/Menu Holder/Render Metadata/Collision Skeleton
+/main_view/Menu Holder/Render Metadata/Particles
+/main_view/Menu Holder/Render Metadata/Lights
+/main_view/Menu Holder/Render Metadata/Build Queue
+/main_view/Menu Holder/Render Metadata/Triangle Count
+/main_view/Menu Holder/Render Metadata/LOD Info
+/main_view/Menu Holder/Render Metadata/Face Area
+/main_view/Menu Holder/Render Metadata/Texture Area
+/main_view/Menu Holder/Render Metadata/Texture Priority
+/main_view/Menu Holder/Render Metadata/Texture Anim
+/main_view/Menu Holder/Render Metadata/Update Type
+/main_view/Menu Holder/Render Metadata/Render Batches
+/main_view/Menu Holder/Render Metadata/Occlusion
+/main_view/Menu Holder/Render Metadata/Physics Shapes
+/main_view/Menu Holder/Render Metadata/Shadow Frusta
+/main_view/Menu Holder/Render Metadata/Octree
+/main_view/Menu Holder/Render Metadata/Normals
+/main_view/Menu Holder/Render Metadata/Avatar Hitboxes
+/main_view/Menu Holder/Render Metadata/Bounding Boxes
+/main_view/Menu Holder/Render Metadata/tear_off
+/main_view/Menu Holder/Render Tests
+/main_view/Menu Holder/Render Tests/Benchmark
+/main_view/Menu Holder/Render Tests/Frame Profile
+/main_view/Menu Holder/Render Tests/Frame Test
+/main_view/Menu Holder/Render Tests/Periodic Slow Frame
+/main_view/Menu Holder/Render Tests/Randomize Framerate
+/main_view/Menu Holder/Render Tests/Camera Offset
+/main_view/Menu Holder/Render Tests/tear_off
+/main_view/Menu Holder/Force Errors
+/main_view/Menu Holder/Force Errors/Memory Leaking Simulation
+/main_view/Menu Holder/Force Errors/Force Disconnect Viewer
+/main_view/Menu Holder/Force Errors/Force a Crash in a Thread
+/main_view/Menu Holder/Force Errors/Force Software Exception in Coroutine
+/main_view/Menu Holder/Force Errors/Force Software Exception
+/main_view/Menu Holder/Force Errors/Force Driver Carsh
+/main_view/Menu Holder/Force Errors/Force Infinite Loop
+/main_view/Menu Holder/Force Errors/Force Bad Memory Access in Coroutine
+/main_view/Menu Holder/Force Errors/Force Bad Memory Access
+/main_view/Menu Holder/Force Errors/Force LLError And Crash
+/main_view/Menu Holder/Force Errors/Force Breakpoint
+/main_view/Menu Holder/Force Errors/tear_off
+/main_view/Menu Holder/Enable %2F Disable telemetry capture
+/main_view/Menu Holder/Enable %2F Disable telemetry capture/Start when telemetry client connects
+/main_view/Menu Holder/Enable %2F Disable telemetry capture/Profiling
+/main_view/Menu Holder/Enable %2F Disable telemetry capture/tear_off
+/main_view/Menu Holder/Display Info
+/main_view/Menu Holder/Display Info/Show Updates
+/main_view/Menu Holder/Display Info/separator
+/main_view/Menu Holder/Display Info/Show Memory
+/main_view/Menu Holder/Display Info/Show Color Under Cursor
+/main_view/Menu Holder/Display Info/Show Matrices
+/main_view/Menu Holder/Display Info/Show Render Info
+/main_view/Menu Holder/Display Info/Show Avatar Render Info
+/main_view/Menu Holder/Display Info/VRAM usage per object
+/main_view/Menu Holder/Display Info/Show Texture Info
+/main_view/Menu Holder/Display Info/Show Upload Transaction
+/main_view/Menu Holder/Display Info/Show Time
+/main_view/Menu Holder/Display Info/tear_off
+/main_view/Menu Holder/Consoles
+/main_view/Menu Holder/Consoles/Cookies
+/main_view/Menu Holder/Consoles/Badge
+/main_view/Menu Holder/Consoles/FOV
+/main_view/Menu Holder/Consoles/Wind
+/main_view/Menu Holder/Consoles/Camera
+/main_view/Menu Holder/Consoles/separator
+/main_view/Menu Holder/Consoles/Capabilities Info to Debug Console
+/main_view/Menu Holder/Consoles/Group Info to Debug Console
+/main_view/Menu Holder/Consoles/Region Info to Debug Console
+/main_view/Menu Holder/Consoles/separator
+/main_view/Menu Holder/Consoles/Region Debug Console
+/main_view/Menu Holder/Consoles/separator
+/main_view/Menu Holder/Consoles/Texture Fetch Debug Console
+/main_view/Menu Holder/Consoles/Scene Loading Monitor
+/main_view/Menu Holder/Consoles/Scene Statistics
+/main_view/Menu Holder/Consoles/Memory
+/main_view/Menu Holder/Consoles/Fast Timers
+/main_view/Menu Holder/Consoles/Notifications
+/main_view/Menu Holder/Consoles/Debug Console
+/main_view/Menu Holder/Consoles/Texture Console
+/main_view/Menu Holder/Consoles/tear_off
+/main_view/Menu Holder/Develop
+/main_view/Menu Holder/Develop/View Admin Options
+/main_view/Menu Holder/Develop/Leave Admin Options
+/main_view/Menu Holder/Develop/Request Admin Options
+/main_view/Menu Holder/Develop/separator
+/main_view/Menu Holder/Develop/Set Logging Level
+/main_view/Menu Holder/Develop/Console Window
+/main_view/Menu Holder/Develop/Output Debug Minidump
+/main_view/Menu Holder/Develop/Enable Visual Leak Detector
+/main_view/Menu Holder/Develop/Compress File Test
+/main_view/Menu Holder/Develop/Compress Images
+/main_view/Menu Holder/Develop/HTTP Inventory
+/main_view/Menu Holder/Develop/HTTP Textures
+/main_view/Menu Holder/Develop/separator
+/main_view/Menu Holder/Develop/Character
+/main_view/Menu Holder/Develop/XUI
+/main_view/Menu Holder/Develop/UI
+/main_view/Menu Holder/Develop/DevelopWorld
+/main_view/Menu Holder/Develop/Recorder
+/main_view/Menu Holder/Develop/Dump Scripted Camera
+/main_view/Menu Holder/Develop/Network
+/main_view/Menu Holder/Develop/Rendering
+/main_view/Menu Holder/Develop/Render Metadata
+/main_view/Menu Holder/Develop/Render Tests
+/main_view/Menu Holder/Develop/Force Errors
+/main_view/Menu Holder/Develop/separator
+/main_view/Menu Holder/Develop/Enable %2F Disable telemetry capture
+/main_view/Menu Holder/Develop/Display Info
+/main_view/Menu Holder/Develop/Consoles
+/main_view/Menu Holder/Develop/tear_off
+/main_view/Menu Holder/Shortcuts
+/main_view/Menu Holder/Shortcuts/Zoom Out
+/main_view/Menu Holder/Shortcuts/Zoom Default
+/main_view/Menu Holder/Shortcuts/Zoom In
+/main_view/Menu Holder/Shortcuts/separator
+/main_view/Menu Holder/Shortcuts/Look at Last Chatter
+/main_view/Menu Holder/Shortcuts/Reset Camera Angles
+/main_view/Menu Holder/Shortcuts/Reset View
+/main_view/Menu Holder/Shortcuts/Joystick Flycam
+/main_view/Menu Holder/Shortcuts/Mouselook
+/main_view/Menu Holder/Shortcuts/separator
+/main_view/Menu Holder/Shortcuts/Snapshot to Disk
+/main_view/Menu Holder/Shortcuts/separator
+/main_view/Menu Holder/Shortcuts/Close All Windows
+/main_view/Menu Holder/Shortcuts/Close Window Group
+/main_view/Menu Holder/Shortcuts/Close Window
+/main_view/Menu Holder/Shortcuts/separator
+/main_view/Menu Holder/Shortcuts/Fly
+/main_view/Menu Holder/Shortcuts/Always Run
+/main_view/Menu Holder/Shortcuts/separator
+/main_view/Menu Holder/Shortcuts/DoubleClick Teleport
+/main_view/Menu Holder/Shortcuts/Search
+/main_view/Menu Holder/Shortcuts/tear_off
+/main_view/Menu Holder/media_stream_import_export
+/main_view/Menu Holder/media_stream_import_export/media_stream_export
+/main_view/Menu Holder/media_stream_import_export/media_stream_import
+/main_view/Menu Holder/media_stream_import_export/tear_off
+/main_view/Menu Holder/RLVa Embedded
+/main_view/Menu Holder/RLVa Embedded/tear_off
+/main_view/Menu Holder/Rendering Features
+/main_view/Menu Holder/Rendering Features/Flexible Objects
+/main_view/Menu Holder/Rendering Features/Test FRInfo
+/main_view/Menu Holder/Rendering Features/Fog
+/main_view/Menu Holder/Rendering Features/Foot Shadows
+/main_view/Menu Holder/Rendering Features/Dynamic Textures
+/main_view/Menu Holder/Rendering Features/Highlighted
+/main_view/Menu Holder/Rendering Features/Selected
+/main_view/Menu Holder/Rendering Features/ToggleUI
+/main_view/Menu Holder/Rendering Features/tear_off
+/main_view/Menu Holder/Rendering Types
+/main_view/Menu Holder/Rendering Types/Rendering Type Bump
+/main_view/Menu Holder/Rendering Types/Rendering Type Particles
+/main_view/Menu Holder/Rendering Types/Rendering Type Clouds
+/main_view/Menu Holder/Rendering Types/Rendering Type Grass
+/main_view/Menu Holder/Rendering Types/Rendering Type Volume
+/main_view/Menu Holder/Rendering Types/Rendering Type Ground
+/main_view/Menu Holder/Rendering Types/Rendering Type Water
+/main_view/Menu Holder/Rendering Types/Rendering Type Sky
+/main_view/Menu Holder/Rendering Types/Rendering Type Surface Patch
+/main_view/Menu Holder/Rendering Types/Rendering Type Control Avatar
+/main_view/Menu Holder/Rendering Types/Rendering Type Character
+/main_view/Menu Holder/Rendering Types/Rendering Type Tree
+/main_view/Menu Holder/Rendering Types/Rendering Type Alpha
+/main_view/Menu Holder/Rendering Types/Rendering Type Simple
+/main_view/Menu Holder/Rendering Types/tear_off
+/main_view/Menu Holder/Hover Tips
+/main_view/Menu Holder/Hover Tips/Tips On All Objects
+/main_view/Menu Holder/Hover Tips/Land Tips
+/main_view/Menu Holder/Hover Tips/separator
+/main_view/Menu Holder/Hover Tips/Show Tips
+/main_view/Menu Holder/Hover Tips/tear_off
+/main_view/Menu Holder/Highlighting and Visibility
+/main_view/Menu Holder/Highlighting and Visibility/Hover Tips
+/main_view/Menu Holder/Highlighting and Visibility/ShowCrosshairs
+/main_view/Menu Holder/Highlighting and Visibility/Highlight Transparent
+/main_view/Menu Holder/Highlighting and Visibility/Hide Selected
+/main_view/Menu Holder/Highlighting and Visibility/Hide Particles
+/main_view/Menu Holder/Highlighting and Visibility/Cheesy Beacon
+/main_view/Menu Holder/Highlighting and Visibility/tear_off
+/main_view/Menu Holder/Performance Tools
+/main_view/Menu Holder/Performance Tools/Avatar Draw Info
+/main_view/Menu Holder/Performance Tools/Performance
+/main_view/Menu Holder/Performance Tools/Scene Load Statistics
+/main_view/Menu Holder/Performance Tools/Statistics Bar
+/main_view/Menu Holder/Performance Tools/Lag Meter
+/main_view/Menu Holder/Performance Tools/tear_off
+/main_view/Menu Holder/Advanced
+/main_view/Menu Holder/Advanced/Debug Mode
+/main_view/Menu Holder/Advanced/Debug Settings
+/main_view/Menu Holder/Advanced/RLV API
+/main_view/Menu Holder/Advanced/Fly Override
+/main_view/Menu Holder/Advanced/separator
+/main_view/Menu Holder/Advanced/Shortcuts
+/main_view/Menu Holder/Advanced/separator
+/main_view/Menu Holder/Advanced/Release Keys
+/main_view/Menu Holder/Advanced/Mouse Smoothing
+/main_view/Menu Holder/Advanced/ClearGroupCache
+/main_view/Menu Holder/Advanced/Use Plugin Read Thread
+/main_view/Menu Holder/Advanced/media_stream_import_export
+/main_view/Menu Holder/Advanced/RLVa Embedded
+/main_view/Menu Holder/Advanced/Rendering Features
+/main_view/Menu Holder/Advanced/Rendering Types
+/main_view/Menu Holder/Advanced/Highlighting and Visibility
+/main_view/Menu Holder/Advanced/Performance Tools
+/main_view/Menu Holder/Advanced/separator
+/main_view/Menu Holder/Advanced/QuietSnapshotsToDisk
+/main_view/Menu Holder/Advanced/HighResSnapshot
+/main_view/Menu Holder/Advanced/separator
+/main_view/Menu Holder/Advanced/Disable Camera Distance
+/main_view/Menu Holder/Advanced/Limit Select Distance
+/main_view/Menu Holder/Advanced/separator
+/main_view/Menu Holder/Advanced/Set Window Size...
+/main_view/Menu Holder/Advanced/Set UI Size to Default
+/main_view/Menu Holder/Advanced/Refresh Attachments
+/main_view/Menu Holder/Advanced/Rebake Texture
+/main_view/Menu Holder/Advanced/tear_off
+/main_view/Menu Holder/Debug
+/main_view/Menu Holder/Debug/Locks
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/Rename Shared Items on Wear
+/main_view/Menu Holder/Debug/Enable Shared Wear
+/main_view/Menu Holder/Debug/Enable Legacy Naming
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/Hide Locked Attachments
+/main_view/Menu Holder/Debug/Hide Locked Layers
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/Show Assertion Failures
+/main_view/Menu Holder/Debug/Hide Unset or Duplicate Messages
+/main_view/Menu Holder/Debug/Show Debug Messages
+/main_view/Menu Holder/Debug/separator
+/main_view/Menu Holder/Debug/Show Top-level RLVa Menu
+/main_view/Menu Holder/Debug/tear_off
+/main_view/Menu Holder/RLVa Main
+/main_view/Menu Holder/RLVa Main/Strings
+/main_view/Menu Holder/RLVa Main/Restrictions
+/main_view/Menu Holder/RLVa Main/Console
+/main_view/Menu Holder/RLVa Main/separator
+/main_view/Menu Holder/RLVa Main/Wear Replaces Unlocked
+/main_view/Menu Holder/RLVa Main/Forbid Give to #RLV
+/main_view/Menu Holder/RLVa Main/Allow Temporary Attachments
+/main_view/Menu Holder/RLVa Main/separator
+/main_view/Menu Holder/RLVa Main/Split Long Redirected Chat
+/main_view/Menu Holder/RLVa Main/Show Redirected Chat Typing
+/main_view/Menu Holder/RLVa Main/Show Filtered Chat
+/main_view/Menu Holder/RLVa Main/Allow OOC Chat
+/main_view/Menu Holder/RLVa Main/separator
+/main_view/Menu Holder/RLVa Main/Debug
+/main_view/Menu Holder/RLVa Main/tear_off
+/main_view/Menu Holder/Help
+/main_view/Menu Holder/Help/About Second Life
+/main_view/Menu Holder/Help/separator
+/main_view/Menu Holder/Help/Enable Sysinfo Button
+/main_view/Menu Holder/Help/separator
+/main_view/Menu Holder/Help/Bumps, Pushes &amp; Hits
+/main_view/Menu Holder/Help/separator
+/main_view/Menu Holder/Help/Report Bug
+/main_view/Menu Holder/Help/Report Abuse
+/main_view/Menu Holder/Help/Grid Status
+/main_view/Menu Holder/Help/separator
+/main_view/Menu Holder/Help/current_grid_about
+/main_view/Menu Holder/Help/current_grid_help
+/main_view/Menu Holder/Help/grid_help_seperator
+/main_view/Menu Holder/Help/How To
+/main_view/Menu Holder/Help/Firestorm Events Calendar
+/main_view/Menu Holder/Help/Firestorm Classes Schedule
+/main_view/Menu Holder/Help/firestorm_support_group
+/main_view/Menu Holder/Help/Troubleshooting
+/main_view/Menu Holder/Help/Firestorm Wiki
+/main_view/Menu Holder/Help/Enable Hints
+/main_view/Menu Holder/Help/tear_off
+/main_view/Menu Holder/Content
+/main_view/Menu Holder/Content/Firestorm MoTD
+/main_view/Menu Holder/Content/separator
+/main_view/Menu Holder/Content/Firestorm Plurk
+/main_view/Menu Holder/Content/Firestorm Twitter
+/main_view/Menu Holder/Content/Firestorm YouTube
+/main_view/Menu Holder/Content/Firestorm Flickr
+/main_view/Menu Holder/Content/Firestorm Blog
+/main_view/Menu Holder/Content/separator
+/main_view/Menu Holder/Content/Script Library
+/main_view/Menu Holder/Content/LindenXchange
+/main_view/Menu Holder/Content/SL Marketplace
+/main_view/Menu Holder/Content/Search
+/main_view/Menu Holder/Content/tear_off
+/main_view/Menu Holder/Upload
+/main_view/Menu Holder/Upload/import linkset
+/main_view/Menu Holder/Upload/Bulk Upload
+/main_view/Menu Holder/Upload/Upload Model
+/main_view/Menu Holder/Upload/Upload Animation
+/main_view/Menu Holder/Upload/Upload Sound
+/main_view/Menu Holder/Upload/Upload Image
+/main_view/Menu Holder/Upload/tear_off
+/main_view/Menu Holder/Options
+/main_view/Menu Holder/Options/Set default permissions
+/main_view/Menu Holder/Options/Grid Options
+/main_view/Menu Holder/Options/separator
+/main_view/Menu Holder/Options/Use Selection for Grid
+/main_view/Menu Holder/Options/Snap Object XY to Grid
+/main_view/Menu Holder/Options/Snap to Grid
+/main_view/Menu Holder/Options/separator
+/main_view/Menu Holder/Options/Show Selection Beam
+/main_view/Menu Holder/Options/Show Light Radius for Selection
+/main_view/Menu Holder/Options/Show Hidden Selection
+/main_view/Menu Holder/Options/Show Selection Outlines
+/main_view/Menu Holder/Options/Show Physics Shape
+/main_view/Menu Holder/Options/separator
+/main_view/Menu Holder/Options/Include Group-Owned Objects
+/main_view/Menu Holder/Options/Select By Surrounding
+/main_view/Menu Holder/Options/Select Only Copyable Objects
+/main_view/Menu Holder/Options/Select Only Locked Objects
+/main_view/Menu Holder/Options/Select Only Movable Objects
+/main_view/Menu Holder/Options/Select Only My Objects
+/main_view/Menu Holder/Options/separator
+/main_view/Menu Holder/Options/DebugPermissions
+/main_view/Menu Holder/Options/tear_off
+/main_view/Menu Holder/Pathfinding
+/main_view/Menu Holder/Pathfinding/pathfinding_rebake_navmesh_item
+/main_view/Menu Holder/Pathfinding/pathfinding_console_menu_item
+/main_view/Menu Holder/Pathfinding/pathfinding_characters_menu_item
+/main_view/Menu Holder/Pathfinding/pathfinding_linksets_menu_item
+/main_view/Menu Holder/Pathfinding/tear_off
+/main_view/Menu Holder/Scripts
+/main_view/Menu Holder/Scripts/Remove Scripts From Selection
+/main_view/Menu Holder/Scripts/Set Scripts to Not Running
+/main_view/Menu Holder/Scripts/Set Scripts to Running
+/main_view/Menu Holder/Scripts/Reset Scripts
+/main_view/Menu Holder/Scripts/LSL
+/main_view/Menu Holder/Scripts/Mono
+/main_view/Menu Holder/Scripts/Script Info
+/main_view/Menu Holder/Scripts/Script Debug
+/main_view/Menu Holder/Scripts/tear_off
+/main_view/Menu Holder/Export Menu
+/main_view/Menu Holder/Export Menu/Collada
+/main_view/Menu Holder/Export Menu/Backup
+/main_view/Menu Holder/Export Menu/tear_off
+/main_view/Menu Holder/Object
+/main_view/Menu Holder/Object/Export Menu
+/main_view/Menu Holder/Object/Return Object back to Owner
+/main_view/Menu Holder/Object/Save Object Back to Object Contents
+/main_view/Menu Holder/Object/Menu Object Edit Particles
+/main_view/Menu Holder/Object/Duplicate
+/main_view/Menu Holder/Object/Take Copy
+/main_view/Menu Holder/Object/Menu Object Take
+/main_view/Menu Holder/Object/Menu Object Buy
+/main_view/Menu Holder/Object/tear_off
+/main_view/Menu Holder/Select Elements
+/main_view/Menu Holder/Select Elements/Include Previous Part or Face
+/main_view/Menu Holder/Select Elements/Include Next Part or Face
+/main_view/Menu Holder/Select Elements/Select Previous Part or Face
+/main_view/Menu Holder/Select Elements/Select Next Part or Face
+/main_view/Menu Holder/Select Elements/tear_off
+/main_view/Menu Holder/Select Tool
+/main_view/Menu Holder/Select Tool/Land
+/main_view/Menu Holder/Select Tool/Create
+/main_view/Menu Holder/Select Tool/Edit
+/main_view/Menu Holder/Select Tool/Move
+/main_view/Menu Holder/Select Tool/Focus
+/main_view/Menu Holder/Select Tool/tear_off
+/main_view/Menu Holder/BuildTools
+/main_view/Menu Holder/BuildTools/Redo
+/main_view/Menu Holder/BuildTools/Undo
+/main_view/Menu Holder/BuildTools/separator
+/main_view/Menu Holder/BuildTools/Upload
+/main_view/Menu Holder/BuildTools/Options
+/main_view/Menu Holder/BuildTools/separator
+/main_view/Menu Holder/BuildTools/Pathfinding
+/main_view/Menu Holder/BuildTools/Scripts
+/main_view/Menu Holder/BuildTools/Object
+/main_view/Menu Holder/BuildTools/separator
+/main_view/Menu Holder/BuildTools/Zoom to Selection
+/main_view/Menu Holder/BuildTools/Focus on Selection
+/main_view/Menu Holder/BuildTools/separator
+/main_view/Menu Holder/BuildTools/Select Elements
+/main_view/Menu Holder/BuildTools/Edit Linked Parts
+/main_view/Menu Holder/BuildTools/Unlink
+/main_view/Menu Holder/BuildTools/Link
+/main_view/Menu Holder/BuildTools/Select Tool
+/main_view/Menu Holder/BuildTools/Show Build Tools
+/main_view/Menu Holder/BuildTools/tear_off
+/main_view/Menu Holder/photo_and_video
+/main_view/Menu Holder/photo_and_video/lock_focus_point
+/main_view/Menu Holder/photo_and_video/cameratools_item_call
+/main_view/Menu Holder/photo_and_video/phototools_item_call
+/main_view/Menu Holder/photo_and_video/tear_off
+/main_view/Menu Holder/WL Bulk Import
+/main_view/Menu Holder/WL Bulk Import/WL Bulk Import Water
+/main_view/Menu Holder/WL Bulk Import/WL Bulk Import Skies
+/main_view/Menu Holder/WL Bulk Import/WL Bulk Import Days
+/main_view/Menu Holder/Environment
+/main_view/Menu Holder/Environment/WL Bulk Import
+/main_view/Menu Holder/Environment/separator
+/main_view/Menu Holder/Environment/pause_clouds
+/main_view/Menu Holder/Environment/separator
+/main_view/Menu Holder/Environment/adjustment_tool
+/main_view/Menu Holder/Environment/my_environs
+/main_view/Menu Holder/Environment/separator
+/main_view/Menu Holder/Environment/Use Shared Environment
+/main_view/Menu Holder/Environment/Midnight
+/main_view/Menu Holder/Environment/Sunset
+/main_view/Menu Holder/Environment/Noon
+/main_view/Menu Holder/Environment/Sunrise
+/main_view/Menu Holder/Environment/tear_off
+/main_view/Menu Holder/LandShow
+/main_view/Menu Holder/LandShow/Show Advanced Menu
+/main_view/Menu Holder/LandShow/separator
+/main_view/Menu Holder/LandShow/Parcel Properties
+/main_view/Menu Holder/LandShow/Coordinates
+/main_view/Menu Holder/LandShow/Land Owners
+/main_view/Menu Holder/LandShow/Property Lines
+/main_view/Menu Holder/LandShow/beacons
+/main_view/Menu Holder/LandShow/Ban Lines
+/main_view/Menu Holder/LandShow/tear_off
+/main_view/Menu Holder/World
+/main_view/Menu Holder/World/Render Friends Only
+/main_view/Menu Holder/World/Always show Friends normally
+/main_view/Menu Holder/World/Avatar Render Settings
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/asset_blacklist
+/main_view/Menu Holder/World/Animation Explorer
+/main_view/Menu Holder/World/Sound Explorer
+/main_view/Menu Holder/World/area_search
+/main_view/Menu Holder/World/photo_and_video
+/main_view/Menu Holder/World/Environment
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/Teleport Home
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/Performance
+/main_view/Menu Holder/World/LandShow
+/main_view/Menu Holder/World/Linden Home
+/main_view/Menu Holder/World/My Land
+/main_view/Menu Holder/World/Buy Land
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/Set Home to Here
+/main_view/Menu Holder/World/RegionEstate
+/main_view/Menu Holder/World/About Land
+/main_view/Menu Holder/World/Place Profile
+/main_view/Menu Holder/World/Create Landmark Here
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/Region Tracker
+/main_view/Menu Holder/World/World Map
+/main_view/Menu Holder/World/Mini-Map
+/main_view/Menu Holder/World/Events
+/main_view/Menu Holder/World/Destinations
+/main_view/Menu Holder/World/Places
+/main_view/Menu Holder/World/Teleport History
+/main_view/Menu Holder/World/Radar
+/main_view/Menu Holder/World/Active Speakers
+/main_view/Menu Holder/World/separator
+/main_view/Menu Holder/World/Resync Animations
+/main_view/Menu Holder/World/tear_off
+/main_view/Menu Holder/VoiceMorphing
+/main_view/Menu Holder/VoiceMorphing/PremiumPerk
+/main_view/Menu Holder/VoiceMorphing/Subscribe
+/main_view/Menu Holder/VoiceMorphing/Preview
+/main_view/Menu Holder/VoiceMorphing/separator
+/main_view/Menu Holder/VoiceMorphing/NoVoiceMorphing
+/main_view/Menu Holder/Status
+/main_view/Menu Holder/Status/Reject all friendship requests
+/main_view/Menu Holder/Status/Reject all group invites
+/main_view/Menu Holder/Status/Automatically reject teleport offers
+/main_view/Menu Holder/Status/separator
+/main_view/Menu Holder/Status/Set Autorespond to non-friends
+/main_view/Menu Holder/Status/Set Autorespond
+/main_view/Menu Holder/Status/Do Not Disturb
+/main_view/Menu Holder/Status/Away
+/main_view/Menu Holder/Status/tear_off
+/main_view/Menu Holder/Communicate
+/main_view/Menu Holder/Communicate/Block List
+/main_view/Menu Holder/Communicate/Nearby Voice
+/main_view/Menu Holder/Communicate/Conversation Log...
+/main_view/Menu Holder/Communicate/VoiceMorphing
+/main_view/Menu Holder/Communicate/separator
+/main_view/Menu Holder/Communicate/Discord
+/main_view/Menu Holder/Communicate/Flickr
+/main_view/Menu Holder/Communicate/separator
+/main_view/Menu Holder/Communicate/Gestures
+/main_view/Menu Holder/Communicate/separator
+/main_view/Menu Holder/Communicate/Conversations
+/main_view/Menu Holder/Communicate/People
+/main_view/Menu Holder/Communicate/Nearby Chat
+/main_view/Menu Holder/Communicate/My Groups
+/main_view/Menu Holder/Communicate/Contact Sets
+/main_view/Menu Holder/Communicate/Contacts
+/main_view/Menu Holder/Communicate/My Friends
+/main_view/Menu Holder/Communicate/separator
+/main_view/Menu Holder/Communicate/Status
+/main_view/Menu Holder/Communicate/tear_off
+/main_view/Menu Holder/avhealth
+/main_view/Menu Holder/avhealth/Recreate LSL Bridge
+/main_view/Menu Holder/avhealth/Lag Meter
+/main_view/Menu Holder/avhealth/MyScripts
+/main_view/Menu Holder/avhealth/Avatar Draw Info
+/main_view/Menu Holder/avhealth/separator
+/main_view/Menu Holder/avhealth/ResetDefaultAvF
+/main_view/Menu Holder/avhealth/ResetDefaultAvM
+/main_view/Menu Holder/avhealth/separator
+/main_view/Menu Holder/avhealth/Refresh Attachments
+/main_view/Menu Holder/avhealth/Rebake Texture
+/main_view/Menu Holder/avhealth/Reset Skeleton And Animations
+/main_view/Menu Holder/avhealth/Reset Skeleton
+/main_view/Menu Holder/avhealth/undeform_avatar
+/main_view/Menu Holder/avhealth/Stop Animating My Avatar With Revoke
+/main_view/Menu Holder/avhealth/Stop Animating My Avatar
+/main_view/Menu Holder/avhealth/tear_off
+/main_view/Menu Holder/Movement
+/main_view/Menu Holder/Movement/Avatar Ignore Prejump
+/main_view/Menu Holder/Movement/Move Lock
+/main_view/Menu Holder/Movement/Force Toggle Sitting
+/main_view/Menu Holder/Movement/Always Run
+/main_view/Menu Holder/Movement/Stop flying
+/main_view/Menu Holder/Movement/Fly
+/main_view/Menu Holder/Movement/Stand up
+/main_view/Menu Holder/Movement/Sit Down Here
+/main_view/Menu Holder/Movement/tear_off
+/main_view/Menu Holder/Avatar Detach
+/main_view/Menu Holder/Avatar Detach HUD
+/main_view/Menu Holder/Clothes >
+/main_view/Menu Holder/Clothes >/All Clothes
+/main_view/Menu Holder/Clothes >/separator
+/main_view/Menu Holder/Clothes >/Self Alpha
+/main_view/Menu Holder/Clothes >/Self Physics
+/main_view/Menu Holder/Clothes >/Self Tattoo
+/main_view/Menu Holder/Clothes >/Self Underpants
+/main_view/Menu Holder/Clothes >/Self Undershirt
+/main_view/Menu Holder/Clothes >/Gloves
+/main_view/Menu Holder/Clothes >/Jacket
+/main_view/Menu Holder/Clothes >/Socks
+/main_view/Menu Holder/Clothes >/Shoes
+/main_view/Menu Holder/Clothes >/Skirt
+/main_view/Menu Holder/Clothes >/Pants
+/main_view/Menu Holder/Clothes >/Shirt
+/main_view/Menu Holder/Take Off >
+/main_view/Menu Holder/Take Off >/Detach All
+/main_view/Menu Holder/Take Off >/Avatar Detach
+/main_view/Menu Holder/Take Off >/Avatar Detach HUD
+/main_view/Menu Holder/Take Off >/Clothes >
+/main_view/Menu Holder/Me
+/main_view/Menu Holder/Me/Quit
+/main_view/Menu Holder/Me/Leave Admin Options
+/main_view/Menu Holder/Me/Request Admin Options
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/Show User Interface
+/main_view/Menu Holder/Me/Show HUD Attachments
+/main_view/Menu Holder/Me/Toolbar Buttons
+/main_view/Menu Holder/Me/Preferences
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/pose_stand
+/main_view/Menu Holder/Me/money_tracker
+/main_view/Menu Holder/Me/Capture 360
+/main_view/Menu Holder/Me/Take Snapshot
+/main_view/Menu Holder/Me/avhealth
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/Camera Controls
+/main_view/Menu Holder/Me/Movement Controls
+/main_view/Menu Holder/Me/Movement
+/main_view/Menu Holder/Me/HoverHeight
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/Avatar Picker
+/main_view/Menu Holder/Me/Take Off >
+/main_view/Menu Holder/Me/ChangeOutfit
+/main_view/Menu Holder/Me/NowWearing
+/main_view/Menu Holder/Me/Profile
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/Experiences
+/main_view/Menu Holder/Me/Picks
+/main_view/Menu Holder/Me/WearableFavorites
+/main_view/Menu Holder/Me/Protected Folders
+/main_view/Menu Holder/Me/NewInventoryWindow
+/main_view/Menu Holder/Me/Inventory
+/main_view/Menu Holder/Me/separator
+/main_view/Menu Holder/Me/Membership
+/main_view/Menu Holder/Me/Buy and Sell L$
+/main_view/Menu Holder/Me/MarketplaceListings
+/main_view/Menu Holder/Me/Manage Account
+/main_view/Menu Holder/Me/tear_off
+/main_view/Menu Holder/Inspect Self Detach
+/main_view/Menu Holder/Inspect Self Detach HUD
+/main_view/Menu Holder/Clothes >
+/main_view/Menu Holder/Clothes >/All Clothes
+/main_view/Menu Holder/Clothes >/separator
+/main_view/Menu Holder/Clothes >/Self Alpha
+/main_view/Menu Holder/Clothes >/Self Tattoo
+/main_view/Menu Holder/Clothes >/Self Underpants
+/main_view/Menu Holder/Clothes >/Self Undershirt
+/main_view/Menu Holder/Clothes >/Gloves
+/main_view/Menu Holder/Clothes >/Jacket
+/main_view/Menu Holder/Clothes >/Socks
+/main_view/Menu Holder/Clothes >/Shoes
+/main_view/Menu Holder/Clothes >/Skirt
+/main_view/Menu Holder/Clothes >/Pants
+/main_view/Menu Holder/Clothes >/Shirt
+/main_view/Menu Holder/Take Off >
+/main_view/Menu Holder/Take Off >/Detach All
+/main_view/Menu Holder/Take Off >/Inspect Self Detach
+/main_view/Menu Holder/Take Off >/Inspect Self Detach HUD
+/main_view/Menu Holder/Take Off >/Clothes >
+/main_view/Menu Holder/Gear Menu
+/main_view/Menu Holder/Gear Menu/Dump XML
+/main_view/Menu Holder/Gear Menu/Debug...
+/main_view/Menu Holder/Gear Menu/Profile...
+/main_view/Menu Holder/Gear Menu/Groups...
+/main_view/Menu Holder/Gear Menu/Friends...
+/main_view/Menu Holder/Gear Menu/Edit My Shape
+/main_view/Menu Holder/Gear Menu/Edit Outfit
+/main_view/Menu Holder/Gear Menu/Chenge Outfit
+/main_view/Menu Holder/Gear Menu/Take Off >
+/main_view/Menu Holder/Gear Menu/Stand Up
+/main_view/Menu Holder/Gear Menu/Sit Down Here
+/main_view/Menu Holder/Mute Particle Pie
+/main_view/Menu Holder/Mute Particle Pie/Mute Particle
+/main_view/Menu Holder/Land Pie
+/main_view/Menu Holder/Land Pie/Land Buy Pie
+/main_view/Menu Holder/Land Pie/Edit Terrain
+/main_view/Menu Holder/Land Pie/Land Buy Pass Pie
+/main_view/Menu Holder/Land Pie/Mute Particle
+/main_view/Menu Holder/Land Pie/Sit Here
+/main_view/Menu Holder/Land Pie/Go Here
+/main_view/Menu Holder/Land Pie/Create
+/main_view/Menu Holder/Land Pie/Place Information...
+/main_view/Menu Holder/Avatar Pie
+/main_view/Menu Holder/Avatar Pie/Send IM...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/Derender
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/DerenderPermanent
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Inspect
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/AlwaysRenderFully
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/DoNotRender
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/RenderNormally
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/Dump XML
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/Collada
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ExportMenu/Backup
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Mesh LOD
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Skeleton
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Skeleton And Animations
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Texture Refresh
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Zoom In
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Call
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ScriptInfo
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Debug...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Eject...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Group Invite...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Give Calling Card
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Freeze...
+/main_view/Menu Holder/Avatar Pie/Pay...
+/main_view/Menu Holder/Avatar Pie/add_avatar
+/main_view/Menu Holder/Avatar Pie/add_avatar/Add to set
+/main_view/Menu Holder/Avatar Pie/add_avatar/Add Friend
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/abuse
+/main_view/Menu Holder/Avatar Pie/Go to
+/main_view/Menu Holder/Avatar Pie/mute_menu
+/main_view/Menu Holder/Avatar Pie/mute_menu/Mute Particle
+/main_view/Menu Holder/Avatar Pie/mute_menu/Avatar Mute
+/main_view/Menu Holder/Avatar Pie/Profile...
+/main_view/Menu Holder/Attachment Pie
+/main_view/Menu Holder/Attachment Pie/Edit...
+/main_view/Menu Holder/Attachment Pie/Appearance >
+/main_view/Menu Holder/Attachment Pie/Appearance >/Hover Height
+/main_view/Menu Holder/Attachment Pie/Appearance >/Dump XML
+/main_view/Menu Holder/Attachment Pie/Appearance >/pie_separator
+/main_view/Menu Holder/Attachment Pie/Appearance >/Edit My Outfit
+/main_view/Menu Holder/Attachment Pie/Appearance >/pie_separator
+/main_view/Menu Holder/Attachment Pie/Appearance >/pie_separator
+/main_view/Menu Holder/Attachment Pie/Appearance >/ResetMenu
+/main_view/Menu Holder/Attachment Pie/Appearance >/ResetMenu/Reset Mesh LOD
+/main_view/Menu Holder/Attachment Pie/Appearance >/ResetMenu/Reset Skeleton
+/main_view/Menu Holder/Attachment Pie/Appearance >/ResetMenu/Reset Skeleton And Animations
+/main_view/Menu Holder/Attachment Pie/Appearance >/Edit My Shape
+/main_view/Menu Holder/Attachment Pie/Gestures
+/main_view/Menu Holder/Attachment Pie/Detach
+/main_view/Menu Holder/Attachment Pie/Stand Up
+/main_view/Menu Holder/Attachment Pie/Sit Down Here
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/Debug...
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/Avatar Inspect
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/Show original
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/ExportMenu
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/ExportMenu/Collada
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/ExportMenu/Backup
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu/DerenderPermanent
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu/Derender
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu/pie_separator
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu/pie_separator
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/DerenderMenu/pie_separator
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/Attachment Object Touch
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/ScriptInfo
+/main_view/Menu Holder/Attachment Pie/Attachment Pie More/Texture Refresh
+/main_view/Menu Holder/Attachment Pie/Drop
+/main_view/Menu Holder/Attachment Pie/Profile...
+/main_view/Menu Holder/Object Pie
+/main_view/Menu Holder/Object Pie/Edit...
+/main_view/Menu Holder/Object Pie/Object Pie More 1
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Buy...
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Object Inspect
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/ScriptInfo
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/Remove Scripts From Selection
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/Object Set Scripts to Not Running
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/Object Set Scripts to Running
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/Object Reset Scripts
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/CompileLSL
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ScriptsMenu/CompileMono
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/mute_menu
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/mute_menu/Mute Particle
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/mute_menu/Object Mute
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Pathfinding
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Pathfinding/autohide_end_crash_protection
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Pathfinding/show_in_characters
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Pathfinding/show_in_linksets
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ExportMenu
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ExportMenu/Dump XML
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ExportMenu/Collada
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ExportMenu/Backup
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/Report Abuse...
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/DerenderMenu
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/DerenderMenu/Derender
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/DerenderMenu/DerenderPermanent
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ResetMenu
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ResetMenu/Reset Skeleton
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Object Pie More 2/ResetMenu/Texture Refresh
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Return...
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Right Hind Foot
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Right Ring Finger
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Jaw
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Left Ring Finger
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Alt Left Ear
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Alt Left Eye
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Tongue
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Alt Right Eye
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Enhanced Skeleton More/Alt Right Ear
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Left Hind Foot
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Left Wing
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Tail Tip
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Tail Base
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Groin
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach/Enhanced Skeleton/Right Wing
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Pie Object Attach HUD
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Take Copy
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Wear
+/main_view/Menu Holder/Object Pie/Object Pie More 1/Delete
+/main_view/Menu Holder/Object Pie/Pay...
+/main_view/Menu Holder/Object Pie/Pie Object Take
+/main_view/Menu Holder/Object Pie/Buy...
+/main_view/Menu Holder/Object Pie/Object Stand Up
+/main_view/Menu Holder/Object Pie/Pie Object Sit
+/main_view/Menu Holder/Object Pie/Pie Object Touch
+/main_view/Menu Holder/Object Pie/Build
+/main_view/Menu Holder/Object Pie/Open
+/main_view/Menu Holder/Avatar Pie
+/main_view/Menu Holder/Avatar Pie/Send IM...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/Derender
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/DerenderPermanent
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/DerenderMenu/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/AlwaysRenderFully
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/DoNotRender
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/RenderMenu/RenderNormally
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Dump XML
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Mesh LOD
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Skeleton
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ResetMenu/Reset Skeleton And Animations
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Texture Refresh
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Zoom In
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Call
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/ScriptInfo
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Avatar Pie More 2/Debug...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Eject...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/pie_separator
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Group Invite...
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Give Calling Card
+/main_view/Menu Holder/Avatar Pie/Avatar Pie More 1/Freeze...
+/main_view/Menu Holder/Avatar Pie/Pay...
+/main_view/Menu Holder/Avatar Pie/add_avatar
+/main_view/Menu Holder/Avatar Pie/add_avatar/Add to set
+/main_view/Menu Holder/Avatar Pie/add_avatar/Add Friend
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/add_avatar/pie_separator
+/main_view/Menu Holder/Avatar Pie/abuse
+/main_view/Menu Holder/Avatar Pie/Go to
+/main_view/Menu Holder/Avatar Pie/mute_menu
+/main_view/Menu Holder/Avatar Pie/mute_menu/Mute Particle
+/main_view/Menu Holder/Avatar Pie/mute_menu/Avatar Mute
+/main_view/Menu Holder/Avatar Pie/Profile...
+/main_view/Menu Holder/Self Pie
+/main_view/Menu Holder/Self Pie/Debug...
+/main_view/Menu Holder/Self Pie/Appearance >
+/main_view/Menu Holder/Self Pie/Appearance >/Hover Height
+/main_view/Menu Holder/Self Pie/Appearance >/Dump XML
+/main_view/Menu Holder/Self Pie/Appearance >/pie_separator
+/main_view/Menu Holder/Self Pie/Appearance >/Edit My Outfit
+/main_view/Menu Holder/Self Pie/Appearance >/pie_separator
+/main_view/Menu Holder/Self Pie/Appearance >/Texture Refresh
+/main_view/Menu Holder/Self Pie/Appearance >/ResetMenu
+/main_view/Menu Holder/Self Pie/Appearance >/ResetMenu/Reset Mesh LOD
+/main_view/Menu Holder/Self Pie/Appearance >/ResetMenu/Reset Skeleton
+/main_view/Menu Holder/Self Pie/Appearance >/ResetMenu/Reset Skeleton And Animations
+/main_view/Menu Holder/Self Pie/Appearance >/Edit My Shape
+/main_view/Menu Holder/Self Pie/Gestures
+/main_view/Menu Holder/Self Pie/ScriptInfo
+/main_view/Menu Holder/Self Pie/Stand Up
+/main_view/Menu Holder/Self Pie/Sit Down Here
+/main_view/Menu Holder/Self Pie/Take Off >
+/main_view/Menu Holder/Self Pie/Take Off >/Detach All
+/main_view/Menu Holder/Self Pie/Take Off >/pie_separator
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Right Hind Foot
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Right Ring Finger
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Jaw
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Left Ring Finger
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Alt Left Ear
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Alt Left Eye
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Tongue
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Alt Right Eye
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Enhanced Skeleton More/Alt Right Ear
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Left Hind Foot
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Left Wing
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Tail Tip
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Tail Base
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Groin
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach/Enhanced Skeleton/Right Wing
+/main_view/Menu Holder/Self Pie/Take Off >/pie_separator
+/main_view/Menu Holder/Self Pie/Take Off >/Pie Object Detach HUD
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Skirt
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/Self Alpha
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/Self Physics
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/Self Tattoo
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/Self Underpants
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/pie_separator
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/All Clothes
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/pie_separator
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Clothes More/Self Undershirt
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Gloves
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Jacket
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Socks
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Shoes
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Pants
+/main_view/Menu Holder/Self Pie/Take Off >/Clothes >/Shirt
+/main_view/Menu Holder/Self Pie/Groups...
+/main_view/Menu Holder/Self Pie/Profile...
+/main_view/Menu Holder/Mute Particle Pie
+/main_view/Menu Holder/Mute Particle Pie/Mute Particle
+/main_view/Menu Holder/Land Pie
+/main_view/Menu Holder/Land Pie/Mute Particle
+/main_view/Menu Holder/Land Pie/separator
+/main_view/Menu Holder/Land Pie/Edit Terrain
+/main_view/Menu Holder/Land Pie/Create
+/main_view/Menu Holder/Land Pie/separator
+/main_view/Menu Holder/Land Pie/Land Buy Pass
+/main_view/Menu Holder/Land Pie/Land Buy
+/main_view/Menu Holder/Land Pie/separator
+/main_view/Menu Holder/Land Pie/Sit Here
+/main_view/Menu Holder/Land Pie/Place Information...
+/main_view/Menu Holder/Export Menu
+/main_view/Menu Holder/Export Menu/Collada
+/main_view/Menu Holder/Export Menu/Backup
+/main_view/Menu Holder/Annoyance
+/main_view/Menu Holder/Annoyance/Eject...
+/main_view/Menu Holder/Annoyance/Freeze...
+/main_view/Menu Holder/Annoyance/abuse
+/main_view/Menu Holder/Annoyance/Avatar Unmute
+/main_view/Menu Holder/Annoyance/Avatar Mute
+/main_view/Menu Holder/Avatar Pie
+/main_view/Menu Holder/Avatar Pie/Export Menu
+/main_view/Menu Holder/Avatar Pie/Texture Refresh
+/main_view/Menu Holder/Avatar Pie/Debug...
+/main_view/Menu Holder/Avatar Pie/DerenderPermanent
+/main_view/Menu Holder/Avatar Pie/Derender
+/main_view/Menu Holder/Avatar Pie/ScriptInfo
+/main_view/Menu Holder/Avatar Pie/Object_Inspect_Floater
+/main_view/Menu Holder/Avatar Pie/Mute Particle
+/main_view/Menu Holder/Avatar Pie/RenderNormally
+/main_view/Menu Holder/Avatar Pie/DoNotRender
+/main_view/Menu Holder/Avatar Pie/AlwaysRenderFully
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Object Inspect
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Pay...
+/main_view/Menu Holder/Avatar Pie/Zoom In
+/main_view/Menu Holder/Avatar Pie/Dump XML
+/main_view/Menu Holder/Avatar Pie/Annoyance
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Reset Mesh LOD
+/main_view/Menu Holder/Avatar Pie/Reset Skeleton And Animations
+/main_view/Menu Holder/Avatar Pie/Reset Skeleton
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Invite...
+/main_view/Menu Holder/Avatar Pie/Call
+/main_view/Menu Holder/Avatar Pie/Give Calling Card
+/main_view/Menu Holder/Avatar Pie/Send IM...
+/main_view/Menu Holder/Avatar Pie/Add to Set
+/main_view/Menu Holder/Avatar Pie/Add Friend
+/main_view/Menu Holder/Avatar Pie/Profile...
+/main_view/Menu Holder/Detach Self
+/main_view/Menu Holder/Detach Self HUD
+/main_view/Menu Holder/Clothes >
+/main_view/Menu Holder/Clothes >/All Clothes
+/main_view/Menu Holder/Clothes >/separator
+/main_view/Menu Holder/Clothes >/Self Alpha
+/main_view/Menu Holder/Clothes >/Self Physics
+/main_view/Menu Holder/Clothes >/Self Tattoo
+/main_view/Menu Holder/Clothes >/Self Underpants
+/main_view/Menu Holder/Clothes >/Self Undershirt
+/main_view/Menu Holder/Clothes >/Gloves
+/main_view/Menu Holder/Clothes >/Jacket
+/main_view/Menu Holder/Clothes >/Socks
+/main_view/Menu Holder/Clothes >/Shoes
+/main_view/Menu Holder/Clothes >/Skirt
+/main_view/Menu Holder/Clothes >/Pants
+/main_view/Menu Holder/Clothes >/Shirt
+/main_view/Menu Holder/Take Off >
+/main_view/Menu Holder/Take Off >/Detach All
+/main_view/Menu Holder/Take Off >/Detach Self
+/main_view/Menu Holder/Take Off >/Detach Self HUD
+/main_view/Menu Holder/Take Off >/Clothes >
+/main_view/Menu Holder/Export Menu
+/main_view/Menu Holder/Export Menu/Collada
+/main_view/Menu Holder/Export Menu/Backup
+/main_view/Menu Holder/Attachment Pie
+/main_view/Menu Holder/Attachment Pie/Mute Particle
+/main_view/Menu Holder/Attachment Pie/separator
+/main_view/Menu Holder/Attachment Pie/Drop
+/main_view/Menu Holder/Attachment Pie/separator
+/main_view/Menu Holder/Attachment Pie/Texture Refresh
+/main_view/Menu Holder/Attachment Pie/Debug...
+/main_view/Menu Holder/Attachment Pie/DerenderPermanent
+/main_view/Menu Holder/Attachment Pie/Derender
+/main_view/Menu Holder/Attachment Pie/ScriptInfo
+/main_view/Menu Holder/Attachment Pie/Object_Inspect_Floater
+/main_view/Menu Holder/Attachment Pie/Object Inspect
+/main_view/Menu Holder/Attachment Pie/Dump XML
+/main_view/Menu Holder/Attachment Pie/Profile...
+/main_view/Menu Holder/Attachment Pie/Groups...
+/main_view/Menu Holder/Attachment Pie/Friends...
+/main_view/Menu Holder/Attachment Pie/Reset Mesh LOD
+/main_view/Menu Holder/Attachment Pie/Reset Skeleton And Animations
+/main_view/Menu Holder/Attachment Pie/Reset Skeleton
+/main_view/Menu Holder/Attachment Pie/separator
+/main_view/Menu Holder/Attachment Pie/Stop Animating My Avatar
+/main_view/Menu Holder/Attachment Pie/Fly land
+/main_view/Menu Holder/Attachment Pie/Sit stand
+/main_view/Menu Holder/Attachment Pie/separator
+/main_view/Menu Holder/Attachment Pie/Take Off >
+/main_view/Menu Holder/Attachment Pie/Hover Height
+/main_view/Menu Holder/Attachment Pie/Edit Outfit Parts
+/main_view/Menu Holder/Attachment Pie/Edit Shape
+/main_view/Menu Holder/Attachment Pie/Change Outfit
+/main_view/Menu Holder/Attachment Pie/NowWearing
+/main_view/Menu Holder/Attachment Pie/Stand Up
+/main_view/Menu Holder/Attachment Pie/Sit Down Here
+/main_view/Menu Holder/Attachment Pie/separator
+/main_view/Menu Holder/Attachment Pie/Export Menu
+/main_view/Menu Holder/Attachment Pie/Detach
+/main_view/Menu Holder/Attachment Pie/Edit...
+/main_view/Menu Holder/Attachment Pie/Show original
+/main_view/Menu Holder/Attachment Pie/Attachment Object Touch
+/main_view/Menu Holder/Export Menu
+/main_view/Menu Holder/Export Menu/Collada
+/main_view/Menu Holder/Export Menu/Backup
+/main_view/Menu Holder/Remove
+/main_view/Menu Holder/Remove/Object Unmute
+/main_view/Menu Holder/Remove/Object Mute
+/main_view/Menu Holder/Remove/Report Abuse...
+/main_view/Menu Holder/Object Attach HUD
+/main_view/Menu Holder/Object Attach
+/main_view/Menu Holder/Put On
+/main_view/Menu Holder/Put On/Object Attach HUD
+/main_view/Menu Holder/Put On/Object Attach
+/main_view/Menu Holder/Put On/Add
+/main_view/Menu Holder/Put On/Wear
+/main_view/Menu Holder/Object Features
+/main_view/Menu Holder/Object Features/Remove Scripts From Selection
+/main_view/Menu Holder/Object Features/Object Set Scripts to Not Running
+/main_view/Menu Holder/Object Features/Object Set Scripts to Running
+/main_view/Menu Holder/Object Features/Object Reset Scripts
+/main_view/Menu Holder/Object Features/LSL
+/main_view/Menu Holder/Object Features/Mono
+/main_view/Menu Holder/Object Features/separator
+/main_view/Menu Holder/Object Features/Object Edit Linked Parts
+/main_view/Menu Holder/Object Features/Object Unlink
+/main_view/Menu Holder/Object Features/Object Link
+/main_view/Menu Holder/Object Features/separator
+/main_view/Menu Holder/Object Features/ScriptInfo
+/main_view/Menu Holder/Object Features/Object_Inspect_Floater
+/main_view/Menu Holder/Object Features/Object Inspect
+/main_view/Menu Holder/Object Pie
+/main_view/Menu Holder/Object Pie/Reset Skeleton
+/main_view/Menu Holder/Object Pie/Dump XML
+/main_view/Menu Holder/Object Pie/Mute Particle
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Delete
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Export Menu
+/main_view/Menu Holder/Object Pie/Buy...
+/main_view/Menu Holder/Object Pie/Pay...
+/main_view/Menu Holder/Object Pie/Take Copy
+/main_view/Menu Holder/Object Pie/Pie Object Take
+/main_view/Menu Holder/Object Pie/Return...
+/main_view/Menu Holder/Object Pie/DerenderPermanent
+/main_view/Menu Holder/Object Pie/Derender
+/main_view/Menu Holder/Object Pie/Texture Refresh
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Remove
+/main_view/Menu Holder/Object Pie/Put On
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/show_in_characters
+/main_view/Menu Holder/Object Pie/show_in_linksets
+/main_view/Menu Holder/Object Pie/Zoom In
+/main_view/Menu Holder/Object Pie/Object Features
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Object Stand Up
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Object Sit
+/main_view/Menu Holder/Object Pie/separator
+/main_view/Menu Holder/Object Pie/Open
+/main_view/Menu Holder/Object Pie/Build
+/main_view/Menu Holder/Object Pie/Edit...
+/main_view/Menu Holder/Object Pie/Object Touch
+/main_view/Menu Holder/Remove
+/main_view/Menu Holder/Remove/Eject...
+/main_view/Menu Holder/Remove/Freeze...
+/main_view/Menu Holder/Remove/abuse
+/main_view/Menu Holder/Remove/Avatar Unmute
+/main_view/Menu Holder/Remove/Avatar Mute
+/main_view/Menu Holder/Avatar Pie
+/main_view/Menu Holder/Avatar Pie/Mute Particle
+/main_view/Menu Holder/Avatar Pie/RenderNormally
+/main_view/Menu Holder/Avatar Pie/DoNotRender
+/main_view/Menu Holder/Avatar Pie/AlwaysRenderFully
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Texture Refresh
+/main_view/Menu Holder/Avatar Pie/Debug...
+/main_view/Menu Holder/Avatar Pie/ScriptInfo
+/main_view/Menu Holder/Avatar Pie/DerenderPermanent
+/main_view/Menu Holder/Avatar Pie/Derender
+/main_view/Menu Holder/Avatar Pie/Pay...
+/main_view/Menu Holder/Avatar Pie/Zoom In
+/main_view/Menu Holder/Avatar Pie/Dump XML
+/main_view/Menu Holder/Avatar Pie/Remove
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Reset Mesh LOD
+/main_view/Menu Holder/Avatar Pie/Reset Skeleton And Animations
+/main_view/Menu Holder/Avatar Pie/Reset Skeleton
+/main_view/Menu Holder/Avatar Pie/separator
+/main_view/Menu Holder/Avatar Pie/Invite...
+/main_view/Menu Holder/Avatar Pie/Call
+/main_view/Menu Holder/Avatar Pie/Send IM...
+/main_view/Menu Holder/Avatar Pie/Add to Set
+/main_view/Menu Holder/Avatar Pie/Give Calling Card
+/main_view/Menu Holder/Avatar Pie/Add Friend
+/main_view/Menu Holder/Avatar Pie/Profile...
+/main_view/Menu Holder/Object Detach
+/main_view/Menu Holder/Object Detach HUD
+/main_view/Menu Holder/Clothes >
+/main_view/Menu Holder/Clothes >/All Clothes
+/main_view/Menu Holder/Clothes >/separator
+/main_view/Menu Holder/Clothes >/Self Alpha
+/main_view/Menu Holder/Clothes >/Self Physics
+/main_view/Menu Holder/Clothes >/Self Tattoo
+/main_view/Menu Holder/Clothes >/Self Underpants
+/main_view/Menu Holder/Clothes >/Self Undershirt
+/main_view/Menu Holder/Clothes >/Gloves
+/main_view/Menu Holder/Clothes >/Jacket
+/main_view/Menu Holder/Clothes >/Socks
+/main_view/Menu Holder/Clothes >/Shoes
+/main_view/Menu Holder/Clothes >/Skirt
+/main_view/Menu Holder/Clothes >/Pants
+/main_view/Menu Holder/Clothes >/Shirt
+/main_view/Menu Holder/Take Off >
+/main_view/Menu Holder/Take Off >/Detach All
+/main_view/Menu Holder/Take Off >/Object Detach
+/main_view/Menu Holder/Take Off >/Object Detach HUD
+/main_view/Menu Holder/Take Off >/Clothes >
+/main_view/Menu Holder/Self Pie
+/main_view/Menu Holder/Self Pie/show_avatar_profile
+/main_view/Menu Holder/Self Pie/separator
+/main_view/Menu Holder/Self Pie/Mute Particle
+/main_view/Menu Holder/Self Pie/separator
+/main_view/Menu Holder/Self Pie/Dump XML
+/main_view/Menu Holder/Self Pie/Texture Refresh
+/main_view/Menu Holder/Self Pie/Debug...
+/main_view/Menu Holder/Self Pie/ScriptInfo
+/main_view/Menu Holder/Self Pie/Profile...
+/main_view/Menu Holder/Self Pie/Groups...
+/main_view/Menu Holder/Self Pie/Friends...
+/main_view/Menu Holder/Self Pie/Reset Mesh LOD
+/main_view/Menu Holder/Self Pie/Reset Skeleton And Animations
+/main_view/Menu Holder/Self Pie/Reset Skeleton
+/main_view/Menu Holder/Self Pie/Hover Height
+/main_view/Menu Holder/Self Pie/Edit Outfit Parts
+/main_view/Menu Holder/Self Pie/Edit My Shape
+/main_view/Menu Holder/Self Pie/Chenge Outfit
+/main_view/Menu Holder/Self Pie/NowWearing
+/main_view/Menu Holder/Self Pie/Take Off >
+/main_view/Menu Holder/Self Pie/Stand Up
+/main_view/Menu Holder/Self Pie/Sit Down Here
+/main_view/Menu Holder/Edit
+/main_view/Menu Holder/Edit/Deselect
+/main_view/Menu Holder/Edit/Select All
+/main_view/Menu Holder/Edit/separator
+/main_view/Menu Holder/Edit/Delete
+/main_view/Menu Holder/Edit/Paste
+/main_view/Menu Holder/Edit/Copy
+/main_view/Menu Holder/Edit/Cut
+/main_view/Menu Holder/Edit/separator
+/main_view/Menu Holder/Edit/Redo
+/main_view/Menu Holder/Edit/Undo
+/main_view/Menu Holder/Popup
+/main_view/Menu Holder/Text editor context menu
+/main_view/Menu Holder/Text editor context menu/Select All
+/main_view/Menu Holder/Text editor context menu/Delete
+/main_view/Menu Holder/Text editor context menu/Paste
+/main_view/Menu Holder/Text editor context menu/Copy
+/main_view/Menu Holder/Text editor context menu/Cut
+/main_view/Menu Holder/Text editor context menu/Spellcheck Separator
+/main_view/Menu Holder/Text editor context menu/Add to Ignore
+/main_view/Menu Holder/Text editor context menu/Add to Dictionary
+/main_view/Menu Holder/Text editor context menu/Suggestion Separator
+/main_view/Menu Holder/Text editor context menu/Suggestion 5
+/main_view/Menu Holder/Text editor context menu/Suggestion 4
+/main_view/Menu Holder/Text editor context menu/Suggestion 3
+/main_view/Menu Holder/Text editor context menu/Suggestion 2
+/main_view/Menu Holder/Text editor context menu/Suggestion 1
+/main_view/progress_view_mini
+/main_view/progress_view_mini/progress_text
+/main_view/progress_view_mini/progress_text/text_contents
+/main_view/progress_view_mini/cancel_btn
+/main_view/progress_view_mini/progress_bar_mini
+/main_view/progress_view
+/main_view/progress_view/login_media_panel
+/main_view/progress_view/login_media_panel/media ctrl context menu
+/main_view/progress_view/login_media_panel/media ctrl context menu/open_webinspector
+/main_view/progress_view/login_media_panel/media ctrl context menu/debug_separator
+/main_view/progress_view/login_media_panel/media ctrl context menu/Paste
+/main_view/progress_view/login_media_panel/media ctrl context menu/Copy
+/main_view/progress_view/login_media_panel/media ctrl context menu/Cut
+/main_view/progress_view/login_media_panel/notification_shade
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/background_area
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/resize
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/resize
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/close_panel
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/close_panel/close_notification
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/form_elements
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/panel
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/panel/notification_text
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/panel/notification_text/text_contents
+/main_view/progress_view/login_media_panel/notification_shade/notification_stack/notification_area/stack/panel/notification_icon
+/main_view/progress_view/cancel_btn
+/main_view/progress_view/horizontal_centering
+/main_view/progress_view/horizontal_centering/right
+/main_view/progress_view/horizontal_centering/resize
+/main_view/progress_view/horizontal_centering/resize
+/main_view/progress_view/horizontal_centering/resize
+/main_view/progress_view/horizontal_centering/center
+/main_view/progress_view/horizontal_centering/center/vertical_centering
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel5
+/main_view/progress_view/horizontal_centering/center/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_icons
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_icons/logos_lbl
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_icons/logos_lbl/text_contents
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/resize
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_motd
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_motd/message_text
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_motd/message_text/text_contents
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login/login_progress_bar
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login/progress_text
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login/progress_text/text_contents
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login/title_text
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_login/title_text/text_contents
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/vertical_centering/panel_top_spacer
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel4/icon
+/main_view/progress_view/horizontal_centering/center/vertical_centering/panel3
+/main_view/progress_view/horizontal_centering/left
+/main_view/hint_holder
+/main_view/popup_holder
+/main_view/snapshot_floater_view_holder
+/main_view/snapshot_floater_view_holder/Snapshot Floater View
+/main_view/menu_stack
+/main_view/menu_stack/world_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/caret
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/border_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/center_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/center_panel/button_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/toolbar_panel/toolbar_bottom/centering_stack/border_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel/icon
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel/default_chat_bar
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel/default_chat_bar/nearby_voice_output_monitor
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel/default_chat_bar/view_border
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/chat_bar_layout_panel/local_chat_button
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/stand_fly_layout_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/bottom_toolbar_panel/chat_bar_stack/chat_bar_stand_fly_container_panel/chat_bar_stand_fly_stack/stand_fly_layout_panel/state_management_buttons_container
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/caret
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/border_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/center_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/center_panel/button_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/right_toolbar_panel/toolbar_right/centering_stack/border_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/chiclet_container_bottom
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/chiclet_container
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/minimized_floaters_region
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/floater_snap_region
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/floater_snap_region/unnamed
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/non_toolbar_panel/floater_snap_region/unnamed
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/caret
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/border_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/resize
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/center_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/center_panel/button_panel
+/main_view/menu_stack/world_panel/toolbar_view_holder/toolbar view/bottom_toolbar_stack/vertical_toolbar_panel/vertical_toolbar_stack/left_toolbar_panel/toolbar_left/centering_stack/border_panel
+/main_view/menu_stack/world_panel/Floater View
+/main_view/menu_stack/world_panel/Floater View/sys_well_window
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resize_handle
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resize_handle
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resize_handle
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resize_handle
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resizebar_bottom
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resizebar_right
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resizebar_top
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/resizebar_left
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_help_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_close_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_dock_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable vertical
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable horizontal
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/no_items_msg
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/no_items_msg/text_contents
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/panel
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/panel/scroll border
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/notification_list/scroll border
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_tear_off_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_minimize_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_restore_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/llfloater_snooze_btn
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/Drag Handle
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/Drag Handle/Drag Handle Title
+/main_view/menu_stack/world_panel/Floater View/sys_well_window/Drag Handle/Drag Handle Title/text_contents
+/main_view/menu_stack/world_panel/Floater View/fast_timers
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resize_handle
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resize_handle
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resize_handle
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resize_handle
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resizebar_bottom
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resizebar_right
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resizebar_top
+/main_view/menu_stack/world_panel/Floater View/fast_timers/resizebar_left
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_close_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel/timer_bars_stack
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel/timer_bars_stack/lines_panel
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel/timer_bars_stack/resize
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel/timer_bars_stack/resize
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/timers_panel/timer_bars_stack/bars_panel
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/resize
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/resize
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/legend_panel
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/legend_panel/scroll_vert
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/legend_panel/scroll_vert/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/legend_panel/scroll_vert/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/legend_stack/legend_panel/legend
+/main_view/menu_stack/world_panel/Floater View/fast_timers/pause_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/Floater View/fast_timers/metric_combo/Drop Down Button
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/Floater View/fast_timers/time_scale_combo/Drop Down Button
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_help_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_dock_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_tear_off_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_minimize_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_restore_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/llfloater_snooze_btn
+/main_view/menu_stack/world_panel/Floater View/fast_timers/Drag Handle
+/main_view/menu_stack/world_panel/Floater View/fast_timers/Drag Handle/Drag Handle Title
+/main_view/menu_stack/world_panel/Floater View/fast_timers/Drag Handle/Drag Handle Title/text_contents
+/main_view/menu_stack/world_panel/DebugView
+/main_view/menu_stack/world_panel/DebugView/gTextureView
+/main_view/menu_stack/world_panel/DebugView/floater
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_close_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_minimize_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_help_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_dock_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_tear_off_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_restore_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_snooze_btn
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_bottom
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_right
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_top
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_left
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle/Drag Handle Title
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle/Drag Handle Title/text_contents
+/main_view/menu_stack/world_panel/DebugView/floater
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_close_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_minimize_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_help_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_dock_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_tear_off_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_restore_btn
+/main_view/menu_stack/world_panel/DebugView/floater/llfloater_snooze_btn
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resize_handle
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_bottom
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_right
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_top
+/main_view/menu_stack/world_panel/DebugView/floater/resizebar_left
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle/Drag Handle Title
+/main_view/menu_stack/world_panel/DebugView/floater/Drag Handle/Drag Handle Title/text_contents
+/main_view/menu_stack/world_panel/DebugView/debug console
+/main_view/menu_stack/world_panel/login_panel_holder
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_elastic_pad_right
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/forgot_password_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/forgot_password_text/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/create_new_account_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/create_new_account_text/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/connect_btn
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_combo/Drop Down Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_selection_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/mode_selection/mode_selection_text/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/Combo Text Entry
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/Combo Text Entry/view_border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/server_combo/Combobox Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/grid_login_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/2nd_row/2nd_row_stack/grid_panel/grid_login_text/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/Combo Text Entry
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/Combo Text Entry/view_border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/start_location_panel/start_location_combo/Combobox Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/remember_check
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/remember_check/CheckboxCtrl Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/remember_check/checkbox label
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/remember_check/checkbox label/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/password_edit
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/password_container/password_edit/view_border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/delete_container
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/delete_container/remove_user_btn
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/remember_username_check
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/remember_username_check/CheckboxCtrl Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/remember_username_check/checkbox label
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/remember_username_check/checkbox label/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/Combo Text Entry
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/Combo Text Entry/view_border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/Scrollbar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/Scrollbar/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/Scrollbar/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/btn_0
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/btn_0/resize_bar
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/vert_stack_left/1st_row/1st_row_stack/login/username_combo/Combobox Button
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_container/sl_logo_small
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/ui_stack/ui_elastic_pad_left
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/background_area
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/close_panel
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/close_panel/close_notification
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/resize
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/form_elements
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/panel
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/panel/notification_text
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/panel/notification_text/text_contents
+/main_view/menu_stack/world_panel/login_panel_holder/panel_login/login_html/notification_shade/notification_stack/notification_area/stack/panel/notification_icon
+/main_view/menu_stack/world_panel/world_view_rect
+/main_view/menu_stack/resize
+/main_view/menu_stack/resize
+/main_view/menu_stack/status_bar_container
+/main_view/menu_stack/status_bar_container/menu_bar_holder
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Login Menu
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Login Menu/Debug
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Login Menu/Show Debug Menu
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Login Menu/Help
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Login Menu/File
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Deprecated
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Admin
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Develop
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Advanced
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/RLVa Main
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Help
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Content
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/BuildTools
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/World
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Communicate
+/main_view/menu_stack/status_bar_container/menu_bar_holder/Main Menu/Me
+/main_view/navigation_bar
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/favorites_bar_visibility_panel
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/favorites_bar_visibility_panel/favorite
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/favorites_bar_visibility_panel/favorite/favorites_bar_label
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/favorites_bar_visibility_panel/favorite/favorites_bar_label/text_contents
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/favorites_bar_visibility_panel/favorite/more_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/resize
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/resize
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/search_combo_editor
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/search_combo_editor/search_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/search_combo_editor/view_border
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/text_contents
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/comment_text/text scroller/scroll border
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/dig border
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/Scrollbar
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/Scrollbar/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/ComboBox/Scrollbar/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/search_bar_visibility_panel/search_combo_box/Combobox Button
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/resize
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/resize
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/resize
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/see_avatars_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/damage_text
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/damage_text/text_contents
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/pathfinding_disabled_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/pathfinding_dirty_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/damage_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/scripts_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/build_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/push_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/fly_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/voice_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/for_sale_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/maturity_icon
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/Add Landmark
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/Place Information
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/Combo Text Entry
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/Combo Text Entry/view_border
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable vertical
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable vertical/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable horizontal
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scrollable horizontal/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/text_contents
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/comment_text/text scroller/scroll border
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/Scrollbar
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/Scrollbar/Line Down
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/ComboBox/Scrollbar/Line Up
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/location_bar_visibility_panel/location_combo/Location History
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel/PersonalLighting
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel/About_Land
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel/home_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel/forward_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/location_search_layout/navigation_buttons_visibility_panel/back_btn
+/main_view/navigation_bar/navigation_favorites_bar_visibility_stack/navigation_bar_visibility_panel/navigation_bar_context_menu_panel
+/console

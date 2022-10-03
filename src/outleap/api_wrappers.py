@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import abc
 import pathlib
-import posixpath
 import uuid
 from typing import *
 
 from .client import LEAPClient
+from .ui_elems import UI_PATH_TYPE, UIPath
 
 
 class LEAPAPIWrapper(abc.ABC):
@@ -21,27 +21,12 @@ class LEAPAPIWrapper(abc.ABC):
         assert self._pump_name
 
 
-class UIPath(pathlib.PurePosixPath):
-    __slots__ = []
-
-    @classmethod
-    def for_floater(cls, floater_name: str) -> UIPath:
-        return cls("/main_view/menu_stack/world_panel/Floater View") / floater_name
-
-    def __str__(self) -> str:
-        """Like the base __str__ except ".." and "." segments will be resolved."""
-        return posixpath.normpath(super().__str__())
-
-
 async def _data_unwrapper(data_fut: Awaitable[Dict], inner_elem: str) -> Any:
     """Unwraps part of the data future while allowing the request itself to remain synchronous"""
     # We want the request to be sent immediately, without requiring the request to be `await`ed first,
     # but that means that we have to return a `Coroutine` that will pull the value out of the dict
     # rather than directly returning the `Future`.
     return (await data_fut)[inner_elem]
-
-
-UI_PATH_TYPE = Optional[Union[str, UIPath]]
 
 
 class LLWindowAPI(LEAPAPIWrapper):
@@ -128,8 +113,10 @@ class LLWindowAPI(LEAPAPIWrapper):
         for char in text_input:
             self.key_press(char=char, path=path)
 
-    async def get_paths(self, under: UI_PATH_TYPE = "") -> List[UIPath]:
+    async def get_paths(self, under: Optional[UI_PATH_TYPE] = None) -> List[UIPath]:
         """Get all UI paths under the root, or under a path if specified"""
+        if not under:
+            under = ""
         resp = await self._client.command(self._pump_name, "getPaths", {"under": str(under)})
         if error := resp.get("error"):
             raise ValueError(error)
@@ -439,6 +426,5 @@ __all__ = [
     "LLViewerWindowAPI",
     "LLCommandDispatcherAPI",
     "LLFloaterRegAPI",
-    "UIPath",
     "LEAPAPIWrapper",
 ]
