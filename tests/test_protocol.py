@@ -80,8 +80,9 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
         payload = b"'" + (b"0" * 0xFFFFFF) + b"'"
         payload = str(len(payload)).encode("utf8") + b":" + payload
         self.reader.feed_data(payload)
-        with self.assertRaisesRegex(ValueError, "length"):
-            await self.leap_protocol.read_message()
+        with unittest.mock.patch.object(self.leap_protocol, "PAYLOAD_LIMIT", 0xFFFFFF):
+            with self.assertRaisesRegex(ValueError, "length"):
+                await self.leap_protocol.read_message()
 
     async def test_close(self):
         self.assertFalse(self.leap_protocol.closed)

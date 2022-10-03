@@ -2,7 +2,7 @@ import abc
 import asyncio
 from typing import *
 
-from llbase import llsd
+import llsd
 
 
 class AbstractLEAPProtocol(abc.ABC):
@@ -26,11 +26,13 @@ class AbstractLEAPProtocol(abc.ABC):
 class LEAPProtocol(AbstractLEAPProtocol):
     """Wrapper for communication with a LEAP peer over an asyncio reader/writer pair"""
 
+    PAYLOAD_LIMIT = 0x0FFFFFFF
+
     def __init__(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         self._reader = reader
         self._writer = writer
-        self._parser = llsd.LLSDNotationParser()
-        self._formatter = llsd.LLSDNotationFormatter()
+        self._parser = llsd.serde_notation.LLSDNotationParser()
+        self._formatter = llsd.serde_notation.LLSDNotationFormatter()
         self._drain_task = None
 
     @property
@@ -63,7 +65,7 @@ class LEAPProtocol(AbstractLEAPProtocol):
 
         # Length is everything up until the first colon we see, stripping the colon off.
         length = int((await self._reader.readuntil(b":"))[:-1].decode("utf8"))
-        if length > 0xFFFFFF:
+        if length > self.PAYLOAD_LIMIT:
             raise ValueError(f"Unreasonable LEAP payload length of {length}")
         # Everything after the colon is LLSD
         parsed = self._parser.parse(await self._reader.readexactly(length))

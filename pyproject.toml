@@ -19,9 +19,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
 ]
 dependencies = [
-    # Ehm, I doubt they believe in semver so just use whatever version.
-    # Needed for the LLSD stuff.
-    "llbase"
+    # Whichever version. Don't care.
+    "llsd"
 ]
 dynamic=["version"]
 
