@@ -24,6 +24,7 @@ class REPLServer:
     async def client_connected(self, client: outleap.LEAPClient):
         if self._repl_running:
             logging.error("Client already connected, ignoring incoming connection")
+            return
 
         self._repl_running = True
 
