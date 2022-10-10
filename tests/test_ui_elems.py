@@ -37,4 +37,4 @@ class TestUIElems(unittest.IsolatedAsyncioTestCase):
     async def test_load_paths(self):
         await self.tree.refresh()
         root_child_paths = [x.path for x in self.tree.root_children]
-        self.assertListEqual(["/", "/main_view", "/console"], root_child_paths)
+        self.assertListEqual(["/main_view", "/console"], root_child_paths)

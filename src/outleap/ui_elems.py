@@ -120,6 +120,8 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
                 continue
             if maybe_path.parent != path:
                 continue
+            if maybe_path == path:
+                continue
             elems.append(UIElement(maybe_path, self))
         return elems
 
