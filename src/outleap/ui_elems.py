@@ -148,19 +148,30 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
         if refresh_info:
             await self.fetch_info_for_paths(new_paths)
 
-    async def fetch_info_for_paths(self, paths: Collection[UIPath]):
+    async def fetch_info_for_paths(self, paths: Collection[UIPath], allow_missing: bool = True):
         futs = [self._window_api.get_info(path) for path in paths]
-        for info in await asyncio.gather(*futs):
-            self._elem_info[UIPath(info["path"])] = UIElementInfo(
-                available=info["available"],
-                class_name=info["class"],
-                enabled=info["enabled"],
-                enabled_chain=info["enabled_chain"],
-                rect=UIRect(**info["rect"]),
-                value=info.get("value"),
-                visible=info["visible"],
-                visible_chain=info["visible_chain"],
-            )
+        for path, info in zip(paths, await asyncio.gather(*futs)):
+            if error := info.get("error"):
+                if "request specified invalid" in error and allow_missing:
+                    # Implicitly null elem_info for invalid paths. There are certain paths that
+                    # are sort of valid but that the viewer refuses to respond to getInfo for.
+                    # Don't remove them from the path tree, just say we don't have info.
+                    elem_info = None
+                else:
+                    raise ValueError(error)
+            else:
+                elem_info = UIElementInfo(
+                    available=info["available"],
+                    class_name=info["class"],
+                    enabled=info["enabled"],
+                    enabled_chain=info["enabled_chain"],
+                    rect=UIRect(**info["rect"]),
+                    value=info.get("value"),
+                    visible=info["visible"],
+                    visible_chain=info["visible_chain"],
+                )
+
+            self._elem_info[UIPath(path)] = elem_info
 
     async def refresh(self, refresh_info: bool = False):
         await self.refresh_subtree(under=None, refresh_info=refresh_info)
