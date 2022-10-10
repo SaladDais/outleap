@@ -1,4 +1,5 @@
 import asyncio
+import io
 import os
 import stat
 import sys
@@ -59,10 +60,9 @@ def _stdin_feeder(
     transport: asyncio.Transport, reader: asyncio.StreamReader, loop: asyncio.AbstractEventLoop
 ):
     while not transport.is_closing():
-        # Read up to 1024 bytes from stdin
-        data = os.read(0, 1024)
+        data = os.read(0, 0xFF00)
         if not data:
-            time.sleep(0.0001)
+            time.sleep(0.0000001)
             continue
         loop.call_soon_threadsafe(reader.feed_data, data)
     reader.feed_eof()
@@ -97,10 +97,55 @@ def _is_unix_pipe(fileno: int) -> bool:
     return stat.S_ISFIFO(mode) or stat.S_ISSOCK(mode) or stat.S_ISCHR(mode)
 
 
+# Modern Linux allows pipe sizes to be increased up to 1MB without special perms by default
+# https://man7.org/linux/man-pages/man2/fcntl.2.html
+_PIPE_BUFFER_SIZE = 1_000_000
+
+
+def _patch_stdio_buffering():
+    """
+    Improve LEAP performance by giving stdin and stdout larger buffers
+
+    Due to how the viewer's LEAP bridge is implemented, it will yield to the main loop
+    if the child's stdin pipe fills. The default pipe size on Linux is about 8k. This
+    leads to the LEAP write yielding for 0.05~s every time it writes an 8k chunk, which
+    obviously leads to very bad perf for larger payloads:
+
+    https://bitbucket.org/lindenlab/viewer/src/f83289d3a7e80bebe47f696f96aee1b7e64d1d69/indra/llcommon/llprocess.cpp#lines-228:235
+
+    By increasing the size of the stdin / stdout pipes, we reduce the number of times
+    the viewer must yield to the main loop while sending us the payload, reducing
+    apparent function call time by 10x for larger payloads.
+
+    Only works on Linux on Python 3.10+ due to relying on pipe implementation details
+    """
+    try:
+        import fcntl
+    except ImportError:
+        # Will probably happen on OS X
+        return
+    try:
+        # https://man7.org/linux/man-pages/man2/fcntl.2.html
+        set_pipe_size = getattr(fcntl, "F_SETPIPE_SZ")
+    except AttributeError:
+        # Will probably happen on Python before 3.10
+        return
+    # Might fail, don't care. Best efforts only.
+    pipes = [sys.stdin, sys.stdout]
+    for pipe in pipes:
+        try:
+            if not _is_unix_pipe(pipe.fileno()):
+                continue
+            fcntl.fcntl(pipe.fileno(), set_pipe_size, _PIPE_BUFFER_SIZE)
+        except (OSError, io.UnsupportedOperation):
+            pass
+
+
 async def connect_stdin_stdout() -> Tuple[asyncio.StreamReader, asyncio.StreamWriter]:
     """
     Get a StreamReader and StreamWriter for stdin and stdout, respectively
     """
+    _patch_stdio_buffering()
     # Windows (and probably cygwin) need special logic for non-blocking use of STDIO.
     need_stdin_hack = any(sys.platform.startswith(x) for x in ("cygwin", "win32"))
     if not need_stdin_hack:

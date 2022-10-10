@@ -8,14 +8,16 @@ Usage: While an outleap TCP receiver is running
   ./firestorm --leap outleap-agent
 """
 import asyncio
+import fcntl
 import multiprocessing
+import sys
 
 from outleap.utils import connect_stdin_stdout
 
 
 async def _forward_stream(src_reader: asyncio.StreamReader, dst_writer: asyncio.StreamWriter):
     while not src_reader.at_eof() and not dst_writer.is_closing():
-        dst_writer.write(await src_reader.read(1024))
+        dst_writer.write(await src_reader.read(0xFF00))
         await dst_writer.drain()
 
 

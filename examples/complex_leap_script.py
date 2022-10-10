@@ -15,13 +15,11 @@ from outleap import (
     LLUIAPI,
     LEAPBridgeServer,
     LEAPClient,
-    LEAPProtocol,
     LLCommandDispatcherAPI,
     LLFloaterRegAPI,
     LLViewerControlAPI,
     LLWindowAPI,
     UIPath,
-    connect_stdin_stdout,
 )
 
 
