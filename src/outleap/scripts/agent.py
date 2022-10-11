@@ -8,9 +8,7 @@ Usage: While an outleap TCP receiver is running
   ./firestorm --leap outleap-agent
 """
 import asyncio
-import fcntl
 import multiprocessing
-import sys
 
 from outleap.utils import connect_stdin_stdout
 
