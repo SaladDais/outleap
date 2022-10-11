@@ -22,7 +22,7 @@ async def _forward_stream(src_reader: asyncio.StreamReader, dst_writer: asyncio.
 
 
 async def amain():
-    serv_reader, serv_writer = await asyncio.open_connection("127.0.0.1", 9063)
+    serv_reader, serv_writer = await asyncio.open_connection("127.0.0.1", 9063, limit=10_000_000)
     stdio_reader, stdio_writer = await connect_stdin_stdout()
 
     try:

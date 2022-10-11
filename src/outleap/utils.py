@@ -56,11 +56,14 @@ class HackySTDIOProtocol(asyncio.Protocol):
         pass
 
 
+_READER_BUFFER_LIMIT = 10_000_000
+
+
 def _stdin_feeder(
     transport: asyncio.Transport, reader: asyncio.StreamReader, loop: asyncio.AbstractEventLoop
 ):
     while not transport.is_closing():
-        data = os.read(0, 0xFF00)
+        data = os.read(0, _READER_BUFFER_LIMIT)
         if not data:
             time.sleep(0.0000001)
             continue
@@ -80,7 +83,7 @@ async def _make_hacky_threaded_stdio_rw() -> Tuple[asyncio.StreamReader, asyncio
     # TODO: Currently we also use this if we're reading from a non-pipe file descriptor on POSIX
     #  platforms, but that's probably unnecessary.
     loop = asyncio.get_event_loop()
-    reader = asyncio.StreamReader()
+    reader = asyncio.StreamReader(limit=_READER_BUFFER_LIMIT)
     protocol = HackySTDIOProtocol()
     transport = HackySTDIOTransport()
     writer = asyncio.StreamWriter(transport, protocol, reader, loop)
@@ -155,7 +158,7 @@ async def connect_stdin_stdout() -> Tuple[asyncio.StreamReader, asyncio.StreamWr
     if need_stdin_hack:
         return await _make_hacky_threaded_stdio_rw()
     loop = asyncio.get_event_loop()
-    reader = asyncio.StreamReader()
+    reader = asyncio.StreamReader(limit=_READER_BUFFER_LIMIT)
     protocol = asyncio.StreamReaderProtocol(reader)
     await loop.connect_read_pipe(lambda: protocol, sys.stdin)
     w_transport, w_protocol = await loop.connect_write_pipe(asyncio.streams.FlowControlMixin, sys.stdout)
