@@ -80,6 +80,10 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.sceneElemScreenshot = QtWidgets.QGraphicsScene()
         self.graphicsElemScreenshot.setScene(self.sceneElemScreenshot)
 
+    def showEvent(self, event: QtGui.QShowEvent) -> None:
+        asyncio.get_event_loop().create_task(self.reloadFromTree())
+        return super().showEvent(event)
+
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         try:
             self.client.disconnect()
@@ -167,17 +171,23 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.sceneElemScreenshot.clear()
         indexes = selected.indexes()
         if len(indexes):
-            # Display some info about the element this item refers to
             self.btnClickElem.setEnabled(True)
+
+            # Display some info about the element this item refers to
             index = indexes[ElemTreeHeader.Name]
             path = index.data(QtCore.Qt.UserRole)
             elem = self._element_tree[path]
             await elem.refresh()
+
             elem_str = ""
             for k, v in elem.to_dict().items():
                 elem_str += f"{k}: {v}\n"
             self.textElemProperties.setPlainText(elem_str)
             print(elem_str, file=sys.stderr)
+
+            # This isn't a complete element, we can't show a preview.
+            if not elem.info:
+                return
 
             # Draw the element preview
             # TODO: this is wasteful, cache screenshot pixmap for `n` seconds?
