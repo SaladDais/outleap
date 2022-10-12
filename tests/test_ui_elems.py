@@ -51,3 +51,8 @@ class TestUIElems(unittest.IsolatedAsyncioTestCase):
 
         for node in self.tree.root_children:
             _walk_children(node, None)
+
+    async def test_get_parent(self):
+        await self.tree.refresh()
+        self.assertEqual("/", self.tree["/main_view"].parent.path)
+        self.assertIsNone(self.tree["/"].parent)

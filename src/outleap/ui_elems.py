@@ -240,9 +240,10 @@ class UIElement:
 
     @property
     def parent(self) -> Optional[UIElement]:
-        if self.path.parent == self.path:
+        parent = self.path.parent
+        if parent == self.path:
             return None
-        return self._tree[self.path]
+        return self._tree[parent]
 
     def to_dict(self):
         info = self.info
