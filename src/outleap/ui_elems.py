@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+import collections
 import dataclasses
 import pathlib
-import posixpath
 from typing import *
 
 if TYPE_CHECKING:
@@ -17,7 +17,9 @@ class UIPath(pathlib.PurePosixPath):
         if args == (".",) or args == ("/",):
             val = cls._from_parsed_parts("", "/", ["/"])
         elif len(args) == 1 and isinstance(args[0], str):
-            val = cls._from_parsed_parts("", "/", ["/", *args[0].split("/")[1:]])
+            # Ignore empty segments
+            args = [x for x in args[0].split("/")[1:] if x]
+            val = cls._from_parsed_parts("", "/", ["/", *args])
         else:
             val = super().__new__(cls, *args)
         return val
@@ -48,11 +50,14 @@ class UIPath(pathlib.PurePosixPath):
     def __hash__(self):
         return hash(self._cparts)
 
-    # Polyfill for Python 3.8
-    if not hasattr(pathlib.Path, "is_relative_to"):
-
-        def is_relative_to(self, other: Union[str, UIPath]) -> bool:
-            return str(self).startswith(str(other))
+    def is_relative_to(self, other: Union[str, UIPath]) -> bool:
+        # 10x faster than pathlib's `is_relative_to()`.
+        if isinstance(other, str):
+            other = UIPath(other)
+        other_len = len(other._cparts)
+        self_len = len(self._cparts)
+        # self should be a strict extension of other
+        return self_len >= other_len and self._cparts[:other_len] == other._cparts
 
 
 class UIRect(NamedTuple):
@@ -90,6 +95,7 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
     def __init__(self, window_api: LLWindowAPI):
         self._window_api: LLWindowAPI = window_api
         self._elem_info: Dict[UIPath, Optional[UIElementInfo]] = {}
+        self._children: Dict[UIPath, List[UIPath]] = collections.defaultdict(list)
         super().__init__()
 
     def __getitem__(self, key: Union[str, UIPath]) -> UIElement:
@@ -113,17 +119,7 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
         return self._elem_info[path]
 
     def get_child_elems(self, path: UIPath) -> List[UIElement]:
-        elems = []
-        for maybe_path in self._elem_info.keys():
-            # Yield all direct children in the same tree
-            if not maybe_path.is_relative_to(path):
-                continue
-            if maybe_path.parent != path:
-                continue
-            if maybe_path == path:
-                continue
-            elems.append(UIElement(maybe_path, self))
-        return elems
+        return [UIElement(x, self) for x in self._children.get(path, ())]
 
     async def refresh_subtree(self, under: Optional[UIPath] = None, refresh_info: bool = False):
         """
@@ -138,6 +134,7 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
             if not under or key.is_relative_to(under):
                 old_paths[key] = self._elem_info[key]
                 del self._elem_info[key]
+                self._children.pop(key, None)
 
         new_paths = await self._window_api.get_paths(under=under)
 
@@ -146,6 +143,12 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
             # distinguishes paths which don't exist within the tree from ones
             # which do exist, but for which we have no data.
             self._elem_info[path] = old_paths.get(path)
+            if path.parent != path:
+                child_elems = self._children[path.parent]
+                # We want order of elements, but we also might get dupes, which
+                # we don't want...
+                if path not in child_elems:
+                    child_elems.append(path)
 
         if refresh_info:
             await self.fetch_info_for_paths(new_paths)

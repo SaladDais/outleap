@@ -38,3 +38,16 @@ class TestUIElems(unittest.IsolatedAsyncioTestCase):
         await self.tree.refresh()
         root_child_paths = [x.path for x in self.tree.root_children]
         self.assertListEqual(["/main_view", "/console"], root_child_paths)
+
+    async def test_walk_children(self):
+        await self.tree.refresh()
+
+        children_map = {}
+
+        def _walk_children(node: outleap.UIElement, parent: Optional[outleap.UIPath]):
+            children_map[parent] = node
+            for child in node.children:
+                _walk_children(child, node.path)
+
+        for node in self.tree.root_children:
+            _walk_children(node, None)
