@@ -240,9 +240,10 @@ class UIElement:
         return self._tree[self.path]
 
     def to_dict(self):
+        info = self.info
         return {
             "path": self.path,
-            **self.info.to_dict(),
+            **(info.to_dict() if info else {}),
         }
 
     @property
