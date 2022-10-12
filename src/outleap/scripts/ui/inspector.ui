@@ -126,7 +126,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="labelElemScreenshot">
+             <widget class="QGraphicsView" name="graphicsElemScreenshot">
               <property name="minimumSize">
                <size>
                 <width>250</width>
@@ -139,17 +139,14 @@
                 <height>250</height>
                </size>
               </property>
-              <property name="styleSheet">
-               <string notr="true">* {background-color: white;}</string>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Sunken</enum>
-              </property>
-              <property name="text">
-               <string/>
+              <property name="interactive">
+               <bool>false</bool>
               </property>
              </widget>
             </item>

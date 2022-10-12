@@ -14,7 +14,7 @@ If you want to use the LEAP REPL or UI inspector, do `pip install outleap[tools]
 
 ## Usage
 
-Look in the "[examples](examples)" directory.
+Look in the "[examples](https://github.com/SaladDais/outleap/tree/master/examples)" directory.
 
 You can run a LEAP script with `your_viewer --leap some_script.py` if you have the executable bit set.
 
@@ -67,7 +67,9 @@ API wrappers already imported:
 ```
 
 Similarly, there's an interactive UI tree inspector available through `outleap-inspector`.
-It can be launched through `viewer --leap outleap-inspector`
+It can be launched through `viewer --leap outleap-inspector`.
+
+![Screenshot of outleap-inspector](https://github.com/SaladDais/outleap/blob/master/static/inspector_screenshot.png?raw=true)
 
 ## What viewers does LEAP even work in?
 

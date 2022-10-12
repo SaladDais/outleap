@@ -1,8 +1,11 @@
 import asyncio
+import contextlib
 import enum
 import logging
+import os
 import signal
 import sys
+import tempfile
 import weakref
 from typing import *
 
@@ -31,6 +34,19 @@ class ElemTreeHeader(enum.IntEnum):
 MAIN_WINDOW_UI_PATH = get_resource_filename("scripts/ui/inspector.ui")
 
 
+@contextlib.contextmanager
+def temp_file_path():
+    """Create a temporary file, yielding path and deleting it after"""
+    # Windows NT can't have two open FHs on a tempfile, so we need
+    # handle deletion ourselves :/
+    with tempfile.NamedTemporaryFile(delete=False) as f:
+        f.close()
+        try:
+            yield f.name
+        finally:
+            os.remove(f.name)
+
+
 class LEAPInspectorGUI(QtWidgets.QMainWindow):
     lineEditFind: QtWidgets.QLineEdit
     treeElems: QtWidgets.QTreeWidget
@@ -38,6 +54,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
     textElemProperties: QtWidgets.QTextEdit
     btnRefresh: QtWidgets.QPushButton
     btnClickElem: QtWidgets.QPushButton
+    graphicsElemScreenshot: QtWidgets.QGraphicsView
 
     def __init__(self, client: outleap.LEAPClient):
         super().__init__()
@@ -47,17 +64,21 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.client = client
         self._filter = ""
         self.window_api = outleap.LLWindowAPI(client)
+        self.viewer_window_api = outleap.LLViewerWindowAPI(self.client)
         self._element_tree = outleap.UIElementTree(self.window_api)
         self._items_by_path: Dict[UIPath, QtWidgets.QTreeWidgetItem] = weakref.WeakValueDictionary()  # noqa
 
         self.treeElems.setColumnCount(len(ElemTreeHeader))
         self.treeElems.setHeaderLabels(tuple(x.name for x in ElemTreeHeader))
         self.treeElems.header().setStretchLastSection(True)
-        self.treeElems.selectionModel().selectionChanged.connect(self._blockSelected)
+        self.treeElems.selectionModel().selectionChanged.connect(self.pathSelected)
         self.btnRefresh.clicked.connect(self.reloadFromTree)
         self.lineEditFind.editingFinished.connect(self.filterChanged)
 
         self.btnClickElem.clicked.connect(self.clickElem)
+
+        self.sceneElemScreenshot = QtWidgets.QGraphicsScene()
+        self.graphicsElemScreenshot.setScene(self.sceneElemScreenshot)
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         try:
@@ -140,11 +161,13 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         parent.addChildren(items)
 
     @asyncSlot()
-    async def _blockSelected(self, selected, deselected):
+    async def pathSelected(self, selected, deselected):
         self.textElemProperties.setPlainText("")
         self.btnClickElem.setEnabled(False)
+        self.sceneElemScreenshot.clear()
         indexes = selected.indexes()
         if len(indexes):
+            # Display some info about the element this item refers to
             self.btnClickElem.setEnabled(True)
             index = indexes[ElemTreeHeader.Name]
             path = index.data(QtCore.Qt.UserRole)
@@ -155,6 +178,26 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
                 elem_str += f"{k}: {v}\n"
             self.textElemProperties.setPlainText(elem_str)
             print(elem_str, file=sys.stderr)
+
+            # Draw the element preview
+            # TODO: this is wasteful, cache screenshot pixmap for `n` seconds?
+            pix_screenshot = QtGui.QPixmap()
+            with temp_file_path() as path:
+                await self.viewer_window_api.save_snapshot(path)
+                pix_screenshot.load(path)
+
+            # Clip scene and view to elem rect, SL y origin is at the bottom,
+            # but Qt wants it at the top!
+            rect = elem.rect
+            scene_rect = QtCore.QRect(
+                rect.left,
+                pix_screenshot.height() - rect.top,
+                rect.right - rect.left,
+                rect.top - rect.bottom,
+            )
+            self.sceneElemScreenshot.addPixmap(pix_screenshot)
+            self.sceneElemScreenshot.setSceneRect(scene_rect)
+            self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
         else:
             print("none selected", file=sys.stderr)
 
