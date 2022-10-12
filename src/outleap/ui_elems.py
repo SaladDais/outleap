@@ -105,6 +105,11 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
             raise KeyError(f"No element at {key}")
         return UIElement(key, self)
 
+    def __contains__(self, item: Union[str, UIPath]) -> bool:
+        if isinstance(item, str):
+            item = UIPath(item)
+        return item in self._elem_info
+
     def __len__(self) -> int:
         return len(self._elem_info)
 

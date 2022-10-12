@@ -209,6 +209,16 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="btnClickElem">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Click</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="btnRefresh">
         <property name="text">
          <string>Refresh</string>
