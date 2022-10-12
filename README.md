@@ -10,7 +10,7 @@ See <https://bitbucket.org/lindenlab/leap/src/main/> for more details on LEAP.
 
 `pip install outleap`, or `pip install -e .` to install from source.
 
-If you want to use the LEAP REPL, do `pip install outleap[repl]`, or `pip install -e .[repl]`.
+If you want to use the LEAP REPL or UI inspector, do `pip install outleap[tools]`, or `pip install -e .[tools]`.
 
 ## Usage
 
@@ -65,6 +65,9 @@ API wrappers already imported:
  'visible': 1,
  'visible_chain': 1}
 ```
+
+Similarly, there's an interactive UI tree inspector available through `outleap-inspector`.
+It can be launched through `viewer --leap outleap-inspector`
 
 ## What viewers does LEAP even work in?
 

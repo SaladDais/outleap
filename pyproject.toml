@@ -30,18 +30,26 @@ homepage = "https://github.com/SaladDais/outleap"
 repository = "https://github.com/SaladDais/outleap"
 
 [project.optional-dependencies]
-repl = [
+tools = [
     "ptpython>=3,<4",
+    "qasync",
+    "pyside6-essentials",
 ]
 
 [project.scripts]
 outleap-agent = "outleap.scripts.agent:agent_main"
 outleap-repl = "outleap.scripts.repl:repl_main"
+outleap-inspector = "outleap.scripts.inspector:inspector_main"
 
 
 [build-system]
 requires = ["setuptools>=61.2", "wheel", "setuptools_scm[toml]>=3.4.3"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+outleap = [
+    "scripts/ui/inspector.ui"
+]
 
 [tool.setuptools_scm]
 write_to = "src/outleap/version.py"
