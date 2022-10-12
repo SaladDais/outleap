@@ -245,6 +245,14 @@ class UIElement:
             return None
         return self._tree[parent]
 
+    @property
+    def ancestors(self) -> Sequence[UIElement]:
+        ancestors = []
+        elem = self
+        while elem := elem.parent:
+            ancestors.append(elem)
+        return ancestors
+
     def to_dict(self):
         info = self.info
         return {

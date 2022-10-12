@@ -47,6 +47,17 @@ def temp_file_path():
             os.remove(f.name)
 
 
+def elem_rect_to_qrect(pix: QtGui.QPixmap, rect: outleap.UIRect) -> QtCore.QRect:
+    # SL y origin is at the bottom, but Qt wants it at the top!
+    # Need pixmap dimensions to convert.
+    return QtCore.QRect(
+        rect.left,
+        pix.height() - rect.top,
+        max(0, rect.right - rect.left),
+        max(0, rect.top - rect.bottom),
+    )
+
+
 class LEAPInspectorGUI(QtWidgets.QMainWindow):
     lineEditFind: QtWidgets.QLineEdit
     treeElems: QtWidgets.QTreeWidget
@@ -177,7 +188,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             index = indexes[ElemTreeHeader.Name]
             path = index.data(QtCore.Qt.UserRole)
             elem = self._element_tree[path]
-            await elem.refresh()
+            # Refresh info for the element and its ancestors (we need updated rects)
+            await asyncio.gather(*[e.refresh() for e in [elem, *elem.ancestors]])
 
             elem_str = ""
             for k, v in elem.to_dict().items():
@@ -185,8 +197,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             self.textElemProperties.setPlainText(elem_str)
             print(elem_str, file=sys.stderr)
 
-            # This isn't a complete element, we can't show a preview.
-            if not elem.info:
+            # This is either an incomplete or invisible element, we can't show a preview.
+            if not elem.info or not elem.visible_chain:
                 return
 
             # Draw the element preview
@@ -196,15 +208,15 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
                 await self.viewer_window_api.save_snapshot(path)
                 pix_screenshot.load(path)
 
-            # Clip scene and view to elem rect, SL y origin is at the bottom,
-            # but Qt wants it at the top!
-            rect = elem.rect
-            scene_rect = QtCore.QRect(
-                rect.left,
-                pix_screenshot.height() - rect.top,
-                rect.right - rect.left,
-                rect.top - rect.bottom,
-            )
+            # Clip scene and view to elem rect
+            scene_rect = elem_rect_to_qrect(pix_screenshot, elem.rect)
+            while elem := elem.parent:
+                print(elem.path, file=sys.stderr)
+                # Should also be clipped to the intersection of all parent rects,
+                # some scrollers have offscreen rects that can't really be shown
+                # in a screenshot.
+                parent_rect = elem_rect_to_qrect(pix_screenshot, elem.rect)
+                scene_rect = scene_rect.intersected(parent_rect)
             self.sceneElemScreenshot.addPixmap(pix_screenshot)
             self.sceneElemScreenshot.setSceneRect(scene_rect)
             self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
