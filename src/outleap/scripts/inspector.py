@@ -107,7 +107,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.graphicsElemScreenshot.setScene(self.sceneElemScreenshot)
 
     def showEvent(self, event: QtGui.QShowEvent) -> None:
-        asyncio.get_event_loop().create_task(self.reloadFromTree())
+        # Don't need to create_task() because this is an `asyncSlot()`
+        self.reloadFromTree()
         return super().showEvent(event)
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
@@ -117,12 +118,14 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             logging.exception(e)
         return super().closeEvent(event)
 
+    def _getSelectedPath(self) -> Optional[UIPath]:
+        if selected := self.treeElems.selectedItems():
+            return selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)
+        return None
+
     @asyncSlot()
     async def reloadFromTree(self):
-        selected_path = None
-
-        if selected := self.treeElems.selectedItems():
-            selected_path = selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)
+        selected_path = self._getSelectedPath()
 
         self.treeElems.clear()
         self._items_by_path.clear()
@@ -191,61 +194,57 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         parent.addChildren(items)
 
     @asyncSlot()
-    async def pathSelected(self, selected, deselected):
+    async def pathSelected(self, *args):
         self.textElemProperties.setPlainText("")
         self.btnClickElem.setEnabled(False)
         self.btnSaveRendered.setEnabled(False)
         self.sceneElemScreenshot.clear()
-        indexes = selected.indexes()
-        if len(indexes):
-            self.btnClickElem.setEnabled(True)
 
-            # Display some info about the element this item refers to
-            index = indexes[ElemTreeHeader.Name]
-            path = index.data(QtCore.Qt.UserRole)
-            elem = self._element_tree[path]
-            # Refresh info for the element and its ancestors (we need updated rects)
-            await asyncio.gather(*[e.refresh() for e in [elem, *elem.ancestors]])
+        if not (selected_path := self._getSelectedPath()):
+            return
+        self.btnClickElem.setEnabled(True)
 
-            elem_str = ""
-            for k, v in elem.to_dict().items():
-                elem_str += f"{k}: {v}\n"
-            self.textElemProperties.setPlainText(elem_str)
-            print(elem_str, file=sys.stderr)
+        # Display some info about the element this item refers to
+        elem = self._element_tree[selected_path]
+        # Refresh info for the element and its ancestors (we need updated rects)
+        await asyncio.gather(*[e.refresh() for e in [elem, *elem.ancestors]])
 
-            # This is either an incomplete or invisible element, we can't show a preview.
-            if not elem.info or not elem.visible_chain:
-                return
+        elem_str = ""
+        for k, v in elem.to_dict().items():
+            elem_str += f"{k}: {v}\n"
+        self.textElemProperties.setPlainText(elem_str)
+        print(elem_str, file=sys.stderr)
 
-            self.btnSaveRendered.setEnabled(True)
+        # This is either an incomplete or invisible element, we can't show a preview.
+        if not elem.info or not elem.visible_chain:
+            return
 
-            # Draw the element preview
-            # TODO: this is wasteful, cache screenshot pixmap for `n` seconds?
-            pix_screenshot = QtGui.QPixmap()
-            with temp_file_path() as path:
-                await self.viewer_window_api.save_snapshot(path)
-                pix_screenshot.load(path)
+        self.btnSaveRendered.setEnabled(True)
 
-            # Clip scene and view to elem rect
-            scene_rect = _calc_clipped_rect(pix_screenshot, elem)
-            self.sceneElemScreenshot.addPixmap(pix_screenshot)
-            self.sceneElemScreenshot.setSceneRect(scene_rect)
-            self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
-        else:
-            print("none selected", file=sys.stderr)
+        # Draw the element preview
+        # TODO: this is wasteful, cache screenshot pixmap for `n` seconds?
+        pix_screenshot = QtGui.QPixmap()
+        with temp_file_path() as path:
+            await self.viewer_window_api.save_snapshot(path)
+            pix_screenshot.load(path)
+
+        # Clip scene and view to elem rect
+        scene_rect = _calc_clipped_rect(pix_screenshot, elem)
+        self.sceneElemScreenshot.addPixmap(pix_screenshot)
+        self.sceneElemScreenshot.setSceneRect(scene_rect)
+        self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
 
     @asyncSlot()
     async def clickElem(self):
-        if not (selected := self.treeElems.selectedItems()):
+        if not (selected_path := self._getSelectedPath()):
             return
-        path = selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)
-        await self.window_api.mouse_click(path=path, button="LEFT")
+        await self.window_api.mouse_click(path=selected_path, button="LEFT")
 
     @asyncSlot()
     async def saveRendered(self):
-        if not (selected := self.treeElems.selectedItems()):
+        if not (selected_path := self._getSelectedPath()):
             return
-        elem = self._element_tree[selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)]
+        elem = self._element_tree[selected_path]
         pix_screenshot = QtGui.QPixmap()
         with temp_file_path() as path:
             await self.viewer_window_api.save_snapshot(path)
