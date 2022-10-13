@@ -3,6 +3,7 @@ coverage:
     - "__init__.py::outleap/__init__.py"
   ignore:
     - "src/outleap/scripts"
+    - "src/outleap/qt_helpers.py"
   status:
     project:
       default:

@@ -3,6 +3,7 @@ omit =
     setup.py
     src/outleap/scripts/*
     tests/*
+    src/outleap/qt_helpers.py
 
 [paths]
 source =
@@ -13,7 +14,6 @@ source =
 # Regexes for lines to exclude from consideration
 exclude_lines =
     # Have to re-enable the standard pragma
-    pragma: no cover
     pragma: no cover
 
     # These branches aren't expected to be reachable outside type checking
