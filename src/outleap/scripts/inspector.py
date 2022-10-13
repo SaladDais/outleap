@@ -15,7 +15,7 @@ from qasync import QEventLoop, asyncSlot
 
 import outleap
 from outleap import LEAPClient, UIElement, UIPath
-from outleap.qt_helpers import loadUi
+from outleap.qt_helpers import GUIInteractionManager, loadUi
 
 ROOT_LOG = logging.getLogger()
 ROOT_LOG.addHandler(logging.StreamHandler())
@@ -47,7 +47,18 @@ def temp_file_path():
             os.remove(f.name)
 
 
-def elem_rect_to_qrect(pix: QtGui.QPixmap, rect: outleap.UIRect) -> QtCore.QRect:
+def _calc_clipped_rect(pix: QtGui.QPixmap, elem: outleap.UIElement) -> QtCore.QRect:
+    base_rect = _elem_rect_to_qrect(pix, elem.rect)
+    while elem := elem.parent:
+        # Should also be clipped to the intersection of all parent rects,
+        # some scrollers have offscreen rects that can't really be shown
+        # in a screenshot.
+        parent_rect = _elem_rect_to_qrect(pix, elem.rect)
+        base_rect = base_rect.intersected(parent_rect)
+    return base_rect
+
+
+def _elem_rect_to_qrect(pix: QtGui.QPixmap, rect: outleap.UIRect) -> QtCore.QRect:
     # SL y origin is at the bottom, but Qt wants it at the top!
     # Need pixmap dimensions to convert.
     return QtCore.QRect(
@@ -65,6 +76,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
     textElemProperties: QtWidgets.QTextEdit
     btnRefresh: QtWidgets.QPushButton
     btnClickElem: QtWidgets.QPushButton
+    btnSaveRendered: QtWidgets.QPushButton
     graphicsElemScreenshot: QtWidgets.QGraphicsView
 
     def __init__(self, client: outleap.LEAPClient):
@@ -74,6 +86,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
 
         self.client = client
         self._filter = ""
+
+        self.interaction_manager = GUIInteractionManager(self)
         self.window_api = outleap.LLWindowAPI(client)
         self.viewer_window_api = outleap.LLViewerWindowAPI(self.client)
         self._element_tree = outleap.UIElementTree(self.window_api)
@@ -87,6 +101,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.lineEditFind.editingFinished.connect(self.filterChanged)
 
         self.btnClickElem.clicked.connect(self.clickElem)
+        self.btnSaveRendered.clicked.connect(self.saveRendered)
 
         self.sceneElemScreenshot = QtWidgets.QGraphicsScene()
         self.graphicsElemScreenshot.setScene(self.sceneElemScreenshot)
@@ -179,6 +194,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
     async def pathSelected(self, selected, deselected):
         self.textElemProperties.setPlainText("")
         self.btnClickElem.setEnabled(False)
+        self.btnSaveRendered.setEnabled(False)
         self.sceneElemScreenshot.clear()
         indexes = selected.indexes()
         if len(indexes):
@@ -201,6 +217,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             if not elem.info or not elem.visible_chain:
                 return
 
+            self.btnSaveRendered.setEnabled(True)
+
             # Draw the element preview
             # TODO: this is wasteful, cache screenshot pixmap for `n` seconds?
             pix_screenshot = QtGui.QPixmap()
@@ -209,25 +227,38 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
                 pix_screenshot.load(path)
 
             # Clip scene and view to elem rect
-            scene_rect = elem_rect_to_qrect(pix_screenshot, elem.rect)
-            while elem := elem.parent:
-                print(elem.path, file=sys.stderr)
-                # Should also be clipped to the intersection of all parent rects,
-                # some scrollers have offscreen rects that can't really be shown
-                # in a screenshot.
-                parent_rect = elem_rect_to_qrect(pix_screenshot, elem.rect)
-                scene_rect = scene_rect.intersected(parent_rect)
+            scene_rect = _calc_clipped_rect(pix_screenshot, elem)
             self.sceneElemScreenshot.addPixmap(pix_screenshot)
             self.sceneElemScreenshot.setSceneRect(scene_rect)
             self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
         else:
             print("none selected", file=sys.stderr)
 
-    def clickElem(self):
+    @asyncSlot()
+    async def clickElem(self):
         if not (selected := self.treeElems.selectedItems()):
             return
         path = selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)
-        self.window_api.mouse_click(path=path, button="LEFT")
+        await self.window_api.mouse_click(path=path, button="LEFT")
+
+    @asyncSlot()
+    async def saveRendered(self):
+        if not (selected := self.treeElems.selectedItems()):
+            return
+        elem = self._element_tree[selected[0].data(ElemTreeHeader.Name, QtCore.Qt.UserRole)]
+        pix_screenshot = QtGui.QPixmap()
+        with temp_file_path() as path:
+            await self.viewer_window_api.save_snapshot(path)
+            pix_screenshot.load(path)
+        # Make a clipped copy of the screenshot
+        clipped = pix_screenshot.copy(_calc_clipped_rect(pix_screenshot, elem))
+
+        file_name = await self.interaction_manager.save_file(
+            caption="Save Rendered Element", filter_str="PNG Images (*.png)", default_suffix="png"
+        )
+        if not file_name:
+            return
+        clipped.save(file_name, "PNG")
 
 
 async def start_gui():

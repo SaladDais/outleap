@@ -1,3 +1,8 @@
+import asyncio
+import html
+from typing import *
+
+from PySide6 import QtWidgets
 from PySide6.QtCore import QMetaObject
 from PySide6.QtUiTools import QUiLoader
 
@@ -107,3 +112,90 @@ def loadUi(uifile, baseinstance=None, custom_widgets=None, working_directory=Non
     widget = loader.load(uifile)
     QMetaObject.connectSlotsByName(widget)
     return widget
+
+
+def show_error_message(error_msg, parent=None):
+    error_dialog = QtWidgets.QErrorMessage(parent=parent)
+    # No obvious way to set this to plaintext, yuck...
+    error_dialog.showMessage(html.escape(error_msg))
+    error_dialog.exec()
+    error_dialog.raise_()
+
+
+class GUIInteractionManager:
+    def __init__(self, parent: QtWidgets.QWidget):
+        self._parent = parent
+
+    def _dialog_async_exec(self, dialog: QtWidgets.QDialog):
+        future = asyncio.Future()
+        dialog.finished.connect(lambda r: future.set_result(r))
+        dialog.open()
+        return future
+
+    async def _file_dialog(
+        self,
+        caption: str,
+        directory: str,
+        filter_str: str,
+        mode: QtWidgets.QFileDialog.FileMode,
+        default_suffix: str = "",
+    ) -> Tuple[bool, QtWidgets.QFileDialog]:
+        dialog = QtWidgets.QFileDialog(self._parent, caption=caption, directory=directory, filter=filter_str)
+        dialog.setFileMode(mode)
+        if mode == QtWidgets.QFileDialog.FileMode.AnyFile:
+            dialog.setAcceptMode(QtWidgets.QFileDialog.AcceptMode.AcceptSave)
+        if default_suffix:
+            dialog.setDefaultSuffix(default_suffix)
+        res = await self._dialog_async_exec(dialog)
+        return res, dialog
+
+    async def open_files(self, caption: str = "", directory: str = "", filter_str: str = "") -> List[str]:
+        res, dialog = await self._file_dialog(
+            caption, directory, filter_str, QtWidgets.QFileDialog.FileMode.ExistingFiles
+        )
+        if not res:
+            return []
+        return dialog.selectedFiles()
+
+    async def open_file(self, caption: str = "", directory: str = "", filter_str: str = "") -> Optional[str]:
+        res, dialog = await self._file_dialog(
+            caption, directory, filter_str, QtWidgets.QFileDialog.FileMode.ExistingFile
+        )
+        if not res:
+            return None
+        return dialog.selectedFiles()[0]
+
+    async def open_dir(self, caption: str = "", directory: str = "", filter_str: str = "") -> Optional[str]:
+        res, dialog = await self._file_dialog(
+            caption, directory, filter_str, QtWidgets.QFileDialog.FileMode.Directory
+        )
+        if not res:
+            return None
+        return dialog.selectedFiles()[0]
+
+    async def save_file(
+        self, caption: str = "", directory: str = "", filter_str: str = "", default_suffix: str = ""
+    ) -> Optional[str]:
+        res, dialog = await self._file_dialog(
+            caption,
+            directory,
+            filter_str,
+            QtWidgets.QFileDialog.FileMode.AnyFile,
+            default_suffix,
+        )
+        if not res or not dialog.selectedFiles():
+            return None
+        return dialog.selectedFiles()[0]
+
+    async def confirm(self, title: str, caption: str) -> bool:
+        msg = QtWidgets.QMessageBox(
+            QtWidgets.QMessageBox.Icon.Question,
+            title,
+            caption,
+            QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel,
+            self._parent,
+        )
+        fut = asyncio.Future()
+        msg.finished.connect(lambda r: fut.set_result(r))
+        msg.open()
+        return (await fut) == QtWidgets.QMessageBox.Ok
