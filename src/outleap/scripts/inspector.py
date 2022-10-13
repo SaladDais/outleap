@@ -96,7 +96,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self.treeElems.setColumnCount(len(ElemTreeHeader))
         self.treeElems.setHeaderLabels(tuple(x.name for x in ElemTreeHeader))
         self.treeElems.header().setStretchLastSection(True)
-        self.treeElems.selectionModel().selectionChanged.connect(self.pathSelected)
+        self.treeElems.selectionModel().selectionChanged.connect(self.updateSelectedElemInfo)
         self.btnRefresh.clicked.connect(self.reloadFromTree)
         self.lineEditFind.editingFinished.connect(self.filterChanged)
 
@@ -194,7 +194,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         parent.addChildren(items)
 
     @asyncSlot()
-    async def pathSelected(self, *args):
+    async def updateSelectedElemInfo(self, *args):
         self.textElemProperties.setPlainText("")
         self.btnClickElem.setEnabled(False)
         self.btnSaveRendered.setEnabled(False)
@@ -239,6 +239,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         if not (selected_path := self._getSelectedPath()):
             return
         await self.window_api.mouse_click(path=selected_path, button="LEFT")
+        # We clicked, which may have had an effect on the UI state.
+        await self.updateSelectedElemInfo()
 
     @asyncSlot()
     async def saveRendered(self):
