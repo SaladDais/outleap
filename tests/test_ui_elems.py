@@ -4,6 +4,7 @@ import unittest
 from typing import *
 
 import outleap
+from outleap import UIPath
 
 from . import MockLEAPProtocol
 
@@ -25,6 +26,34 @@ class MockLEAPClient(outleap.LEAPClient):
         else:
             assert False
         return fut
+
+
+class TestUIPaths(unittest.TestCase):
+    def test_relative_to(self):
+        self.assertTrue(UIPath("/foo/bar").is_relative_to(UIPath("/foo")))
+        self.assertTrue(UIPath("/foo/bar").is_relative_to(UIPath("/")))
+        self.assertTrue(UIPath("/").is_relative_to(UIPath("/")))
+        self.assertFalse(UIPath("/").is_relative_to(UIPath("/foo")))
+
+    def test_stem(self):
+        self.assertEqual("foo", UIPath("/bar/foo").stem)
+        self.assertEqual("", UIPath("/").stem)
+
+    def test_normalize_dot(self):
+        self.assertEqual("/", str(UIPath(".")))
+
+    def test_div(self):
+        self.assertEqual("/foo/bar/baz", str(UIPath("/foo/bar") / "baz"))
+        self.assertEqual("/foo/bar/baz", str("/foo/bar" / UIPath("baz")))
+
+    def test_eq(self):
+        self.assertEqual(UIPath("/foo/bar"), UIPath("/foo/bar"))
+        self.assertNotEqual(UIPath("/foo/bar"), UIPath("/foo"))
+        self.assertEqual(UIPath("/foo/bar"), "/foo/bar")
+
+    def test_get_parent(self):
+        self.assertEqual(UIPath("/"), UIPath("/foo").parent)
+        self.assertEqual(UIPath("/foo"), UIPath("/foo/bar").parent)
 
 
 class TestUIElems(unittest.IsolatedAsyncioTestCase):

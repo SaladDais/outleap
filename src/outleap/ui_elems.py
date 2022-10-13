@@ -3,29 +3,33 @@ from __future__ import annotations
 import asyncio
 import collections
 import dataclasses
-import pathlib
 from typing import *
 
 if TYPE_CHECKING:
     from .api_wrappers import LLWindowAPI
 
 
-class UIPath(pathlib.PurePosixPath):
-    __slots__ = ["_cparts"]
+class UIPath:
+    __slots__ = ["_parts"]
 
     def __new__(cls, *args):
-        if len(args) == 1 and isinstance(args[0], str):
-            # Ignore empty segments
-            args = [x for x in args[0].split("/")[1:] if x]
-            val = cls._from_parsed_parts("", "/", ["/", *args])
+        val = super().__new__(cls)
+        if len(args) == 1:
+            if isinstance(args[0], str):
+                args = args[0].split("/")
+                # "." means "/" in LEAP
+                if tuple(args) == (".",):
+                    args = ()
+                # Ignore empty segments
+                args = tuple([x for x in args if x])
+            elif isinstance(args[0], UIPath):
+                args = args[0]._parts
+            else:
+                args = tuple(args)
         else:
-            val = super().__new__(cls, *args)
-        return val
+            args = tuple(args)
 
-    @classmethod
-    def _from_parsed_parts(cls, drv, root, parts):
-        val = super()._from_parsed_parts(drv, root, parts)
-        val._cparts = tuple(val._parts)
+        val._parts = args
         return val
 
     @classmethod
@@ -33,26 +37,53 @@ class UIPath(pathlib.PurePosixPath):
         return cls("/main_view/menu_stack/world_panel/Floater View") / floater_name
 
     def __str__(self) -> str:
-        return "/" + "/".join(self._cparts[1:])
+        return "/" + "/".join(self._parts)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self!s})"
 
     def __eq__(self, other):
         if isinstance(other, UIPath):
-            return self._cparts == other._cparts
+            return self._parts == other._parts
         if not other:
             return False
         return str(other) == str(self)
 
     def __hash__(self):
-        return hash(self._cparts)
+        return hash(self._parts)
+
+    @property
+    def parent(self) -> UIPath:
+        return UIPath(*self._parts[:-1])
+
+    @property
+    def stem(self) -> str:
+        if self._parts:
+            return self._parts[-1]
+        return ""
+
+    def __truediv__(self, other: Union[str, UIPath]):
+        if not isinstance(other, (UIPath, str)):
+            return NotImplemented
+        if isinstance(other, str):
+            other = UIPath(other)
+        return UIPath(*self._parts, *other._parts)
+
+    def __rtruediv__(self, other: Union[str, UIPath]):
+        if not isinstance(other, (UIPath, str)):
+            return NotImplemented
+        if isinstance(other, str):
+            other = UIPath(other)
+        return UIPath(*other._parts, *self._parts)
 
     def is_relative_to(self, other: Union[str, UIPath]) -> bool:
         # 10x faster than pathlib's `is_relative_to()`.
         if isinstance(other, str):
             other = UIPath(other)
-        other_len = len(other._cparts)
-        self_len = len(self._cparts)
+        other_len = len(other._parts)
+        self_len = len(self._parts)
         # self should be a strict extension of other
-        return self_len >= other_len and self._cparts[:other_len] == other._cparts
+        return self_len >= other_len and self._parts[:other_len] == other._parts
 
 
 class UIRect(NamedTuple):
