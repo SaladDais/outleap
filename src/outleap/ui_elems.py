@@ -11,12 +11,10 @@ if TYPE_CHECKING:
 
 
 class UIPath(pathlib.PurePosixPath):
-    __slots__ = []
+    __slots__ = ["_cparts"]
 
     def __new__(cls, *args):
-        if args == (".",) or args == ("/",):
-            val = cls._from_parsed_parts("", "/", ["/"])
-        elif len(args) == 1 and isinstance(args[0], str):
+        if len(args) == 1 and isinstance(args[0], str):
             # Ignore empty segments
             args = [x for x in args[0].split("/")[1:] if x]
             val = cls._from_parsed_parts("", "/", ["/", *args])
@@ -25,27 +23,24 @@ class UIPath(pathlib.PurePosixPath):
         return val
 
     @classmethod
+    def _from_parsed_parts(cls, drv, root, parts):
+        val = super()._from_parsed_parts(drv, root, parts)
+        val._cparts = tuple(val._parts)
+        return val
+
+    @classmethod
     def for_floater(cls, floater_name: str) -> UIPath:
         return cls("/main_view/menu_stack/world_panel/Floater View") / floater_name
 
     def __str__(self) -> str:
-        return "/" + "/".join(self._parts[1:])
+        return "/" + "/".join(self._cparts[1:])
 
     def __eq__(self, other):
         if isinstance(other, UIPath):
-            return self._parts == other._parts
+            return self._cparts == other._cparts
         if not other:
             return False
         return str(other) == str(self)
-
-    @property
-    def _cparts(self):
-        # Cached casefolded parts, for hashing and comparison
-        try:
-            return self._cached_cparts
-        except AttributeError:
-            self._cached_cparts = tuple(self._parts)
-            return self._cached_cparts
 
     def __hash__(self):
         return hash(self._cparts)
@@ -71,12 +66,12 @@ class UIRect(NamedTuple):
 class UIElementInfo:
     available: bool
     class_name: str
-    enabled: int
-    enabled_chain: int
+    enabled: bool
+    enabled_chain: bool
     rect: UIRect
     value: Any
-    visible: int
-    visible_chain: int
+    visible: bool
+    visible_chain: bool
 
     def to_dict(self):
         return {
@@ -89,6 +84,108 @@ class UIElementInfo:
             "visible": self.visible,
             "visible_chain": self.visible_chain,
         }
+
+
+_T = TypeVar("T")
+
+
+class UIElementProperty(Generic[_T]):
+    __slots__ = ("name", "owner")
+
+    def __init__(self):
+        super().__init__()
+
+    def __set_name__(self, owner, name: str):
+        self.name = name
+
+    def __get__(self, _obj: UIElement, owner: Optional[Type] = None) -> _T:
+        # Reach into the UIElementTree for info related to the element our owner wraps.
+        # Try to access the parameter related to this. This will intentionally fail if
+        # the UIElement info aren't complete.
+        return getattr(_obj.info, self.name)
+
+
+class UIElement:
+    """Wrapper around a tree and a path to access that path in the tree"""
+
+    def __init__(self, path: UIPath, element_tree: UIElementTree):
+        self.path = path
+        self._tree = element_tree
+
+    def __str__(self) -> str:
+        return str(self.path)
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({str(self)!r})"
+
+    @property
+    def info(self) -> Optional[UIElementInfo]:
+        return self._tree.get_info_by_path(self.path)
+
+    @property
+    def is_detached(self) -> bool:
+        """Whether this element is still a valid node in its parent tree"""
+        try:
+            self._tree.get_info_by_path(self.path)
+            return False
+        except KeyError:
+            return True
+
+    @property
+    def parent(self) -> Optional[UIElement]:
+        parent = self.path.parent
+        if parent == self.path:
+            return None
+        return self._tree[parent]
+
+    @property
+    def ancestors(self) -> Sequence[UIElement]:
+        ancestors = []
+        elem = self
+        while elem := elem.parent:
+            ancestors.append(elem)
+        return ancestors
+
+    def to_dict(self):
+        info = self.info
+        return {
+            "path": self.path,
+            **(info.to_dict() if info else {}),
+        }
+
+    @property
+    def children(self) -> List[UIElement]:
+        return self._tree.get_child_elems(self.path)
+
+    available: bool = UIElementProperty()
+    """Visible and may be interacted with"""
+    class_name: str = UIElementProperty()
+    """C++ class name of the element"""
+    enabled: bool = UIElementProperty()
+    """Whether this specific element is enabled"""
+    enabled_chain: bool = UIElementProperty()
+    """Whether everything in the element's ancestry is enabled"""
+    rect: UIRect = UIElementProperty()
+    """Extents of the element rect, not clipped to parent rects"""
+    value: Any = UIElementProperty()
+    """Logical value of the element, LLSD"""
+    visible: bool = UIElementProperty()
+    """Whether this specific element is set to be visible"""
+    visible_chain: bool = UIElementProperty()
+    """Whether everything in the element's ancestry is visible"""
+
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, UIElement):
+            return False
+        if other._tree != self._tree:
+            return False
+        return other.path == self.path
+
+    async def refresh_subtree(self, refresh_info=False):
+        await self._tree.refresh_subtree(self.path, refresh_info=refresh_info)
+
+    async def refresh(self):
+        await self._tree.fetch_info_for_paths([self.path])
 
 
 class UIElementTree(Mapping[UIPath, "UIElement"]):
@@ -173,118 +270,21 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
                 elem_info = UIElementInfo(
                     available=info["available"],
                     class_name=info["class"],
-                    enabled=info["enabled"],
-                    enabled_chain=info["enabled_chain"],
+                    # Some things are represented in the LLSD payload as int even though
+                    # they'd be better represented as `bool`s. This is just an artifact
+                    # of the functions in the C++ side using `BOOL` rather than `bool`.
+                    enabled=bool(info["enabled"]),
+                    enabled_chain=bool(info["enabled_chain"]),
                     rect=UIRect(**info["rect"]),
                     value=info.get("value"),
-                    visible=info["visible"],
-                    visible_chain=info["visible_chain"],
+                    visible=bool(info["visible"]),
+                    visible_chain=bool(info["visible_chain"]),
                 )
 
             self._elem_info[UIPath(path)] = elem_info
 
     async def refresh(self, refresh_info: bool = False):
         await self.refresh_subtree(under=None, refresh_info=refresh_info)
-
-
-_T = TypeVar("T")
-
-
-class UIElementProperty(Generic[_T]):
-    __slots__ = ("name", "owner")
-
-    def __init__(self):
-        super().__init__()
-
-    def __set_name__(self, owner, name: str):
-        self.name = name
-
-    def __get__(self, _obj: UIElement, owner: Optional[Type] = None) -> _T:
-        # Reach into the UIElementTree for info related to the element our owner wraps.
-        # Try to access the parameter related to this. This will intentionally fail if
-        # the UIElement info aren't complete.
-        return getattr(_obj.info, self.name)
-
-
-class UIElement:
-    """Wrapper around a tree and a path to access that path in the tree"""
-
-    def __init__(self, path: UIPath, element_tree: UIElementTree):
-        self.path = path
-        self._tree = element_tree
-
-    def __str__(self) -> str:
-        return str(self.path)
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}({str(self)!r})"
-
-    @property
-    def info(self) -> Optional[UIElementInfo]:
-        return self._tree.get_info_by_path(self.path)
-
-    @property
-    def have_info(self) -> bool:
-        try:
-            return self._tree.get_info_by_path(self.path) is not None
-        except KeyError:
-            return False
-
-    @property
-    def is_detached(self) -> bool:
-        try:
-            self._tree.get_info_by_path(self.path)
-            return False
-        except KeyError:
-            return True
-
-    @property
-    def parent(self) -> Optional[UIElement]:
-        parent = self.path.parent
-        if parent == self.path:
-            return None
-        return self._tree[parent]
-
-    @property
-    def ancestors(self) -> Sequence[UIElement]:
-        ancestors = []
-        elem = self
-        while elem := elem.parent:
-            ancestors.append(elem)
-        return ancestors
-
-    def to_dict(self):
-        info = self.info
-        return {
-            "path": self.path,
-            **(info.to_dict() if info else {}),
-        }
-
-    @property
-    def children(self) -> List[UIElement]:
-        return self._tree.get_child_elems(self.path)
-
-    available: bool = UIElementProperty()
-    class_name: str = UIElementProperty()
-    enabled: int = UIElementProperty()
-    enabled_chain: int = UIElementProperty()
-    rect: UIRect = UIElementProperty()
-    value: Any = UIElementProperty()
-    visible: int = UIElementProperty()
-    visible_chain: int = UIElementProperty()
-
-    def __eq__(self, other) -> bool:
-        if not isinstance(other, UIElement):
-            return False
-        if other._tree != self._tree:
-            return False
-        return other.path == self.path
-
-    async def refresh_subtree(self, refresh_info=False):
-        await self._tree.refresh_subtree(self.path, refresh_info=refresh_info)
-
-    async def refresh(self):
-        await self._tree.fetch_info_for_paths([self.path])
 
 
 UI_PATH_TYPE = Optional[Union[str, UIPath, UIElement]]
