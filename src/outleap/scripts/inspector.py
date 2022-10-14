@@ -17,9 +17,6 @@ import outleap
 from outleap import LEAPClient, UIElement, UIPath
 from outleap.qt_helpers import GUIInteractionManager, loadUi
 
-ROOT_LOG = logging.getLogger()
-ROOT_LOG.addHandler(logging.StreamHandler())
-ROOT_LOG.setLevel(logging.DEBUG)
 LOG = logging.getLogger(__name__)
 
 
@@ -270,6 +267,7 @@ async def start_gui():
 
 
 def inspector_main():
+    logging.basicConfig()
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
     app = QtWidgets.QApplication(sys.argv)
     loop: asyncio.AbstractEventLoop = QEventLoop(app)
