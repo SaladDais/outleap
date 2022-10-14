@@ -76,12 +76,13 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
     btnSaveRendered: QtWidgets.QPushButton
     graphicsElemScreenshot: QtWidgets.QGraphicsView
 
-    def __init__(self, client: outleap.LEAPClient):
+    def __init__(self, client: outleap.LEAPClient, client_is_owned=False):
         super().__init__()
 
         loadUi(MAIN_WINDOW_UI_PATH, self)
 
         self.client = client
+        self._client_is_owned = client_is_owned
         self._filter = ""
 
         self.interaction_manager = GUIInteractionManager(self)
@@ -109,10 +110,11 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         return super().showEvent(event)
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        try:
-            self.client.disconnect()
-        except Exception as e:
-            logging.exception(e)
+        if self._client_is_owned:
+            try:
+                self.client.disconnect()
+            except Exception as e:
+                logging.exception(e)
         return super().closeEvent(event)
 
     def _getSelectedPath(self) -> Optional[UIPath]:
@@ -262,7 +264,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
 async def start_gui():
     signal.signal(signal.SIGINT, lambda *args: QtWidgets.QApplication.quit())
     client = await LEAPClient.create_stdio_client()
-    window = LEAPInspectorGUI(client)
+    window = LEAPInspectorGUI(client, client_is_owned=True)
     window.show()
 
 
