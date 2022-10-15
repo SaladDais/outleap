@@ -99,6 +99,10 @@ class LEAPClient:
             if not fut.done():
                 fut.cancel()
         self._reply_futs.clear()
+        # Tell anything listening on these queues that the queues are now closed.
+        for listener_details in self._pump_listeners.values():
+            for listener in listener_details.listeners:
+                listener.close_queue()
         self._pump_listeners.clear()
 
     def sys_command(self, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
@@ -159,11 +163,9 @@ class LEAPClient:
         """Start listening to `source_pump`, placing its messages in the returned asyncio Queue"""
         assert self.connected
 
-        msg_queue = asyncio.Queue()
-
         listener_details = self._pump_listeners[source_pump]
         had_listeners = bool(listener_details.listeners)
-        listener = LEAPListener(self, msg_queue)
+        listener = LEAPListener()
         listener_details.listeners.add(listener)
 
         if not had_listeners:
@@ -184,6 +186,7 @@ class LEAPClient:
             listeners = listener_details.listeners
             if listener in listeners:
                 listeners.remove(listener)
+                listener.close_queue()
                 if self.connected and not listeners:
                     # Nobody cares about these events anymore, ask LEAP to stop sending them
                     await self.sys_command(
@@ -276,9 +279,13 @@ class ConnectionStatus(enum.Enum):
 class LEAPListener:
     """Wrapper for queue.get() that cancels if the client disconnects while `await`ing"""
 
-    def __init__(self, client: LEAPClient, queue: asyncio.Queue):
-        self._client = client
-        self._queue = queue
+    def __init__(self):
+        self._queue = asyncio.Queue()
+        self._shutdown_event = asyncio.Event()
+
+    def close_queue(self):
+        if not self._shutdown_event.is_set():
+            self._shutdown_event.set()
 
     async def get(self) -> Any:
         # Don't yield if we already have a message ready
@@ -287,9 +294,12 @@ class LEAPListener:
             self._queue.task_done()
             return msg
 
+        if self._shutdown_event.is_set():
+            raise asyncio.QueueEmpty("Listener is closed and has no queued messages")
+
         # Wait for a queue entry to be ready, or for client shutdown
         queue_fut = asyncio.create_task(self._queue.get())
-        shutdown_fut = asyncio.create_task(self._client.shutdown_event.wait())
+        shutdown_fut = asyncio.create_task(self._shutdown_event.wait())
         done, pending = await asyncio.wait([shutdown_fut, queue_fut], return_when=asyncio.FIRST_COMPLETED)
         if done != {queue_fut}:
             # Shutdown happened before the queue got populated
@@ -306,6 +316,7 @@ class LEAPListener:
         return self._queue.empty()
 
     def put_nowait(self, val: Any) -> None:
+        assert not self._shutdown_event.is_set()
         self._queue.put_nowait(val)
 
 

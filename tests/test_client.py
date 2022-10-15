@@ -141,8 +141,17 @@ class ProtocolTests(BaseClientTest):
         self._write_reply(1)
         listener = await listen_fut
 
+        # Let the get() run until the yield
+        listener_fut = listener.get()
+        done, pending = await asyncio.wait([listener_fut], timeout=0.0001)
+
+        # Disconnect the client, triggering queue closure for all of the listeners
         self.client.disconnect()
+        # The get() that was pending before the disconnect should be cancelled
         with self.assertRaises(asyncio.CancelledError):
+            await list(pending)[0]
+        # Any get()s done after that should return QueueEmpty
+        with self.assertRaises(asyncio.QueueEmpty):
             await listener.get()
 
     async def test_listen_message_from_before_disconnect(self):
