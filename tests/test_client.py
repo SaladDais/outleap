@@ -125,6 +125,8 @@ class ProtocolTests(BaseClientTest):
         msg = await listener.get()
         self.assertEqual("hi", msg)
 
+        self.assertTrue(listener.empty())
+
         # Done, unregister the listen
         stop_listen_fut = self.client.stop_listening(listener)
         # Pretend a reply came in stopping the listen
@@ -160,8 +162,10 @@ class ProtocolTests(BaseClientTest):
         await asyncio.sleep(0)
         self.client.disconnect()
 
+        self.assertFalse(listener.empty())
         msg = await listener.get()
         self.assertEqual("hi", msg)
+        self.assertTrue(listener.empty())
 
     async def test_listen_ctx_mgr(self):
         self._write_welcome()

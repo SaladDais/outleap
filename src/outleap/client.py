@@ -281,19 +281,29 @@ class LEAPListener:
         self._queue = queue
 
     async def get(self) -> Any:
+        # Don't yield if we already have a message ready
         if not self._queue.empty():
             msg = self._queue.get_nowait()
             self._queue.task_done()
             return msg
 
+        # Wait for a queue entry to be ready, or for client shutdown
         queue_fut = asyncio.create_task(self._queue.get())
         shutdown_fut = asyncio.create_task(self._client.shutdown_event.wait())
         done, pending = await asyncio.wait([shutdown_fut, queue_fut], return_when=asyncio.FIRST_COMPLETED)
         if done != {queue_fut}:
+            # Shutdown happened before the queue got populated
             queue_fut.cancel()
             raise asyncio.CancelledError("Client disconnected while waiting for event")
+        # We found a queue entry, don't care if shutdown happens anymore.
         shutdown_fut.cancel()
+        # Consumption is completion for these queues.
+        self._queue.task_done()
+        # Re-awaiting is fine, it'll return the previous result.
         return await queue_fut
+
+    def empty(self) -> bool:
+        return self._queue.empty()
 
     def put_nowait(self, val: Any) -> None:
         self._queue.put_nowait(val)
