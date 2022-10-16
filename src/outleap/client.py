@@ -109,16 +109,18 @@ class LEAPClient:
         """Make a request to an internal LEAP method over the command pump"""
         return self.command(self.cmd_pump, op, data)
 
-    def command(self, pump: str, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
+    def command(
+        self, pump: str, op: str, data: Optional[Dict] = None, op_key: str = "op"
+    ) -> Optional[asyncio.Future]:
         """Make a request to an internal LEAP method using the standard command form (op in data)"""
         data = data.copy() if data else {}
-        data["op"] = op
+        data[op_key] = op
         return self.post(pump, data, expect_reply=True)
 
-    def void_command(self, pump: str, op: str, data: Optional[Dict] = None) -> None:
+    def void_command(self, pump: str, op: str, data: Optional[Dict] = None, op_key: str = "op") -> None:
         """Like `command()`, but we don't expect a reply."""
         data = data.copy() if data else {}
-        data["op"] = op
+        data[op_key] = op
         self.post(pump, data, expect_reply=False)
 
     def post(self, pump: str, data: Any, expect_reply: bool) -> Optional[asyncio.Future]:

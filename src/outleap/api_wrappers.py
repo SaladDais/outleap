@@ -418,6 +418,42 @@ class LLFloaterRegAPI(LEAPAPIWrapper):
         )
 
 
+class LLPuppetryAPI(LEAPAPIWrapper):
+    PUMP_NAME = "puppetry"
+    OP_KEY: str = "command"
+
+    def get_camera(self) -> Awaitable[int]:
+        """Request camera number: returns ["camera_id"]"""
+        fut = self._client.command(self._pump_name, "get_camera", {}, op_key=self.OP_KEY)
+        return _data_unwrapper(fut, "camera_id")
+
+    def set_camera(self, camera_id: int) -> None:
+        """Request camera number: returns ["camera_id"]"""
+        payload = {"camera_id": camera_id}
+        self._client.void_command(self._pump_name, "set_camera", payload, op_key=self.OP_KEY)
+
+    def send_skeleton(self) -> None:
+        """
+        Request skeleton data
+
+        Response will be sent over the "puppetry.command" listener as a "set_skeleton"
+        """
+        self._client.void_command(self._pump_name, "send_skeleton", {}, op_key=self.OP_KEY)
+
+    def move(self, joint_data: Dict[str, Dict]) -> None:
+        """
+        Send puppet movement data
+
+        Expected data format:
+            {'joint_name':{'param_name':[r1.23,r4.56,r7.89]}, ...}
+        Where:
+            joint_name = e.g. mWristLeft
+            param_name = rot | pos | scale | eff
+            param value = array of 3 floats [x,y,z]
+        """
+        self._client.void_command(self._pump_name, "move", joint_data, op_key=self.OP_KEY)
+
+
 __all__ = [
     "LLUIAPI",
     "LLAgentAPI",
@@ -426,5 +462,6 @@ __all__ = [
     "LLViewerWindowAPI",
     "LLCommandDispatcherAPI",
     "LLFloaterRegAPI",
+    "LLPuppetryAPI",
     "LEAPAPIWrapper",
 ]
