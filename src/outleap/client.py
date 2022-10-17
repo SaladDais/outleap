@@ -13,6 +13,15 @@ from .protocol import AbstractLEAPProtocol, LEAPProtocol
 from .utils import connect_stdin_stdout
 
 
+class CommandPumpToken:
+    pass
+
+
+COMMAND_PUMP = CommandPumpToken()
+
+PUMP_NAME_TYPE = Union[CommandPumpToken, str]
+
+
 class LEAPClient:
     """Client for script -> viewer communication over the LEAP protocol"""
 
@@ -105,31 +114,31 @@ class LEAPClient:
                 listener.close_queue()
         self._pump_listeners.clear()
 
-    def sys_command(self, op: str, data: Optional[Dict] = None) -> Optional[asyncio.Future]:
-        """Make a request to an internal LEAP method over the command pump"""
-        return self.command(self.cmd_pump, op, data)
-
     def command(
-        self, pump: str, op: str, data: Optional[Dict] = None, op_key: str = "op"
+        self, pump: PUMP_NAME_TYPE, op: str, data: Optional[Dict] = None, op_key: str = "op"
     ) -> Optional[asyncio.Future]:
         """Make a request to an internal LEAP method using the standard command form (op in data)"""
         data = data.copy() if data else {}
         data[op_key] = op
         return self.post(pump, data, expect_reply=True)
 
-    def void_command(self, pump: str, op: str, data: Optional[Dict] = None, op_key: str = "op") -> None:
+    def void_command(
+        self, pump: PUMP_NAME_TYPE, op: str, data: Optional[Dict] = None, op_key: str = "op"
+    ) -> None:
         """Like `command()`, but we don't expect a reply."""
         data = data.copy() if data else {}
         data[op_key] = op
         self.post(pump, data, expect_reply=False)
 
-    def post(self, pump: str, data: Any, expect_reply: bool) -> Optional[asyncio.Future]:
+    def post(self, pump: PUMP_NAME_TYPE, data: Any, expect_reply: bool) -> Optional[asyncio.Future]:
         """
         Post an event to the other side's `pump`.
 
         Post the event is done synchronously, only waiting for the reply is done async.
         """
         assert self.connected
+        if isinstance(pump, CommandPumpToken):
+            pump = self.cmd_pump
         fut = None
         # If we expect a reply to this event, we need to do some extra bookkeeping.
         # There are apparently some commands for which we can never expect to get a reply.
@@ -161,9 +170,11 @@ class LEAPClient:
     def listen_scoped(self, source_pump: str):
         return LEAPListenContextManager(self, source_pump)
 
-    async def listen(self, source_pump: str) -> LEAPListener:
+    async def listen(self, source_pump: PUMP_NAME_TYPE) -> LEAPListener:
         """Start listening to `source_pump`, placing its messages in the returned asyncio Queue"""
         assert self.connected
+        if isinstance(source_pump, CommandPumpToken):
+            source_pump = self.cmd_pump
 
         listener_details = self._pump_listeners[source_pump]
         had_listeners = bool(listener_details.listeners)
@@ -173,7 +184,8 @@ class LEAPClient:
         if not had_listeners:
             # Nothing was listening to this before, need to ask for its events to be
             # sent over LEAP.
-            await self.sys_command(
+            await self.command(
+                COMMAND_PUMP,
                 "listen",
                 {
                     "listener": listener_details.name,
@@ -191,7 +203,8 @@ class LEAPClient:
                 listener.close_queue()
                 if self.connected and not listeners:
                     # Nobody cares about these events anymore, ask LEAP to stop sending them
-                    await self.sys_command(
+                    await self.command(
+                        COMMAND_PUMP,
                         "stoplistening",
                         {
                             "listener": listener_details.name,
@@ -330,6 +343,9 @@ class ListenerDetails:
 
 
 __all__ = [
+    "COMMAND_PUMP",
+    "CommandPumpToken",
+    "PUMP_NAME_TYPE",
     "LEAPListenContextManager",
     "LEAPListener",
     "LEAPClient",

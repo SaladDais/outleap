@@ -70,3 +70,32 @@ class TestWrappers(BaseClientTest):
             },
             self.protocol.sent_messages[-1],
         )
+
+    async def test_command_wrapper(self):
+        self._write_welcome()
+        await self.client.connect()
+
+        llwindow_api = outleap.CommandAPI(self.client)
+        fut = llwindow_api.get_api("foo")
+        self.assertDictEqual(
+            {
+                "pump": self.client.cmd_pump,
+                "data": {
+                    "api": "foo",
+                    "op": "getAPI",
+                    "reply": "reply_pump",
+                    "reqid": 1,
+                },
+            },
+            self.protocol.sent_messages[-1],
+        )
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {
+                    "whatever": "foo",
+                    "reqid": 1,
+                },
+            }
+        )
+        self.assertEqual("foo", (await fut)["whatever"])

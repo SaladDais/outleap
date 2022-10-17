@@ -12,7 +12,9 @@ import sys
 from typing import *
 
 from outleap import (
+    COMMAND_PUMP,
     LLUIAPI,
+    CommandAPI,
     LEAPBridgeServer,
     LEAPClient,
     LLCommandDispatcherAPI,
@@ -28,8 +30,10 @@ async def client_connected(client: LEAPClient):
     # Kick off a request to get ops for each API supported by the viewer
     # Won't wait for a response from the viewer between each send
     api_futs: Dict[Awaitable, str] = {}
-    for api_name in (await client.sys_command("getAPIs")).keys():
-        api_fut = client.sys_command("getAPI", {"api": api_name})
+    # COMMAND_PUMP is a special pump and refers to whatever command pump was assigned
+    # to us as part of the LEAP handshake. It's different every time.
+    for api_name in (await client.command(COMMAND_PUMP, "getAPIs")).keys():
+        api_fut = client.command(COMMAND_PUMP, "getAPI", {"api": api_name})
         api_futs[api_fut] = api_name
 
     # Wait for all of our getAPI commands to complete in parallel
@@ -60,10 +64,10 @@ async def client_connected(client: LEAPClient):
     # A simple command that has no reply, or has a reply we don't care about.
     client.void_command("LLFloaterReg", "showInstance", {"name": "preferences"})
 
-    # Some commands must be executed against the dynamically assigned command
-    # pump that's specific to our LEAP listener. `sys_command()` is the same as
-    # `command()` except it internally addresses whatever the system command pump is.
-    await client.sys_command("ping")
+    # Simple connectivity check, this is largely the same as doing
+    # `await client.command(COMMAND_PUMP, "ping")`, but with intellisense support.
+    command_api = CommandAPI(client)
+    await command_api.ping()
 
     # Print out all the commands supported by LLCommandDispatcher
     cmd_dispatcher_api = LLCommandDispatcherAPI(client)

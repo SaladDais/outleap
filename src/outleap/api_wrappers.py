@@ -5,16 +5,16 @@ import pathlib
 import uuid
 from typing import *
 
-from .client import LEAPClient
+from .client import COMMAND_PUMP, PUMP_NAME_TYPE, CommandPumpToken, LEAPClient
 from .ui_elems import UI_PATH_TYPE, UIPath
 
 
 class LEAPAPIWrapper(abc.ABC):
     """Base class for classes wrapping specific LEAP APIs"""
 
-    PUMP_NAME: Optional[str] = None
+    PUMP_NAME: Optional[PUMP_NAME_TYPE] = None
 
-    def __init__(self, client: LEAPClient, pump_name: Optional[str] = None):
+    def __init__(self, client: LEAPClient, pump_name: Optional[PUMP_NAME_TYPE] = None):
         super().__init__()
         self._client = client
         self._pump_name = pump_name or self.PUMP_NAME
@@ -27,6 +27,54 @@ async def _data_unwrapper(data_fut: Awaitable[Dict], inner_elem: str) -> Any:
     # but that means that we have to return a `Coroutine` that will pull the value out of the dict
     # rather than directly returning the `Future`.
     return (await data_fut)[inner_elem]
+
+
+class CommandAPI(LEAPAPIWrapper):
+    PUMP_NAME = COMMAND_PUMP
+
+    def get_apis(self) -> Awaitable[dict]:
+        """
+        Get a list of all available LLEventAPI instances
+
+        Returns a dict of API name -> API details
+        """
+        return self._client.command(self._pump_name, "getAPIs")
+
+    def get_api(self, api_name: str) -> Awaitable[dict]:
+        """Get details about a specific LLEventAPI instance, including supported methos"""
+        return self._client.command(self._pump_name, "getAPI", {"api": api_name})
+
+    def ping(self) -> Awaitable[None]:
+        """Send a ping and await the pong"""
+        return self._client.command(self._pump_name, "ping")
+
+    def start_listening(self, listener_name: str, source_pump: PUMP_NAME_TYPE) -> Awaitable[bool]:
+        """Start listening on a specific pump, using `listener_name`"""
+        if isinstance(source_pump, CommandPumpToken):
+            source_pump = self._client.cmd_pump
+        fut = self._client.command(
+            self._pump_name,
+            "listen",
+            {
+                "listener": listener_name,
+                "source": source_pump,
+            },
+        )
+        return _data_unwrapper(fut, "status")
+
+    def stop_listening(self, listener_name: str, source_pump: PUMP_NAME_TYPE) -> Awaitable[bool]:
+        """Stop `listener_name` from listening on a specific pump"""
+        if isinstance(source_pump, CommandPumpToken):
+            source_pump = self._client.cmd_pump
+        fut = self._client.command(
+            self._pump_name,
+            "stoplistening",
+            {
+                "listener": listener_name,
+                "source": source_pump,
+            },
+        )
+        return _data_unwrapper(fut, "status")
 
 
 class LLWindowAPI(LEAPAPIWrapper):
@@ -455,6 +503,7 @@ class LLPuppetryAPI(LEAPAPIWrapper):
 
 
 __all__ = [
+    "CommandAPI",
     "LLUIAPI",
     "LLAgentAPI",
     "LLWindowAPI",
