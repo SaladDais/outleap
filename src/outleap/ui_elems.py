@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import collections
 import dataclasses
+import weakref
 from typing import *
 
 if TYPE_CHECKING:
@@ -10,26 +11,35 @@ if TYPE_CHECKING:
 
 
 class UIPath:
-    __slots__ = ["_parts"]
+    __slots__ = ["_parts", "__weakref__"]
+    # UIPaths are immutable, so we can maintain a cache of instances based on
+    # the parts that make up the path.
+    _INSTANCES: Dict[Tuple[str, ...], UIPath] = weakref.WeakValueDictionary()
 
     def __new__(cls, *args):
-        val = super().__new__(cls)
         if len(args) == 1:
             if isinstance(args[0], str):
                 args = args[0].split("/")
                 # "." means "/" in LEAP
                 if tuple(args) == (".",):
                     args = ()
-                # Ignore empty segments
-                args = tuple([x for x in args if x])
+                else:
+                    # Ignore empty segments
+                    args = tuple([x for x in args if x])
             elif isinstance(args[0], UIPath):
-                args = args[0]._parts
+                return args[0]
             else:
                 args = tuple(args)
         else:
             args = tuple(args)
 
+        # Check if we have a cached UIPath instance for these args first
+        val = cls._INSTANCES.get(args)
+        if val is not None:
+            return val
+        val = super().__new__(cls)
         val._parts = args
+        cls._INSTANCES[args] = val
         return val
 
     @classmethod
@@ -44,10 +54,10 @@ class UIPath:
 
     def __eq__(self, other):
         if isinstance(other, UIPath):
-            return self._parts == other._parts
-        if not other:
-            return False
-        return str(other) == str(self)
+            return self is other
+        elif isinstance(other, str):
+            return UIPath(other) == self
+        return NotImplemented
 
     def __hash__(self):
         return hash(self._parts)
