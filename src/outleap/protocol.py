@@ -56,6 +56,12 @@ class LEAPProtocol(AbstractLEAPProtocol):
         if not self._drain_task:
             self._drain_task = asyncio.create_task(self._drain_soon())
 
+    async def drain(self) -> None:
+        if self._drain_task:
+            await self._drain_task
+        else:
+            await self._writer.drain()
+
     async def _drain_soon(self) -> None:
         self._drain_task = None
         await self._writer.drain()

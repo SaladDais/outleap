@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 from . import BaseClientTest
 
@@ -8,6 +9,21 @@ class ProtocolTests(BaseClientTest):
         self._write_welcome()
         await self.client.connect()
         self.assertTrue(self.client.connected)
+
+    async def test_connect_process_id(self):
+        self._write_welcome()
+        await self.client.connect()
+        self.assertEqual(1, self.client.viewer_pid)
+
+    async def test_connect_no_process_id(self):
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {"command": "cmd_pump"},
+            }
+        )
+        await self.client.connect()
+        self.assertEqual(os.getppid(), self.client.viewer_pid)
 
     async def test_disconnect(self):
         self._write_welcome()

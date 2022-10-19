@@ -50,6 +50,7 @@ class BaseClientTest(unittest.IsolatedAsyncioTestCase):
                 "pump": "reply_pump",
                 "data": {
                     "command": "cmd_pump",
+                    "process_id": 1,
                 },
             }
         )

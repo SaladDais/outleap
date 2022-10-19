@@ -5,6 +5,7 @@ import collections
 import dataclasses
 import enum
 import logging
+import os
 import uuid
 from types import TracebackType
 from typing import *
@@ -31,6 +32,8 @@ class LEAPClient:
         self._reply_pump: Optional[str] = None
         # Pump used for sending leap meta-commands to the viewer (getAPIs, etc.)
         self.cmd_pump: Optional[str] = None
+        # Process ID of the viewer connecting to us
+        self.viewer_pid: Optional[int] = None
         # Map of req id -> future held by requester to send responses to
         self._reply_futs: Dict[uuid.UUID, asyncio.Future] = {}
         self._pump_listeners: Dict[str, ListenerDetails] = collections.defaultdict(ListenerDetails)
@@ -68,6 +71,11 @@ class LEAPClient:
             welcome_message = await self._protocol.read_message()
             self._reply_pump = welcome_message["pump"]
             self.cmd_pump = welcome_message["data"]["command"]
+            self.viewer_pid = welcome_message["data"].get("process_id")
+            if self.viewer_pid is None:
+                # handshake didn't include the process ID, assume our own parent
+                # process ID is the viewer's process ID.
+                self.viewer_pid = os.getppid()
 
             self._connection_status = ConnectionStatus.CONNECTED
             self._start_message_pump()
