@@ -6,6 +6,7 @@ import dataclasses
 import enum
 import logging
 import os
+import sys
 import uuid
 from types import TracebackType
 from typing import *
@@ -34,6 +35,10 @@ class LEAPClient:
         self.cmd_pump: Optional[str] = None
         # Process ID of the viewer connecting to us
         self.viewer_pid: Optional[int] = None
+        # Arguments the script the client belongs to was launched with
+        # This is necessary to distinguish between LEAP scripts launched with
+        # the --leap arguments and those launched as puppetry plugins.
+        self.launch_args: Optional[List[str]] = None
         # Map of req id -> future held by requester to send responses to
         self._reply_futs: Dict[uuid.UUID, asyncio.Future] = {}
         self._pump_listeners: Dict[str, ListenerDetails] = collections.defaultdict(ListenerDetails)
@@ -72,10 +77,13 @@ class LEAPClient:
             self._reply_pump = welcome_message["pump"]
             self.cmd_pump = welcome_message["data"]["command"]
             self.viewer_pid = welcome_message["data"].get("process_id")
+            self.launch_args = welcome_message["data"].get("args")
             if self.viewer_pid is None:
                 # handshake didn't include the process ID, assume our own parent
                 # process ID is the viewer's process ID.
                 self.viewer_pid = os.getppid()
+            if self.launch_args is None:
+                self.launch_args = sys.argv[1:]
 
             self._connection_status = ConnectionStatus.CONNECTED
             self._start_message_pump()

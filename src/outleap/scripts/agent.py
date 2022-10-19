@@ -10,6 +10,7 @@ Usage: While an outleap TCP receiver is running
 import asyncio
 import multiprocessing
 import os
+import sys
 
 from outleap import LEAPProtocol
 from outleap.utils import connect_stdin_stdout
@@ -26,9 +27,11 @@ async def amain():
     stdio_reader, stdio_writer = await connect_stdin_stdout()
 
     # Enrich the LEAP handshake with our parent's process ID so
-    # the connection can be tied to a specific client
+    # the connection can be tied to a specific client.
+    # Pass along any arguments we were launched with as well.
     handshake = await LEAPProtocol(stdio_reader, stdio_writer).read_message()
     handshake["data"]["process_id"] = os.getppid()
+    handshake["data"]["args"] = sys.argv[1:]
 
     # Forward along the modified handshake
     serv_protocol = LEAPProtocol(serv_reader, serv_writer)

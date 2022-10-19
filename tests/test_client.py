@@ -1,5 +1,6 @@
 import asyncio
 import os
+import sys
 
 from . import BaseClientTest
 
@@ -14,6 +15,7 @@ class ProtocolTests(BaseClientTest):
         self._write_welcome()
         await self.client.connect()
         self.assertEqual(1, self.client.viewer_pid)
+        self.assertListEqual(["foo", "bar"], self.client.launch_args)
 
     async def test_connect_no_process_id(self):
         self.protocol.inbound_messages.put_nowait(
@@ -24,6 +26,7 @@ class ProtocolTests(BaseClientTest):
         )
         await self.client.connect()
         self.assertEqual(os.getppid(), self.client.viewer_pid)
+        self.assertEqual(sys.argv[1:], self.client.launch_args)
 
     async def test_disconnect(self):
         self._write_welcome()

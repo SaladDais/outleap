@@ -51,6 +51,7 @@ class BaseClientTest(unittest.IsolatedAsyncioTestCase):
                 "data": {
                     "command": "cmd_pump",
                     "process_id": 1,
+                    "args": ["foo", "bar"],
                 },
             }
         )
