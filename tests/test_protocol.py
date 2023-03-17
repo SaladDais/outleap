@@ -3,6 +3,8 @@ import unittest
 import unittest.mock
 from typing import *
 
+import llsd
+
 import outleap
 
 
@@ -65,6 +67,11 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_read(self):
         self.reader.feed_data(b"2:{}")
+        self.assertEqual({}, await self.leap_protocol.read_message())
+
+    async def test_read_binary(self):
+        bin_ser = llsd.serde_binary.format_binary({})
+        self.reader.feed_data(str(len(bin_ser)).encode("utf8") + b":" + bin_ser)
         self.assertEqual({}, await self.leap_protocol.read_message())
 
     async def test_write(self):

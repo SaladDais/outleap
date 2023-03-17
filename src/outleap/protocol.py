@@ -23,6 +23,9 @@ class AbstractLEAPProtocol(abc.ABC):
         pass
 
 
+LLSD_PARSE_FUNC = Callable[[bytes], Any]
+
+
 class LEAPProtocol(AbstractLEAPProtocol):
     """Wrapper for communication with a LEAP peer over an asyncio reader/writer pair"""
 
@@ -31,7 +34,9 @@ class LEAPProtocol(AbstractLEAPProtocol):
     def __init__(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         self._reader = reader
         self._writer = writer
-        self._parser = llsd.serde_notation.LLSDNotationParser()
+        # We could receive any kind of LLSD, so we have to use a parser that
+        # can handle anything via content type sniffing.
+        self._parser: LLSD_PARSE_FUNC = llsd.parse
         self._formatter = llsd.serde_notation.LLSDNotationFormatter()
         self._drain_task = None
 
@@ -74,7 +79,7 @@ class LEAPProtocol(AbstractLEAPProtocol):
         if length > self.PAYLOAD_LIMIT:
             raise ValueError(f"Unreasonable LEAP payload length of {length}")
         # Everything after the colon is LLSD
-        parsed = self._parser.parse(await self._reader.readexactly(length))
+        parsed = self._parser(await self._reader.readexactly(length))
         if not isinstance(parsed, dict):
             raise ValueError(f"Expected LEAP message to be a dict, got {parsed!r}")
         return parsed
