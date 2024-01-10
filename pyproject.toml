@@ -21,7 +21,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "llsd==1.0.0"
+    "llsd==1.0.0",
+    # Needed for pkg_resources
+    "setuptools",
 ]
 dynamic=["version"]
 
