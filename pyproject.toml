@@ -21,8 +21,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    # Whichever version. Don't care.
-    "llsd"
+    "llsd==1.0.0"
 ]
 dynamic=["version"]
 
