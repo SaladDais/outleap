@@ -44,7 +44,9 @@ def temp_file_path():
             os.remove(f.name)
 
 
-def _calc_clipped_rect(pix: QtGui.QPixmap, elem: outleap.UIElement, scale_factor: float = 1.0) -> QtCore.QRect:
+def _calc_clipped_rect(
+    pix: QtGui.QPixmap, elem: outleap.UIElement, scale_factor: float = 1.0
+) -> QtCore.QRect:
     base_rect = _elem_rect_to_qrect(pix, elem.rect * scale_factor)
     while elem := elem.parent:
         # Should also be clipped to the intersection of all parent rects,
