@@ -44,13 +44,13 @@ def temp_file_path():
             os.remove(f.name)
 
 
-def _calc_clipped_rect(pix: QtGui.QPixmap, elem: outleap.UIElement) -> QtCore.QRect:
-    base_rect = _elem_rect_to_qrect(pix, elem.rect)
+def _calc_clipped_rect(pix: QtGui.QPixmap, elem: outleap.UIElement, scale_factor: float = 1.0) -> QtCore.QRect:
+    base_rect = _elem_rect_to_qrect(pix, elem.rect * scale_factor)
     while elem := elem.parent:
         # Should also be clipped to the intersection of all parent rects,
         # some scrollers have offscreen rects that can't really be shown
         # in a screenshot.
-        parent_rect = _elem_rect_to_qrect(pix, elem.rect)
+        parent_rect = _elem_rect_to_qrect(pix, elem.rect * scale_factor)
         base_rect = base_rect.intersected(parent_rect)
     return base_rect
 
@@ -86,8 +86,9 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
         self._filter = ""
 
         self.interaction_manager = GUIInteractionManager(self)
-        self.window_api = outleap.LLWindowAPI(client)
+        self.window_api = outleap.LLWindowAPI(self.client)
         self.viewer_window_api = outleap.LLViewerWindowAPI(self.client)
+        self.viewer_control_api = outleap.LLViewerControlAPI(self.client)
         self._element_tree = outleap.UIElementTree(self.window_api)
         self._items_by_path: Dict[UIPath, QtWidgets.QTreeWidgetItem] = weakref.WeakValueDictionary()  # noqa
 
@@ -192,6 +193,9 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             self._addChildren(node.children, item)
         parent.addChildren(items)
 
+    async def _getUIScaleFactor(self) -> float:
+        return (await self.viewer_control_api.get("Global", "UIScaleFactor"))["value"]
+
     @asyncSlot()
     async def updateSelectedElemInfo(self, *args):
         self.textElemProperties.setPlainText("")
@@ -228,7 +232,7 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             pix_screenshot.load(path)
 
         # Clip scene and view to elem rect
-        scene_rect = _calc_clipped_rect(pix_screenshot, elem)
+        scene_rect = _calc_clipped_rect(pix_screenshot, elem, await self._getUIScaleFactor())
         self.sceneElemScreenshot.addPixmap(pix_screenshot)
         self.sceneElemScreenshot.setSceneRect(scene_rect)
         self.graphicsElemScreenshot.fitInView(scene_rect, QtCore.Qt.KeepAspectRatio)
@@ -251,7 +255,8 @@ class LEAPInspectorGUI(QtWidgets.QMainWindow):
             await self.viewer_window_api.save_snapshot(path)
             pix_screenshot.load(path)
         # Make a clipped copy of the screenshot
-        clipped = pix_screenshot.copy(_calc_clipped_rect(pix_screenshot, elem))
+        scale_factor = await self._getUIScaleFactor()
+        clipped = pix_screenshot.copy(_calc_clipped_rect(pix_screenshot, elem, scale_factor))
 
         file_name = await self.interaction_manager.save_file(
             caption="Save Rendered Element", filter_str="PNG Images (*.png)", default_suffix="png"

@@ -102,6 +102,11 @@ class UIRect(NamedTuple):
     right: int
     top: int
 
+    def __mul__(self, factor: float) -> UIRect:
+        return UIRect(*map(round, (
+            self.bottom * factor, self.left * factor, self.right * factor, self.top * factor)
+        ))
+
 
 @dataclasses.dataclass
 class UIElementInfo:
