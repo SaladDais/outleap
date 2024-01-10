@@ -161,7 +161,7 @@ class ProtocolTests(BaseClientTest):
         listener = await listen_fut
 
         # Let the get() run until the yield
-        listener_fut = listener.get()
+        listener_fut = asyncio.create_task(listener.get())
         done, pending = await asyncio.wait([listener_fut], timeout=0.0001)
 
         # Disconnect the client, triggering queue closure for all of the listeners
