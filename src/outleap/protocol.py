@@ -26,6 +26,27 @@ class AbstractLEAPProtocol(abc.ABC):
 LLSD_PARSE_FUNC = Callable[[bytes], Any]
 
 
+# Python uses one, C++ uses the other, and everyone's unhappy.
+_BINARY_HEADERS = (b'<? LLSD/Binary ?>', b'<?llsd/binary?>')
+
+
+def parse_llsd(something: bytes) -> Any:
+    # We need a special parser to remove indra's binary LLSD prefix.
+    try:
+        something = something.lstrip()   #remove any pre-trailing whitespace
+        if any(something.startswith(x) for x in _BINARY_HEADERS):
+            return llsd.parse_binary(something.split(b"\n", 1)[1])
+        # This should be better.
+        elif llsd.starts_with(b'<', something):
+            return llsd.parse_xml(something)
+        else:
+            return llsd.parse_notation(something)
+    except KeyError as e:
+        raise llsd.LLSDParseError('LLSD could not be parsed: %s' % (e,))
+    except TypeError as e:
+        raise llsd.LLSDParseError('Input stream not of type bytes. %s' % (e,))
+
+
 class LEAPProtocol(AbstractLEAPProtocol):
     """Wrapper for communication with a LEAP peer over an asyncio reader/writer pair"""
 
@@ -36,7 +57,7 @@ class LEAPProtocol(AbstractLEAPProtocol):
         self._writer = writer
         # We could receive any kind of LLSD, so we have to use a parser that
         # can handle anything via content type sniffing.
-        self._parser: LLSD_PARSE_FUNC = llsd.parse
+        self._parser: LLSD_PARSE_FUNC = parse_llsd
         self._formatter = llsd.serde_notation.LLSDNotationFormatter()
         self._drain_task = None
 
