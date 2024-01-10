@@ -87,7 +87,10 @@ class ProtocolTests(BaseClientTest):
 
         # Pretend a reply came in
         self._write_reply(1, {"foo": 1})
-        self.assertEqual({"foo": 1}, await asyncio.wait_for(fut, timeout=0.01))
+        # Work around weird Windows-only bug in wait_for() in Windows Python 3.12 :(
+        # Seems that it doesn't return the result even though the future is marked done?
+        await asyncio.sleep(0)
+        self.assertEqual({"foo": 1}, await asyncio.wait_for(fut, timeout=0.05))
 
     async def test_disconnect_pending_command(self):
         self._write_welcome()
