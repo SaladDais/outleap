@@ -47,6 +47,10 @@ async def amain():
         pass
 
 
+def agent_main():
+    asyncio.run(amain())
+
+
 if __name__ == "__main__":
     multiprocessing.freeze_support()
-    asyncio.run(amain())
+    agent_main()
