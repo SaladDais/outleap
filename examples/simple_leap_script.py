@@ -15,7 +15,7 @@ async def amain():
 
 
 def main():
-    loop = asyncio.get_event_loop_policy().get_event_loop()
+    loop = asyncio.new_event_loop()
     loop.run_until_complete(amain())
 
 

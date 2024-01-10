@@ -114,7 +114,7 @@ async def client_connected(client: LEAPClient):
 
 def receiver_main():
     logging.basicConfig(level=logging.INFO)
-    loop = asyncio.get_event_loop_policy().get_event_loop()
+    loop = asyncio.new_event_loop()
 
     args = sys.argv[1:]
     if args and args[0] == "--tcp":

@@ -50,7 +50,7 @@ class REPLServer:
 
 def repl_main():
     logging.basicConfig()
-    loop = asyncio.get_event_loop_policy().get_event_loop()
+    loop = asyncio.new_event_loop()
     repl_server = REPLServer()
     server = outleap.LEAPBridgeServer(repl_server.client_connected)
     coro = asyncio.start_server(server.handle_connection, "127.0.0.1", 9063)
