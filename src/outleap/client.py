@@ -105,7 +105,7 @@ class LEAPClient:
 
         # Should naturally stop on its own when disconnect is called by virtue of
         # the incomplete read.
-        self._msg_pump_task = asyncio.get_event_loop().create_task(_pump_messages_forever())
+        self._msg_pump_task = asyncio.create_task(_pump_messages_forever())
 
     def disconnect(self) -> None:
         """Close the connection and clean up any pending request futures"""

@@ -15,8 +15,7 @@ async def amain():
 
 
 def main():
-    loop = asyncio.new_event_loop()
-    loop.run_until_complete(amain())
+    asyncio.run(amain())
 
 
 if __name__ == "__main__":

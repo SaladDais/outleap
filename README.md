@@ -34,8 +34,7 @@ async def amain():
         print(await viewer_control_api.get("Global", "StatsPilotFile"), file=sys.stderr)
 
 
-loop = asyncio.new_event_loop()
-loop.run_until_complete(amain())
+asyncio.run(amain())
 ```
 
 If you just want to play around with the LEAP APIs:

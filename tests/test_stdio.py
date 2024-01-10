@@ -33,8 +33,8 @@ async def amain():
         # Ask for a config value and print it in the viewer logs
         await viewer_control_api.get("Global", "StatsPilotFile")
 
-loop = asyncio.new_event_loop()
-loop.run_until_complete(amain())
+
+asyncio.run(amain())
 """
 
 
