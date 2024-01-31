@@ -466,6 +466,101 @@ class LLFloaterRegAPI(LEAPAPIWrapper):
         )
 
 
+class LLURLDispatcher(LEAPAPIWrapper):
+    PUMP_NAME = "LLUrlDispatcher"
+
+    def dispatch(self, url: str, trusted: bool = True):
+        """At startup time or on clicks in internal web browsers, teleport, open map, or run requested command."""
+        self._client.void_command(self._pump_name, "dispatch", {"url": url, "trusted": trusted})
+
+    def dispatch_right_click(self, url: str):
+        """Dispatch ["url"] as if from a right-click on a hot link."""
+        self._client.void_command(self._pump_name, "dispatchRightClick", {"url": url})
+
+    def dispatch_from_text_editor(self, url: str):
+        """Dispatch ["url"] as if from an edit field"""
+        self._client.void_command(self._pump_name, "dispatchFromTextEditor", {"url": url})
+
+
+class LLFloaterAbout(LEAPAPIWrapper):
+    PUMP_NAME = "LLFloaterAbout"
+
+    def get_info(self) -> Awaitable[dict]:
+        """Request an LLSD::Map containing information used to populate About box"""
+        return self._client.command(self._pump_name, "getInfo")
+
+
+class LLGesture(LEAPAPIWrapper):
+    PUMP_NAME = "LLGesture"
+
+    def get_active_gestures(self) -> Awaitable[list]:
+        """
+        Return information about the agent's available gestures
+
+        Returns a list of dicts with the following dict values for each entry:
+        ["name"]: name of the gesture, may be empty
+        ["trigger"]: trigger string used to invoke via user chat, may be empty
+        ["playing"]: true or false indicating the playing state
+        """
+        fut = self._client.command(self._pump_name, "getActiveGestures")
+        return _data_unwrapper(fut, "gestures")
+
+    def is_gesture_playing(self, gesture_id: uuid.UUID) -> Awaitable[bool]:
+        fut = self._client.command(self._pump_name, "isGesturePlaying", {"id": gesture_id})
+        return _data_unwrapper(fut, "playing")
+
+    def start_gesture(self, gesture_id: uuid):
+        self._client.void_command(self._pump_name, "startGesture", {"id": gesture_id})
+
+    def stop_gesture(self, gesture_id: uuid):
+        self._client.void_command(self._pump_name, "stopGesture", {"id": gesture_id})
+
+
+class GroupChat(LEAPAPIWrapper):
+    PUMP_NAME = "GroupChat"
+
+    def start_im(self, group_id: uuid.UUID) -> Awaitable[uuid.UUID]:
+        """Start an IM session for the specified group, returning the session ID"""
+        fut = self._client.command(self._pump_name, "startIM", {"id": group_id})
+        return _data_unwrapper(fut, "session_id")
+
+    def end_im(self, group_id: uuid.UUID):
+        """End an IM session with the specified group"""
+        self._client.void_command(self._pump_name, "endIM", {"id": group_id})
+
+    def send_im(self, group_id: uuid.UUID, session_id: uuid.UUID, text: str):
+        """Send an IM to the specified group with the specified chatterbox session ID"""
+        self._client.void_command(
+            self._pump_name, "sendIM", {"id": group_id, "session_id": session_id, "text": text}
+        )
+
+
+class LLFloaterIMNearbyChat(LEAPAPIWrapper):
+    PUMP_NAME = "LLChatBar"
+
+    def send_chat(self, message: str, channel: int = 0, chat_type: str = "normal"):
+        """
+        Send chat to the simulator
+
+        :param message: chat message text [required]
+        :param channel: chat channel number [default = 0]
+        :param chat_type: "whisper", "normal", "shout" [default = "normal"]
+        """
+        self._client.void_command(
+            self._pump_name, "sendChat", {"message": message, "channel": channel, "chat_type": chat_type}
+        )
+
+
+class LLAppViewer(LEAPAPIWrapper):
+    PUMP_NAME = "LLAppViewer"
+
+    def request_quit(self):
+        self._client.void_command(self._pump_name, "requestQuit")
+
+    def force_quit(self):
+        self._client.void_command(self._pump_name, "forceQuit")
+
+
 class LLPuppetryAPI(LEAPAPIWrapper):
     PUMP_NAME = "puppetry"
     OP_KEY: str = "command"
@@ -511,6 +606,12 @@ __all__ = [
     "LLViewerWindowAPI",
     "LLCommandDispatcherAPI",
     "LLFloaterRegAPI",
+    "LLURLDispatcher",
+    "LLFloaterAbout",
+    "LLGesture",
+    "GroupChat",
+    "LLFloaterIMNearbyChat",
+    "LLAppViewer",
     "LLPuppetryAPI",
     "LEAPAPIWrapper",
 ]
