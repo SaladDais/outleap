@@ -285,8 +285,7 @@ def inspector_main():
     print(
         "Running in direct LEAP execution mode.\n"
         "If you're seeing this anywhere other than the viewer logs, "
-        "you probably messed up, the viewer should be executing this!\n"
-        "Try adding a '--tcp' argument!",
+        "you probably messed up, the viewer should be executing this!\n",
         file=sys.stderr,
     )
 
