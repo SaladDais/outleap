@@ -418,9 +418,9 @@ class LLAgentAPI(LEAPAPIWrapper):
         return self._client.command(self._pump_name, "getPosition", {})
 
     def request_sit(
-            self,
-            obj_uuid: Optional[uuid.UUID] = None,
-            position: Optional[Sequence[float]] = None,
+        self,
+        obj_uuid: Optional[uuid.UUID] = None,
+        position: Optional[Sequence[float]] = None,
     ) -> Awaitable:
         """Request to sit on obj_id, or object closest to position. Sits on ground if no args provided"""
         if position and obj_uuid is not None:
@@ -437,12 +437,12 @@ class LLAgentAPI(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "requestStand", {})
 
     def request_teleport(
-            self,
-            region_name: Optional[str] = None,
-            x: Optional[int] = None,
-            y: Optional[int] = None,
-            z: Optional[int] = None,
-            skip_confirmation: bool = True,
+        self,
+        region_name: Optional[str] = None,
+        x: Optional[int] = None,
+        y: Optional[int] = None,
+        z: Optional[int] = None,
+        skip_confirmation: bool = True,
     ) -> None:
         """Request a teleport from the system, (x,y,z) are global if region_name unspecified"""
         have_coords = all(_ is not None for _ in (x, y, z))
@@ -468,7 +468,9 @@ class LLAgentAPI(LEAPAPIWrapper):
 
     def play_animation(self, item_id: uuid.UUID, inworld: bool = True) -> Awaitable:
         """Play an animation by item id"""
-        return self._client.command(self._pump_name, "playAnimation", {"item_id": item_id, "inworld": inworld})
+        return self._client.command(
+            self._pump_name, "playAnimation", {"item_id": item_id, "inworld": inworld}
+        )
 
     def stop_animation(self, item_id: uuid.UUID) -> Awaitable:
         """Stop an animation by item id"""
@@ -477,8 +479,7 @@ class LLAgentAPI(LEAPAPIWrapper):
     def get_animation_info(self, item_id: uuid.UUID) -> Awaitable[Dict]:
         """Get information about an animation by item id"""
         return _data_unwrapper(
-            self._client.command(self._pump_name, "getAnimationInfo", {"item_id": item_id}),
-            "anim_info"
+            self._client.command(self._pump_name, "getAnimationInfo", {"item_id": item_id}), "anim_info"
         )
 
     def set_camera_params(self, params: Dict) -> None:
@@ -492,10 +493,10 @@ class LLAgentAPI(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "removeCameraParams", {})
 
     def request_touch(
-            self,
-            obj_uuid: Optional[uuid.UUID] = None,
-            position: Optional[Sequence[float]] = None,
-            face: int = 0,
+        self,
+        obj_uuid: Optional[uuid.UUID] = None,
+        position: Optional[Sequence[float]] = None,
+        face: int = 0,
     ) -> None:
         if not obj_uuid and not position:
             raise ValueError("Must specify either obj_uuid or position")
@@ -676,11 +677,11 @@ class LLTeleportHandlerAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLTeleportHandler"
 
     def teleport(
-            self,
-            region_name: Optional[str] = None,
-            x: Optional[int] = None,
-            y: Optional[int] = None,
-            z: Optional[int] = None
+        self,
+        region_name: Optional[str] = None,
+        x: Optional[int] = None,
+        y: Optional[int] = None,
+        z: Optional[int] = None,
     ) -> None:
         have_coords = all(_ is not None for _ in (x, y, z))
         if not region_name and not have_coords:
@@ -701,10 +702,10 @@ class LLAppearanceAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLAppearance"
 
     def wear_outfit(
-            self,
-            folder_id: Optional[uuid.UUID] = None,
-            folder_name: Optional[str] = None,
-            append: bool = False,
+        self,
+        folder_id: Optional[uuid.UUID] = None,
+        folder_name: Optional[str] = None,
+        append: bool = False,
     ) -> Awaitable:
         params: Dict = {"append": append}
         if folder_id:
@@ -714,10 +715,14 @@ class LLAppearanceAPI(LEAPAPIWrapper):
         return self._client.command(self._pump_name, "wearOutfit", params)
 
     def wear_items(self, item_ids: Sequence[uuid.UUID], replace: bool = False) -> None:
-        self._client.void_command(self._pump_name, "wearItems", {"items_id": list(item_ids), "replace": replace})
+        self._client.void_command(
+            self._pump_name, "wearItems", {"items_id": list(item_ids), "replace": replace}
+        )
 
     def detach_items(self, item_ids: Sequence[uuid.UUID], replace: bool = False) -> None:
-        self._client.void_command(self._pump_name, "detachItems", {"items_id": list(item_ids), "replace": replace})
+        self._client.void_command(
+            self._pump_name, "detachItems", {"items_id": list(item_ids), "replace": replace}
+        )
 
     def get_outfits_list(self) -> Awaitable[Dict[str, str]]:
         return _data_unwrapper(self._client.command(self._pump_name, "getOutfitsList", {}), "outfits")
