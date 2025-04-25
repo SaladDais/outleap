@@ -579,7 +579,7 @@ class LLFloaterRegAPI(LEAPAPIWrapper):
         )
 
 
-class LLURLDispatcher(LEAPAPIWrapper):
+class LLURLDispatcherAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLUrlDispatcher"
 
     def dispatch(self, url: str, trusted: bool = True):
@@ -743,7 +743,7 @@ __all__ = [
     "LLViewerWindowAPI",
     "LLCommandDispatcherAPI",
     "LLFloaterRegAPI",
-    "LLURLDispatcher",
+    "LLURLDispatcherAPI",
     "LLFloaterAboutAPI",
     "LLGestureAPI",
     "GroupChatAPI",
