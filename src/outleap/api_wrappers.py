@@ -97,11 +97,11 @@ class LLWindowAPI(LEAPAPIWrapper):
         path: UI_PATH_TYPE,
     ) -> Dict:
         if keycode is not None:
-            payload = {"keycode": keycode}
+            payload: Dict = {"keycode": keycode}
         elif keysym is not None:
-            payload = {"keysym": keysym}
+            payload: Dict = {"keysym": keysym}
         elif char is not None:
-            payload = {"char": char}
+            payload: Dict = {"char": char}
         else:
             raise ValueError("Didn't have one of keycode, keysym or char")
 
@@ -163,9 +163,7 @@ class LLWindowAPI(LEAPAPIWrapper):
 
     async def get_paths(self, under: Optional[UI_PATH_TYPE] = None) -> List[UIPath]:
         """Get all UI paths under the root, or under a path if specified"""
-        if not under:
-            under = ""
-        resp = await self._client.command(self._pump_name, "getPaths", {"under": str(under)})
+        resp = await self._client.command(self._pump_name, "getPaths", {"under": str(under or "")})
         if error := resp.get("error"):
             raise ValueError(error)
         return [UIPath(path) for path in resp.get("paths", [])]
@@ -185,9 +183,9 @@ class LLWindowAPI(LEAPAPIWrapper):
         button: str = None,
     ) -> Dict:
         if path is not None:
-            payload = {"path": str(path)}
+            payload: Dict = {"path": str(path)}
         elif x is not None and y is not None:
-            payload = {"x": x, "y": y}
+            payload: Dict = {"x": x, "y": y}
         else:
             raise ValueError("Didn't have one of x + y or path")
 
@@ -381,7 +379,7 @@ class LLAgentAPI(LEAPAPIWrapper):
         lookat_type: int = 8,
     ):
         """Look at either a specific `obj_uuid` or the closest object to `position`"""
-        payload = {"type": lookat_type}
+        payload: Dict = {"type": lookat_type}
         if obj_uuid:
             payload["obj_uuid"] = obj_uuid
         elif position:
@@ -391,8 +389,122 @@ class LLAgentAPI(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "lookAt", payload)
 
     def get_auto_pilot(self) -> Awaitable[Dict]:
-        """Get information about current state of the autopilot system"""
+        """Get information about the current state of the autopilot system"""
         return self._client.command(self._pump_name, "getAutoPilot", {})
+
+    def get_agent_screen_pos(self, avatar_id: Optional[uuid.UUID] = None) -> Awaitable[Dict]:
+        """Get where the specified agent is on the screen, uses current agent's ID if none provided"""
+        payload = {}
+        if avatar_id:
+            payload["avatar_id"] = avatar_id
+        return self._client.command(self._pump_name, "getAgentScreenPos", payload)
+
+    def get_nearby_avatars(self, dist: Optional[float] = None) -> Awaitable[List[Dict]]:
+        payload = {}
+        if dist is not None:
+            payload["dist"] = dist
+        fut = self._client.command(self._pump_name, "getNearbyAvatarsList", payload)
+        return _data_unwrapper(fut, "result")
+
+    def get_nearby_objects(self, dist: Optional[float] = None) -> Awaitable[List[Dict]]:
+        payload = {}
+        if dist is not None:
+            payload["dist"] = dist
+        fut = self._client.command(self._pump_name, "getNearbyObjectsList", payload)
+        return _data_unwrapper(fut, "result")
+
+    def get_position(self) -> Awaitable[Dict]:
+        """Get details about the agent's position"""
+        return self._client.command(self._pump_name, "getPosition", {})
+
+    def request_sit(
+            self,
+            obj_uuid: Optional[uuid.UUID] = None,
+            position: Optional[Sequence[float]] = None,
+    ) -> Awaitable:
+        """Request to sit on obj_id, or object closest to position. Sits on ground if no args provided"""
+        if position and obj_uuid is not None:
+            raise ValueError("obj_uuid and position are mutually exclusive")
+
+        params = {}
+        if obj_uuid:
+            params["obj_uuid"] = obj_uuid
+        if position:
+            params["position"] = list(position)
+        return self._client.command(self._pump_name, "requestSit", params)
+
+    def request_stand(self) -> None:
+        self._client.void_command(self._pump_name, "requestStand", {})
+
+    def request_teleport(
+            self,
+            region_name: Optional[str] = None,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            z: Optional[int] = None,
+            skip_confirmation: bool = True,
+    ) -> None:
+        """Request a teleport from the system, (x,y,z) are global if region_name unspecified"""
+        have_coords = all(_ is not None for _ in (x, y, z))
+        if not region_name and not have_coords:
+            raise ValueError("region_name or (x,y,z) is required")
+
+        params: Dict = {"skip_confirmation": skip_confirmation}
+        if region_name:
+            params["regionname"] = region_name
+        if have_coords:
+            params["x"] = x
+            params["y"] = y
+            params["z"] = z
+
+        self._client.void_command(self._pump_name, "requestTeleport", params)
+
+    def get_id(self) -> Awaitable[uuid.UUID]:
+        """Get the current agent's ID"""
+        return _data_unwrapper(self._client.command(self._pump_name, "getId", {}), "id")
+
+    def get_groups(self) -> Awaitable[List[Dict]]:
+        return _data_unwrapper(self._client.command(self._pump_name, "getGroups", {}), "groups")
+
+    def play_animation(self, item_id: uuid.UUID, inworld: bool = True) -> Awaitable:
+        """Play an animation by item id"""
+        return self._client.command(self._pump_name, "playAnimation", {"item_id": item_id, "inworld": inworld})
+
+    def stop_animation(self, item_id: uuid.UUID) -> Awaitable:
+        """Stop an animation by item id"""
+        return self._client.command(self._pump_name, "stopAnimation", {"item_id": item_id})
+
+    def get_animation_info(self, item_id: uuid.UUID) -> Awaitable[Dict]:
+        """Get information about an animation by item id"""
+        return _data_unwrapper(
+            self._client.command(self._pump_name, "getAnimationInfo", {"item_id": item_id}),
+            "anim_info"
+        )
+
+    def set_camera_params(self, params: Dict) -> None:
+        """Set camera parameters using LSL-like semantics"""
+        self._client.void_command(self._pump_name, "setCameraParams", params)
+
+    def set_follow_cam_active(self, active: bool) -> None:
+        self._client.void_command(self._pump_name, "setFollowCamActive", {"active": active})
+
+    def remove_camera_params(self) -> None:
+        self._client.void_command(self._pump_name, "removeCameraParams", {})
+
+    def request_touch(
+            self,
+            obj_uuid: Optional[uuid.UUID] = None,
+            position: Optional[Sequence[float]] = None,
+            face: int = 0,
+    ) -> None:
+        if not obj_uuid and not position:
+            raise ValueError("Must specify either obj_uuid or position")
+        params: Dict = {"face": face}
+        if obj_uuid:
+            params["obj_uuid"] = obj_uuid
+        if position:
+            params["position"] = list(position)
+        self._client.void_command(self._pump_name, "requestTouch", params)
 
 
 class LLFloaterRegAPI(LEAPAPIWrapper):
@@ -482,7 +594,7 @@ class LLURLDispatcher(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "dispatchFromTextEditor", {"url": url})
 
 
-class LLFloaterAbout(LEAPAPIWrapper):
+class LLFloaterAboutAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLFloaterAbout"
 
     def get_info(self) -> Awaitable[dict]:
@@ -490,7 +602,7 @@ class LLFloaterAbout(LEAPAPIWrapper):
         return self._client.command(self._pump_name, "getInfo")
 
 
-class LLGesture(LEAPAPIWrapper):
+class LLGestureAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLGesture"
 
     def get_active_gestures(self) -> Awaitable[list]:
@@ -516,26 +628,25 @@ class LLGesture(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "stopGesture", {"id": gesture_id})
 
 
-class GroupChat(LEAPAPIWrapper):
+class GroupChatAPI(LEAPAPIWrapper):
     PUMP_NAME = "GroupChat"
 
-    def start_im(self, group_id: uuid.UUID) -> Awaitable[uuid.UUID]:
-        """Start an IM session for the specified group, returning the session ID"""
-        fut = self._client.command(self._pump_name, "startIM", {"id": group_id})
-        return _data_unwrapper(fut, "session_id")
+    def start_im(self, group_id: uuid.UUID) -> Awaitable:
+        """Start an IM session for the specified group"""
+        return self._client.command(self._pump_name, "startGroupChat", {"group_id": group_id})
 
     def end_im(self, group_id: uuid.UUID):
         """End an IM session with the specified group"""
-        self._client.void_command(self._pump_name, "endIM", {"id": group_id})
+        return self._client.command(self._pump_name, "leaveGroupChat", {"group_id": group_id})
 
-    def send_im(self, group_id: uuid.UUID, session_id: uuid.UUID, text: str):
-        """Send an IM to the specified group with the specified chatterbox session ID"""
-        self._client.void_command(
-            self._pump_name, "sendIM", {"id": group_id, "session_id": session_id, "text": text}
+    def send_im(self, group_id: uuid.UUID, message: str) -> Awaitable:
+        """Send an IM to the specified group"""
+        return self._client.command(
+            self._pump_name, "sendGroupIM", {"group_id": group_id, "message": message}
         )
 
 
-class LLFloaterIMNearbyChat(LEAPAPIWrapper):
+class LLChatBarAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLChatBar"
 
     def send_chat(self, message: str, channel: int = 0, chat_type: str = "normal"):
@@ -551,7 +662,7 @@ class LLFloaterIMNearbyChat(LEAPAPIWrapper):
         )
 
 
-class LLAppViewer(LEAPAPIWrapper):
+class LLAppViewerAPI(LEAPAPIWrapper):
     PUMP_NAME = "LLAppViewer"
 
     def request_quit(self):
@@ -561,40 +672,61 @@ class LLAppViewer(LEAPAPIWrapper):
         self._client.void_command(self._pump_name, "forceQuit")
 
 
-class LLPuppetryAPI(LEAPAPIWrapper):
-    PUMP_NAME = "puppetry"
-    OP_KEY: str = "command"
+class LLTeleportHandlerAPI(LEAPAPIWrapper):
+    PUMP_NAME = "LLTeleportHandler"
 
-    def get_camera(self) -> Awaitable[int]:
-        """Request camera number: returns ["camera_id"]"""
-        fut = self._client.command(self._pump_name, "get_camera", {}, op_key=self.OP_KEY)
-        return _data_unwrapper(fut, "camera_id")
+    def teleport(
+            self,
+            region_name: Optional[str] = None,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            z: Optional[int] = None
+    ) -> None:
+        have_coords = all(_ is not None for _ in (x, y, z))
+        if not region_name and not have_coords:
+            raise ValueError("region_name or (x,y,z) is required")
 
-    def set_camera(self, camera_id: int) -> None:
-        """Request camera number: returns ["camera_id"]"""
-        payload = {"camera_id": camera_id}
-        self._client.void_command(self._pump_name, "set_camera", payload, op_key=self.OP_KEY)
+        params = {}
+        if region_name:
+            params["regionname"] = region_name
+        if have_coords:
+            params["x"] = x
+            params["y"] = y
+            params["z"] = z
 
-    def send_skeleton(self) -> None:
-        """
-        Request skeleton data
+        self._client.void_command(self._pump_name, "teleport", params)
 
-        Response will be sent over the "puppetry.command" listener as a "set_skeleton"
-        """
-        self._client.void_command(self._pump_name, "send_skeleton", {}, op_key=self.OP_KEY)
 
-    def move(self, joint_data: Dict[str, Dict]) -> None:
-        """
-        Send puppet movement data
+class LLAppearanceAPI(LEAPAPIWrapper):
+    PUMP_NAME = "LLAppearance"
 
-        Expected data format:
-            {'joint_name':{'param_name':[r1.23,r4.56,r7.89]}, ...}
-        Where:
-            joint_name = e.g. mWristLeft
-            param_name = rot | pos | scale | eff
-            param value = array of 3 floats [x,y,z]
-        """
-        self._client.void_command(self._pump_name, "move", joint_data, op_key=self.OP_KEY)
+    def wear_outfit(
+            self,
+            folder_id: Optional[uuid.UUID] = None,
+            folder_name: Optional[str] = None,
+            append: bool = False,
+    ) -> Awaitable:
+        params: Dict = {"append": append}
+        if folder_id:
+            params["folder_id"] = folder_id
+        if folder_name:
+            params["folder_name"] = folder_name
+        return self._client.command(self._pump_name, "wearOutfit", params)
+
+    def wear_items(self, item_ids: Sequence[uuid.UUID], replace: bool = False) -> None:
+        self._client.void_command(self._pump_name, "wearItems", {"items_id": list(item_ids), "replace": replace})
+
+    def detach_items(self, item_ids: Sequence[uuid.UUID], replace: bool = False) -> None:
+        self._client.void_command(self._pump_name, "detachItems", {"items_id": list(item_ids), "replace": replace})
+
+    def get_outfits_list(self) -> Awaitable[Dict[str, str]]:
+        return _data_unwrapper(self._client.command(self._pump_name, "getOutfitsList", {}), "outfits")
+
+    def get_outfit_items(self, outfit_id: uuid.UUID) -> Awaitable[Dict[str, dict]]:
+        return _data_unwrapper(
+            self._client.command(self._pump_name, "getOutfitItems", {"outfit_id": outfit_id}),
+            "items",
+        )
 
 
 __all__ = [
@@ -607,11 +739,12 @@ __all__ = [
     "LLCommandDispatcherAPI",
     "LLFloaterRegAPI",
     "LLURLDispatcher",
-    "LLFloaterAbout",
-    "LLGesture",
-    "GroupChat",
-    "LLFloaterIMNearbyChat",
-    "LLAppViewer",
-    "LLPuppetryAPI",
+    "LLFloaterAboutAPI",
+    "LLGestureAPI",
+    "GroupChatAPI",
+    "LLChatBarAPI",
+    "LLAppViewerAPI",
+    "LLTeleportHandlerAPI",
+    "LLAppearanceAPI",
     "LEAPAPIWrapper",
 ]
