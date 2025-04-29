@@ -100,6 +100,9 @@ class LEAPClient:
                     self.handle_message(await self._protocol.read_message())
             except asyncio.IncompleteReadError:
                 pass
+            except ConnectionResetError:
+                # This can happen on Windows rather than `IncompleteReadError`
+                pass
             finally:
                 self.disconnect()
 
