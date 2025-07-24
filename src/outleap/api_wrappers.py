@@ -234,7 +234,7 @@ class LLWindowAPI(LEAPAPIWrapper):
         path: UI_PATH_TYPE = None,
         mask: MASK_TYPE = None,
         button: str,
-        sleep_time: float = 0.0
+        sleep_time: float = 0.0,
     ) -> Dict:
         """Simulate a mouse down and immediately following mouse up event"""
         # We're going to ignore the mouseDown response, so use void_command instead.

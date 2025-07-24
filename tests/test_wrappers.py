@@ -1,3 +1,5 @@
+import asyncio
+
 import outleap
 
 from . import BaseClientTest
@@ -9,8 +11,22 @@ class TestWrappers(BaseClientTest):
         await self.client.connect()
         llwindow_api = outleap.LLWindowAPI(self.client)
 
+        async def _fake_acks():
+            for i in range(1, 3):
+                await asyncio.sleep(0.05)
+                self.protocol.inbound_messages.put_nowait(
+                    {
+                        "pump": "reply_pump",
+                        "data": {
+                            "handled": True,
+                            "reqid": i,
+                        },
+                    }
+                )
+
         # Make sure the request looks like what we'd expect
         fut = llwindow_api.mouse_click(x=0, y=1, mask=["CTL"], button="LEFT")
+        await asyncio.gather(fut, _fake_acks())
         self.assertDictEqual(
             {
                 "pump": "LLWindow",
@@ -21,24 +37,12 @@ class TestWrappers(BaseClientTest):
                     "button": "LEFT",
                     "op": "mouseUp",
                     "reply": "reply_pump",
-                    "reqid": 1,
+                    "reqid": 2,
                 },
             },
             self.protocol.sent_messages[-1],
         )
         self.assertEqual(2, len(self.protocol.sent_messages[-1]))
-
-        # Make sure the response is handled correctly
-        self.protocol.inbound_messages.put_nowait(
-            {
-                "pump": "reply_pump",
-                "data": {
-                    "handled": True,
-                    "reqid": 1,
-                },
-            }
-        )
-        await fut
 
     async def test_key_press(self):
         self._write_welcome()
