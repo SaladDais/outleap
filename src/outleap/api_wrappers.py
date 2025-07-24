@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import abc
+import asyncio
 import pathlib
 import uuid
 from typing import *
@@ -224,7 +225,7 @@ class LLWindowAPI(LEAPAPIWrapper):
         payload = self._build_mouse_payload(x=x, y=y, path=path, mask=mask, button=button)
         return self._client.command(self._pump_name, "mouseUp", payload)
 
-    def mouse_click(
+    async def mouse_click(
         self,
         /,
         *,
@@ -233,16 +234,15 @@ class LLWindowAPI(LEAPAPIWrapper):
         path: UI_PATH_TYPE = None,
         mask: MASK_TYPE = None,
         button: str,
-    ) -> Awaitable[Dict]:
+        sleep_time: float = 0.0
+    ) -> Dict:
         """Simulate a mouse down and immediately following mouse up event"""
         # We're going to ignore the mouseDown response, so use void_command instead.
         # Most side effects are actually executed on mouseUp.
-        self._client.void_command(
-            self._pump_name,
-            "mouseDown",
-            self._build_mouse_payload(x=x, y=y, path=path, mask=mask, button=button),
-        )
-        return self.mouse_up(x=x, y=y, path=path, mask=mask, button=button)
+        await self.mouse_down(x=x, y=y, path=path, mask=mask, button=button)
+        if sleep_time:
+            await asyncio.sleep(sleep_time)
+        return await self.mouse_up(x=x, y=y, path=path, mask=mask, button=button)
 
     def mouse_move(
         self, /, *, x: MOUSE_COORD_TYPE = None, y: MOUSE_COORD_TYPE = None, path: UI_PATH_TYPE = None
