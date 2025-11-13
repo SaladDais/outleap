@@ -62,9 +62,11 @@ _READER_BUFFER_LIMIT = 10_000_000
 def _stdin_feeder(
     transport: asyncio.Transport, reader: asyncio.StreamReader, loop: asyncio.AbstractEventLoop
 ):
-    while not transport.is_closing():
+    while True:
         data = os.read(0, _READER_BUFFER_LIMIT)
         if not data:
+            if transport.is_closing():
+                break
             time.sleep(0.0000001)
             continue
         loop.call_soon_threadsafe(reader.feed_data, data)
