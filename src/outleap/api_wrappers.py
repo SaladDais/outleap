@@ -181,6 +181,17 @@ class LLWindowAPI(LEAPAPIWrapper):
         for char in text_input:
             await self.key_press(char=char, path=path)
 
+    def paste_text(self, text: str, path: Optional[UI_PATH_TYPE] = None) -> Awaitable[Dict]:
+        payload = {"text": text}
+        if path:
+            payload["path"] = str(path)
+        fut = self._client.command(
+            self._pump_name,
+            "pasteText",
+            data=payload,
+        )
+        return _response_handler(fut)
+
     async def get_paths(self, under: Optional[UI_PATH_TYPE] = None) -> List[UIPath]:
         """Get all UI paths under the root, or under a path if specified"""
         resp = await self._client.command(self._pump_name, "getPaths", {"under": str(under or "")})
