@@ -822,6 +822,14 @@ class LLInventoryAPI(LEAPAPIWrapper):
         return _response_handler(fut)
 
 
+class LLStatsAPI(LEAPAPIWrapper):
+    PUMP_NAME = "LLStats"
+
+    def get_perf_data(self) -> Awaitable[Dict]:
+        """Get a snapshot of the viewer's performance statistics"""
+        return _data_unwrapper(self._client.command(self._pump_name, "getPerfData"), "stats")
+
+
 __all__ = [
     "CommandAPI",
     "LLUIAPI",
@@ -840,5 +848,6 @@ __all__ = [
     "LLTeleportHandlerAPI",
     "LLAppearanceAPI",
     "LLInventoryAPI",
+    "LLStatsAPI",
     "LEAPAPIWrapper",
 ]
