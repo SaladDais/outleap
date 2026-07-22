@@ -84,6 +84,34 @@ class TestWrappers(BaseClientTest):
             self.protocol.sent_messages[-1],
         )
 
+    async def test_stats_get_perf_data(self):
+        self._write_welcome()
+        await self.client.connect()
+
+        stats_api = outleap.LLStatsAPI(self.client)
+        fut = stats_api.get_perf_data()
+        self.assertDictEqual(
+            {
+                "pump": "LLStats",
+                "data": {
+                    "op": "getPerfData",
+                    "reply": "reply_pump",
+                    "reqid": 1,
+                },
+            },
+            self.protocol.sent_messages[-1],
+        )
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {
+                    "stats": {"memory": {"texture_bytes_alloc_mb": 42}},
+                    "reqid": 1,
+                },
+            }
+        )
+        self.assertEqual({"memory": {"texture_bytes_alloc_mb": 42}}, await fut)
+
     async def test_command_wrapper(self):
         self._write_welcome()
         await self.client.connect()
