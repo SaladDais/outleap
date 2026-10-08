@@ -850,8 +850,8 @@ class LLMediaAPI(LEAPAPIWrapper):
     def get_media_info(self, path: str) -> Awaitable[Dict]:
         return self._client.command(self._pump_name, "getMediaInfo", {"path": path})
 
-    def get_media_text(self, path: str, reply: str) -> None:
-        self._client.void_command(self._pump_name, "getMediaText", {"path": path, "reply": reply})
+    def get_media_text(self, path: str) -> Awaitable[Dict]:
+        return self._client.command(self._pump_name, "getMediaText", {"path": path})
 
 
 __all__ = [

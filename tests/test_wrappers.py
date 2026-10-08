@@ -138,18 +138,26 @@ class TestWrappers(BaseClientTest):
         )
         self.assertEqual({"width": 64}, await fut)
 
-        media_api.get_media_text("/foo/bar.txt", "some_pump")
+        fut = media_api.get_media_text("/foo/bar.txt")
         self.assertDictEqual(
             {
                 "pump": "LLMediaAPI",
                 "data": {
                     "op": "getMediaText",
                     "path": "/foo/bar.txt",
-                    "reply": "some_pump",
+                    "reply": "reply_pump",
+                    "reqid": 2,
                 },
             },
             self.protocol.sent_messages[-1],
         )
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {"text": "hello", "reqid": 2},
+            }
+        )
+        self.assertEqual({"text": "hello"}, await fut)
 
     async def test_command_wrapper(self):
         self._write_welcome()
