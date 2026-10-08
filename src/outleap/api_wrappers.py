@@ -841,6 +841,19 @@ class LLStatsAPI(LEAPAPIWrapper):
         return _data_unwrapper(self._client.command(self._pump_name, "getPerfData"), "stats")
 
 
+class LLMediaAPI(LEAPAPIWrapper):
+    PUMP_NAME = "LLMediaAPI"
+
+    def get_plugins_list(self) -> Awaitable[Dict]:
+        return self._client.command(self._pump_name, "getPluginsList")
+
+    def get_media_info(self, path: str) -> Awaitable[Dict]:
+        return self._client.command(self._pump_name, "getMediaInfo", {"path": path})
+
+    def get_media_text(self, path: str) -> Awaitable[Dict]:
+        return self._client.command(self._pump_name, "getMediaText", {"path": path})
+
+
 __all__ = [
     "CommandAPI",
     "LLUIAPI",
@@ -860,5 +873,6 @@ __all__ = [
     "LLAppearanceAPI",
     "LLInventoryAPI",
     "LLStatsAPI",
+    "LLMediaAPI",
     "LEAPAPIWrapper",
 ]
