@@ -203,6 +203,18 @@ class LLWindowAPI(LEAPAPIWrapper):
         """Get info about an element specified by path"""
         return await self._client.command(self._pump_name, "getInfo", {"path": str(path)})
 
+    async def get_subtree(self, under: Optional[UI_PATH_TYPE] = None) -> Dict:
+        """
+        Get a nested tree of info for an element and all its descendants
+
+        Starts from the root if `under` isn't specified. Each node contains
+        the same fields as `get_info()`, plus a "children" list of child nodes.
+        """
+        resp = await self._client.command(self._pump_name, "getSubtree", {"under": str(under or "")})
+        if error := resp.get("error"):
+            raise ValueError(error)
+        return resp
+
     def _build_mouse_payload(
         self,
         /,
