@@ -187,3 +187,64 @@ class TestWrappers(BaseClientTest):
             }
         )
         self.assertEqual("foo", (await fut)["whatever"])
+
+    async def test_get_subtree(self):
+        self._write_welcome()
+        await self.client.connect()
+
+        llwindow_api = outleap.LLWindowAPI(self.client)
+        fut = asyncio.create_task(llwindow_api.get_subtree(outleap.UIPath("/main_view/foo")))
+        await asyncio.sleep(0)
+        self.assertDictEqual(
+            {
+                "pump": "LLWindow",
+                "data": {
+                    "op": "getSubtree",
+                    "under": "/main_view/foo",
+                    "reply": "reply_pump",
+                    "reqid": 1,
+                },
+            },
+            self.protocol.sent_messages[-1],
+        )
+        tree = {
+            "path": "/main_view/foo",
+            "visible": True,
+            "children": [
+                {"path": "/main_view/foo/bar", "visible": False, "children": []},
+            ],
+        }
+        self.protocol.inbound_messages.put_nowait({"pump": "reply_pump", "data": {**tree, "reqid": 1}})
+        self.assertEqual(tree, await fut)
+
+    async def test_get_subtree_root(self):
+        self._write_welcome()
+        await self.client.connect()
+
+        llwindow_api = outleap.LLWindowAPI(self.client)
+        fut = asyncio.create_task(llwindow_api.get_subtree())
+        await asyncio.sleep(0)
+        self.assertEqual("", self.protocol.sent_messages[-1]["data"]["under"])
+        self.protocol.inbound_messages.put_nowait(
+            {"pump": "reply_pump", "data": {"path": "/", "children": [], "reqid": 1}}
+        )
+        self.assertEqual({"path": "/", "children": []}, await fut)
+
+    async def test_get_subtree_error(self):
+        self._write_welcome()
+        await self.client.connect()
+
+        llwindow_api = outleap.LLWindowAPI(self.client)
+        fut = asyncio.create_task(llwindow_api.get_subtree("/bogus"))
+        await asyncio.sleep(0)
+        self.protocol.inbound_messages.put_nowait(
+            {
+                "pump": "reply_pump",
+                "data": {
+                    "error": "getSubtree request specified invalid \"under\" path: '/bogus'",
+                    "reqid": 1,
+                },
+            }
+        )
+        with self.assertRaises(ValueError):
+            await fut
