@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import collections
 import dataclasses
 import weakref
 from typing import *
@@ -119,6 +118,20 @@ class UIElementInfo:
     visible: bool
     visible_chain: bool
 
+    @classmethod
+    def from_dict(cls, info: Dict) -> UIElementInfo:
+        return cls(
+            available=info["available"],
+            class_name=info["class"],
+            # These sometimes arrive as ints
+            enabled=bool(info["enabled"]),
+            enabled_chain=bool(info["enabled_chain"]),
+            rect=UIRect(**info["rect"]),
+            value=info.get("value"),
+            visible=bool(info["visible"]),
+            visible_chain=bool(info["visible_chain"]),
+        )
+
     def to_dict(self):
         return {
             "available": self.available,
@@ -130,6 +143,43 @@ class UIElementInfo:
             "visible": self.visible,
             "visible_chain": self.visible_chain,
         }
+
+
+@dataclasses.dataclass
+class UIElementNode:
+    """An element and its descendants, as returned by `LLWindowAPI.get_subtree()`"""
+
+    path: UIPath
+    info: Optional[UIElementInfo]
+    children: Dict[UIPath, UIElementNode]
+
+    @classmethod
+    def from_dict(cls, node: Dict) -> UIElementNode:
+        elem_node = cls(
+            path=UIPath(node["path"]),
+            info=UIElementInfo.from_dict(node) if "class" in node else None,
+            children={},
+        )
+        # Leaf nodes have an undefined "children" rather than an empty array
+        if (raw_children := node.get("children")) is not None:
+            for raw_child in raw_children:
+                elem_node.add_child(cls.from_dict(raw_child))
+        return elem_node
+
+    def add_child(self, child: UIElementNode):
+        """Add a child, merging it into any existing child with the same path"""
+        if (existing := self.children.get(child.path)) is not None:
+            # Sibling views can share a name. The first one's info wins.
+            for grandchild in child.children.values():
+                existing.add_child(grandchild)
+        else:
+            self.children[child.path] = child
+
+    def walk(self) -> Iterator[UIElementNode]:
+        """Yield this node and all its descendants, depth-first"""
+        yield self
+        for child in self.children.values():
+            yield from child.walk()
 
 
 _T = TypeVar("T")
@@ -227,8 +277,8 @@ class UIElement:
             return False
         return other.path == self.path
 
-    async def refresh_subtree(self, refresh_info=False):
-        await self._tree.refresh_subtree(self.path, refresh_info=refresh_info)
+    async def refresh_subtree(self):
+        await self._tree.refresh_subtree(self.path)
 
     async def refresh(self):
         await self._tree.fetch_info_for_paths([self.path])
@@ -237,69 +287,64 @@ class UIElement:
 class UIElementTree(Mapping[UIPath, "UIElement"]):
     def __init__(self, window_api: LLWindowAPI):
         self._window_api: LLWindowAPI = window_api
-        self._elem_info: Dict[UIPath, Optional[UIElementInfo]] = {}
-        self._children: Dict[UIPath, List[UIPath]] = collections.defaultdict(list)
+        self._nodes: Dict[UIPath, UIElementNode] = {}
         super().__init__()
 
     def __getitem__(self, key: Union[str, UIPath]) -> UIElement:
         if isinstance(key, str):
             key = UIPath(key)
-        if key not in self._elem_info:
+        if key not in self._nodes:
             raise KeyError(f"No element at {key}")
         return UIElement(key, self)
 
     def __contains__(self, item: Union[str, UIPath]) -> bool:
         if isinstance(item, str):
             item = UIPath(item)
-        return item in self._elem_info
+        return item in self._nodes
 
     def __len__(self) -> int:
-        return len(self._elem_info)
+        return len(self._nodes)
 
     def __iter__(self) -> Iterator[UIPath]:
-        return iter(self._elem_info)
+        return iter(self._nodes)
 
     @property
     def root_children(self) -> List[UIElement]:
         return self.get_child_elems(UIPath("/"))
 
-    def get_info_by_path(self, path: UIPath) -> UIElementInfo:
-        return self._elem_info[path]
+    def get_info_by_path(self, path: UIPath) -> Optional[UIElementInfo]:
+        return self._nodes[path].info
 
     def get_child_elems(self, path: UIPath) -> List[UIElement]:
-        return [UIElement(x, self) for x in self._children.get(path, ())]
+        if (node := self._nodes.get(path)) is None:
+            return []
+        return [UIElement(child.path, self) for child in node.children.values()]
 
-    async def refresh_subtree(self, under: Optional[UIPath] = None, refresh_info: bool = False):
-        """
-        Drop and refresh all info about elements under `path`
+    async def refresh_subtree(self, under: Optional[UIPath] = None):
+        """Drop and refresh all info about elements under `under`"""
+        subtree = UIElementNode.from_dict(await self._window_api.get_subtree(under=under))
 
-        If refresh_info is specified, fetch additional info about all elements
-        found, otherwise just use existing info about the elements if available.
-        """
-        # Elements may have been dropped, get rid of all elements under this path.
-        old_paths: Dict[UIPath, Optional[UIElementInfo]] = {}
-        for key, val in list(self._elem_info.items()):
-            if not under or key.is_relative_to(under):
-                old_paths[key] = self._elem_info[key]
-                del self._elem_info[key]
-                self._children.pop(key, None)
+        if subtree.path == UIPath("/"):
+            self._nodes = {node.path: node for node in subtree.walk()}
+            return
 
-        new_paths = await self._window_api.get_paths(under=under)
+        parent = self._get_or_create_node(subtree.path.parent)
+        if (old := self._nodes.get(subtree.path)) is not None:
+            for node in old.walk():
+                del self._nodes[node.path]
+        parent.children[subtree.path] = subtree
 
-        for path in new_paths:
-            # Fill map with either the old data or "None". Presence of "None"
-            # distinguishes paths which don't exist within the tree from ones
-            # which do exist, but for which we have no data.
-            self._elem_info[path] = old_paths.get(path)
-            if path.parent != path:
-                child_elems = self._children[path.parent]
-                # We want order of elements, but we also might get dupes, which
-                # we don't want...
-                if path not in child_elems:
-                    child_elems.append(path)
+        for node in subtree.walk():
+            self._nodes[node.path] = node
 
-        if refresh_info:
-            await self.fetch_info_for_paths(new_paths)
+    def _get_or_create_node(self, path: UIPath) -> UIElementNode:
+        """Get the node at `path`, creating empty nodes for it and any missing ancestors"""
+        if (node := self._nodes.get(path)) is None:
+            node = UIElementNode(path=path, info=None, children={})
+            self._nodes[path] = node
+            if path != UIPath("/"):
+                self._get_or_create_node(path.parent).children[path] = node
+        return node
 
     async def fetch_info_for_paths(self, paths: Collection[UIPath], allow_missing: bool = True):
         futs = [self._window_api.get_info(path) for path in paths]
@@ -313,24 +358,13 @@ class UIElementTree(Mapping[UIPath, "UIElement"]):
                 else:
                     raise ValueError(error)
             else:
-                elem_info = UIElementInfo(
-                    available=info["available"],
-                    class_name=info["class"],
-                    # Some things are represented in the LLSD payload as int even though
-                    # they'd be better represented as `bool`s. This is just an artifact
-                    # of the functions in the C++ side using `BOOL` rather than `bool`.
-                    enabled=bool(info["enabled"]),
-                    enabled_chain=bool(info["enabled_chain"]),
-                    rect=UIRect(**info["rect"]),
-                    value=info.get("value"),
-                    visible=bool(info["visible"]),
-                    visible_chain=bool(info["visible_chain"]),
-                )
+                elem_info = UIElementInfo.from_dict(info)
 
-            self._elem_info[UIPath(path)] = elem_info
+            if (node := self._nodes.get(UIPath(path))) is not None:
+                node.info = elem_info
 
-    async def refresh(self, refresh_info: bool = False):
-        await self.refresh_subtree(under=None, refresh_info=refresh_info)
+    async def refresh(self):
+        await self.refresh_subtree(under=None)
 
 
 UI_PATH_TYPE = Optional[Union[str, UIPath, UIElement]]
@@ -340,6 +374,8 @@ __all__ = [
     "UIPath",
     "UIRect",
     "UIElement",
+    "UIElementInfo",
+    "UIElementNode",
     "UIElementTree",
     "UI_PATH_TYPE",
 ]
